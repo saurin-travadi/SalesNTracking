@@ -555,52 +555,52 @@
 
 
 //these two are not to be used anymore
--(id)getDispositions:(NSString*)jsonString {
-    NSLog(@"Disp: %@",jsonString);
-    
-    NSMutableArray *dispositions = [[NSMutableArray alloc] init];
-    
-    jsonString=[jsonString substringFromIndex:1];
-    jsonString=[jsonString substringToIndex:[jsonString length]-1];
-    
-    NSArray* data = [jsonString componentsSeparatedByString:@","];
-    for (id obj in data) {
-        NSArray *temp = [obj componentsSeparatedByString:@":"];
-        
-        NSString *txt = [temp objectAtIndex:1];
-        txt=[txt substringFromIndex:1];
-        txt=[txt substringToIndex:[txt length]-1];
-        
-        Disposition *disp = [[Disposition alloc] initWithCode:[temp objectAtIndex:0]
-                                                  Description:txt];
-        [dispositions addObject:disp];
-    }
-    
-    return dispositions;
-}
--(id)getProducts:(NSString*)jsonString {
-    NSLog(@"Prod: %@",jsonString);
-    
-    NSMutableArray *products = [[NSMutableArray alloc] init];
-    
-    jsonString=[jsonString substringFromIndex:1];
-    jsonString=[jsonString substringToIndex:[jsonString length]-1];
-    
-    NSArray* data = [jsonString componentsSeparatedByString:@","];
-    for (id obj in data) {
-        NSArray *temp = [obj componentsSeparatedByString:@":"];
-        
-        NSString *txt = [temp objectAtIndex:1];
-        txt=[txt substringFromIndex:1];
-        txt=[txt substringToIndex:[txt length]-1];
-        
-        Product *prd = [[Product alloc] initWithCode:[temp objectAtIndex:0]
-                                         Description:txt];
-        [products addObject:prd];
-    }
-    
-    return products;
-}
+//-(id)getDispositions:(NSString*)jsonString {
+//    NSLog(@"Disp: %@",jsonString);
+//    
+//    NSMutableArray *dispositions = [[NSMutableArray alloc] init];
+//    
+//    jsonString=[jsonString substringFromIndex:1];
+//    jsonString=[jsonString substringToIndex:[jsonString length]-1];
+//    
+//    NSArray* data = [jsonString componentsSeparatedByString:@","];
+//    for (id obj in data) {
+//        NSArray *temp = [obj componentsSeparatedByString:@":"];
+//        
+//        NSString *txt = [temp objectAtIndex:1];
+//        txt=[txt substringFromIndex:1];
+//        txt=[txt substringToIndex:[txt length]-1];
+//        
+//        Disposition *disp = [[Disposition alloc] initWithCode:[temp objectAtIndex:0]
+//                                                  Description:txt];
+//        [dispositions addObject:disp];
+//    }
+//    
+//    return dispositions;
+//}
+//-(id)getProducts:(NSString*)jsonString {
+//    NSLog(@"Prod: %@",jsonString);
+//    
+//    NSMutableArray *products = [[NSMutableArray alloc] init];
+//    
+//    jsonString=[jsonString substringFromIndex:1];
+//    jsonString=[jsonString substringToIndex:[jsonString length]-1];
+//    
+//    NSArray* data = [jsonString componentsSeparatedByString:@","];
+//    for (id obj in data) {
+//        NSArray *temp = [obj componentsSeparatedByString:@":"];
+//        
+//        NSString *txt = [temp objectAtIndex:1];
+//        txt=[txt substringFromIndex:1];
+//        txt=[txt substringToIndex:[txt length]-1];
+//        
+//        Product *prd = [[Product alloc] initWithCode:[temp objectAtIndex:0]
+//                                         Description:txt];
+//        [products addObject:prd];
+//    }
+//    
+//    return products;
+//}
 
 
 
