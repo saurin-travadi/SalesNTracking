@@ -7,6 +7,7 @@
 //
 
 #import "Utility.h"
+#import "AppDelegate.h"
 
 @implementation Utility
 
@@ -18,9 +19,6 @@
 	if (standardUserDefaults)
 		val = [standardUserDefaults objectForKey:key];
     
-	// TODO: / apparent Apple bug: if user hasn't opened Settings for this app yet (as if?!), then
-	// the defaults haven't been copied in yet.  So do so here.  Adds another null check
-	// for every retrieve, but should only trip the first time
 	if (val == nil) {
 		NSLog(@"user defaults may not have been loaded from Settings.bundle ... doing that now ...");
 		//Get the bundle path
@@ -51,6 +49,23 @@
 		[standardUserDefaults synchronize];
 	}
 	return val;
+}
+
+-(NSString*)retrieveFromUserSavedData:(NSString*)key {
+    
+    NSString *localSettingsPath = ((AppDelegate *) [[UIApplication sharedApplication] delegate]).localSettingsPath;
+    
+    NSMutableDictionary *project = [[NSMutableDictionary alloc] initWithContentsOfFile: localSettingsPath];
+    return [project objectForKey:key];
+}
+
+-(void)saveToUserSavedDataWithKey:(NSString*)key Data:(NSString*)object {
+    NSString *localSettingsPath = ((AppDelegate *) [[UIApplication sharedApplication] delegate]).localSettingsPath;
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile: localSettingsPath];
+    [data setObject:object forKey:key];
+    
+    [data writeToFile: localSettingsPath atomically:YES];
 }
 
 @end

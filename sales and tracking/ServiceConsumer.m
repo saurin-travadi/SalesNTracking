@@ -18,7 +18,11 @@
     if (self) {
         
         baseURL = [Utility retrieveFromUserDefaults:@"baseurl_preference"];
-        
+        if([baseURL isEqualToString:@""]) {
+            [super missingBaseUrl];
+            return nil;
+        }
+            
         return self;
     }
     return nil;
@@ -413,6 +417,192 @@
     }];
 
 }
+
+-(void)getDispositionsByUser :(UserInfo*)userInfo :(void (^)(id))success {
+    _OnSearchSuccess = [success copy];
+    
+    NSString *jsonString = [[Utility alloc] retrieveFromUserSavedData:@"Dispositions"];
+    
+    if(jsonString==NULL || [jsonString isEqualToString:@""])
+    {           //get from DB and store in cache
+        NSString *soapMsg = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetSalesApptDispProd xmlns=\"http://webservice.leadperfection.com/\"><clientid>%@</clientid><username>%@</username><password>%@</password><type>%@</type></GetSalesApptDispProd></soap:Body></soap:Envelope>", userInfo.clientID,userInfo.userName,userInfo.password, @"d"];
+        
+        NSURL *url = [NSURL URLWithString: baseURL];
+        NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+        
+        NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
+        [req addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        [req addValue:@"http://webservice.leadperfection.com/GetSalesApptDispProd" forHTTPHeaderField:@"SOAPAction"];
+        [req addValue:msgLength forHTTPHeaderField:@"Content-Length"];
+        [req setHTTPMethod:@"POST"];
+        [req setHTTPBody: [soapMsg dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        [self getDataForElement:@"GetSalesApptDispProdResponse" Request:req :^(id json) {
+                
+            NSLog(@"%@",[json description]);
+            
+            [[Utility alloc] saveToUserSavedDataWithKey:@"Dispositions" Data:[json description]];
+
+            NSMutableArray *disps = [[NSMutableArray alloc] init];
+            NSArray *result = [json JSONValue];
+            for (id obj in result) {
+                
+                Disposition *disp = [[Disposition alloc] initWithCode:[obj valueForKey:@"key"] Description: [obj valueForKey:@"value"]];
+                [disps addObject:disp];
+            }
+            
+            _OnSearchSuccess(disps);
+            
+        } :^(NSError *error) {
+            
+            NSLog(@"%@",[error description]);
+            _OnSearchSuccess(nil);
+        }];
+    }
+    else{       //returned from cached copy
+        NSMutableArray *disps = [[NSMutableArray alloc] init];
+        NSArray *result = [jsonString JSONValue];
+        for (id obj in result) {
+            
+            Disposition *disp = [[Disposition alloc] initWithCode:[obj valueForKey:@"key"] Description: [obj valueForKey:@"value"]];
+            [disps addObject:disp];
+        }
+        
+        _OnSearchSuccess(disps);
+
+    }
+}
+
+-(void)getProductsByUser :(UserInfo*)userInfo :(void (^)(id))success {
+    _OnSearchSuccess = [success copy];
+    
+    NSString *jsonString = [[Utility alloc] retrieveFromUserSavedData:@"Products"];
+    
+    if(jsonString==NULL || [jsonString isEqualToString:@""])
+    {           //get from DB and store in cache
+        NSString *soapMsg = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetSalesApptDispProd xmlns=\"http://webservice.leadperfection.com/\"><clientid>%@</clientid><username>%@</username><password>%@</password><type>%@</type></GetSalesApptDispProd></soap:Body></soap:Envelope>", userInfo.clientID,userInfo.userName,userInfo.password, @"p"];
+        
+        NSURL *url = [NSURL URLWithString: baseURL];
+        NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+        
+        NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
+        [req addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        [req addValue:@"http://webservice.leadperfection.com/GetSalesApptDispProd" forHTTPHeaderField:@"SOAPAction"];
+        [req addValue:msgLength forHTTPHeaderField:@"Content-Length"];
+        [req setHTTPMethod:@"POST"];
+        [req setHTTPBody: [soapMsg dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        [self getDataForElement:@"GetSalesApptDispProdResponse" Request:req :^(id json) {
+            
+            [[Utility alloc] saveToUserSavedDataWithKey:@"Products" Data:[json description]];
+            
+            NSMutableArray *prods = [[NSMutableArray alloc] init];
+            NSArray *result = [json JSONValue];
+            for (id obj in result) {
+                
+                Product *prd = [[Product alloc] initWithCode:[obj valueForKey:@"key"] Description: [obj valueForKey:@"value"]];
+                [prods addObject:prd];
+            }
+            
+            _OnSearchSuccess(prods);
+            
+        } :^(NSError *error) {
+            NSLog(@"%@",[error description]);
+            _OnSearchSuccess(nil);
+        }];
+    }
+    else{       //returned from cached copy
+        NSMutableArray *prods = [[NSMutableArray alloc] init];
+        NSArray *result = [jsonString JSONValue];
+        for (id obj in result) {
+            
+            Product *prd = [[Product alloc] initWithCode:[obj valueForKey:@"key"] Description: [obj valueForKey:@"value"]];
+            [prods addObject:prd];
+        }
+        
+        _OnSearchSuccess(prods);
+    }
+}
+
+-(void)updateAppointmentId:(NSString*)apptId withUserInfo:(UserInfo *)userInfo Disposition:(NSString*)dispositionText Products:(id)products Sales:(id)sales Comments:(NSString*)comments :(void (^)(id))Success {
+    
+    _OnSearchSuccess = [Success copy];
+
+    
+    NSString *soapMsg = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><UpdateSalesApptDetail xmlns=\"http://webservice.leadperfection.com/\"><clientid>%@</clientid><username>%@</username><password>%@</password><issuedleadid>%d</issuedleadid><disposition>%@</disposition><productid1>%@</productid1><gsa1>%f</gsa1><productid2>%@</productid2><gsa2>%f</gsa2><productid3>%@</productid3><gsa3>%f</gsa3><productid4>%@</productid4><gsa4>%f</gsa4><productid5>%@</productid5><gsa5>%f</gsa5><presnotes>%@</presnotes></UpdateSalesApptDetail></soap:Body></soap:Envelope>", userInfo.clientID,userInfo.userName,userInfo.password,[apptId intValue],dispositionText,[products objectAtIndex:0],[[sales objectAtIndex:0] doubleValue],[products objectAtIndex:1],[[sales objectAtIndex:1] doubleValue],[products objectAtIndex:2],[[sales objectAtIndex:2] doubleValue],[products objectAtIndex:3],[[sales objectAtIndex:3] doubleValue],[products objectAtIndex:4],[[sales objectAtIndex:4] doubleValue],comments];
+    
+    NSURL *url = [NSURL URLWithString: baseURL];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
+    [req addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [req addValue:@"http://webservice.leadperfection.com/UpdateSalesApptDetail" forHTTPHeaderField:@"SOAPAction"];
+    [req addValue:msgLength forHTTPHeaderField:@"Content-Length"];
+    [req setHTTPMethod:@"POST"];
+    [req setHTTPBody: [soapMsg dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [self getDataForElement:@"UpdateSalesApptDetailResult" Request:req :^(id json) {
+    
+        _OnSearchSuccess([json description]);
+        
+    } :^(NSError *error) {
+        NSLog(@"%@",[error description]);
+        _OnSearchSuccess(nil);
+    }];
+
+}
+
+
+
+//these two are not to be used anymore
+-(id)getDispositions:(NSString*)jsonString {
+    NSLog(@"Disp: %@",jsonString);
+    
+    NSMutableArray *dispositions = [[NSMutableArray alloc] init];
+    
+    jsonString=[jsonString substringFromIndex:1];
+    jsonString=[jsonString substringToIndex:[jsonString length]-1];
+    
+    NSArray* data = [jsonString componentsSeparatedByString:@","];
+    for (id obj in data) {
+        NSArray *temp = [obj componentsSeparatedByString:@":"];
+        
+        NSString *txt = [temp objectAtIndex:1];
+        txt=[txt substringFromIndex:1];
+        txt=[txt substringToIndex:[txt length]-1];
+        
+        Disposition *disp = [[Disposition alloc] initWithCode:[temp objectAtIndex:0]
+                                                  Description:txt];
+        [dispositions addObject:disp];
+    }
+    
+    return dispositions;
+}
+-(id)getProducts:(NSString*)jsonString {
+    NSLog(@"Prod: %@",jsonString);
+    
+    NSMutableArray *products = [[NSMutableArray alloc] init];
+    
+    jsonString=[jsonString substringFromIndex:1];
+    jsonString=[jsonString substringToIndex:[jsonString length]-1];
+    
+    NSArray* data = [jsonString componentsSeparatedByString:@","];
+    for (id obj in data) {
+        NSArray *temp = [obj componentsSeparatedByString:@":"];
+        
+        NSString *txt = [temp objectAtIndex:1];
+        txt=[txt substringFromIndex:1];
+        txt=[txt substringToIndex:[txt length]-1];
+        
+        Product *prd = [[Product alloc] initWithCode:[temp objectAtIndex:0]
+                                         Description:txt];
+        [products addObject:prd];
+    }
+    
+    return products;
+}
+
+
 
 @end
 

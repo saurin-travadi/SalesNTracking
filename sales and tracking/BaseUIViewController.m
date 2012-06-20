@@ -12,6 +12,7 @@
 #import "SFHFKeychainUtils.h"
 #import "LoginViewController.h"
 #import "Utility.h"
+#import "ServiceConsumer.h"
 
 @implementation BaseUIViewController
 
@@ -76,6 +77,11 @@
      sender.layer.cornerRadius = 8.0;
 }
 
+-(void)makeRoundRectView:(UIView *)view {
+    view.layer.cornerRadius = 5;
+    view.layer.masksToBounds = YES;
+}
+
 -(void)setUserInfo:(UserInfo*)userInfo {
     NSString *localSettingsPath = ((AppDelegate *) [[UIApplication sharedApplication] delegate]).localSettingsPath;
     
@@ -113,6 +119,7 @@
     }
     return nil;
 }
+
 
 -(void)logout {
     UserInfo* user = [self getUserInfo];

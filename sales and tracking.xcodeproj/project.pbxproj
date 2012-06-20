@@ -32,6 +32,9 @@
 		7062626715F467610050EEA7 /* SalesTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062626615F467610050EEA7 /* SalesTrackingViewController.m */; };
 		7062626F15F504B30050EEA7 /* MySales.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062626E15F504B30050EEA7 /* MySales.m */; };
 		7062627315F538890050EEA7 /* SalesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062627215F538890050EEA7 /* SalesDetailsViewController.m */; };
+		707536D31591728B0087C95C /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 707536D21591728B0087C95C /* Product.m */; };
+		707536D6159229300087C95C /* LocalSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 707536D5159229300087C95C /* LocalSettings.plist */; };
+		7076885015F9672E00115D99 /* Disposition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076884F15F9672E00115D99 /* Disposition.m */; };
 		707C05FB15F6D3FB000D972E /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 707C05F915F6D3FB000D972E /* settings.png */; };
 		707C05FC15F6D3FB000D972E /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 707C05FA15F6D3FB000D972E /* settings@2x.png */; };
 		707C05FF15F6D45D000D972E /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 707C05FE15F6D45D000D972E /* SettingsViewController.m */; };
@@ -70,6 +73,7 @@
 		70D12A5B15F244BF0040808D /* bullet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D12A5915F244BF0040808D /* bullet@2x.png */; };
 		70E6D86415F30A6000E3052B /* MyStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E6D86315F30A6000E3052B /* MyStatsViewController.m */; };
 		70E6D86715F30C6E00E3052B /* MyStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E6D86615F30C6E00E3052B /* MyStat.m */; };
+		70FA471A15F8E1BA0027862E /* AppointmentUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FA471915F8E1BA0027862E /* AppointmentUpdateViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +122,11 @@
 		7062626E15F504B30050EEA7 /* MySales.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySales.m; sourceTree = "<group>"; };
 		7062627115F538890050EEA7 /* SalesDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalesDetailsViewController.h; sourceTree = "<group>"; };
 		7062627215F538890050EEA7 /* SalesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalesDetailsViewController.m; sourceTree = "<group>"; };
+		707536D11591728B0087C95C /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
+		707536D21591728B0087C95C /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		707536D5159229300087C95C /* LocalSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LocalSettings.plist; sourceTree = "<group>"; };
+		7076884E15F9672E00115D99 /* Disposition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Disposition.h; sourceTree = "<group>"; };
+		7076884F15F9672E00115D99 /* Disposition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Disposition.m; sourceTree = "<group>"; };
 		707C05F915F6D3FB000D972E /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		707C05FA15F6D3FB000D972E /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		707C05FD15F6D45D000D972E /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -181,6 +190,8 @@
 		70E6D86315F30A6000E3052B /* MyStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyStatsViewController.m; sourceTree = "<group>"; };
 		70E6D86515F30C6E00E3052B /* MyStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyStat.h; sourceTree = "<group>"; };
 		70E6D86615F30C6E00E3052B /* MyStat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyStat.m; sourceTree = "<group>"; };
+		70FA471815F8E1BA0027862E /* AppointmentUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentUpdateViewController.h; sourceTree = "<group>"; };
+		70FA471915F8E1BA0027862E /* AppointmentUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentUpdateViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +294,8 @@
 				70196BA615EEFA37008B964E /* AppointmentsViewController.m */,
 				70D12A5215F1C5A10040808D /* AppointementDetailViewController.h */,
 				70D12A5315F1C5A10040808D /* AppointementDetailViewController.m */,
+				70FA471815F8E1BA0027862E /* AppointmentUpdateViewController.h */,
+				70FA471915F8E1BA0027862E /* AppointmentUpdateViewController.m */,
 				70E6D86215F30A6000E3052B /* MyStatsViewController.h */,
 				70E6D86315F30A6000E3052B /* MyStatsViewController.m */,
 				7062626515F467610050EEA7 /* SalesTrackingViewController.h */,
@@ -303,6 +316,7 @@
 		708433D315E9DEFC00E27068 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				707536D5159229300087C95C /* LocalSettings.plist */,
 				7084350715EA676000E27068 /* Images */,
 				708433D415E9DEFC00E27068 /* sales and tracking-Info.plist */,
 				708433D515E9DEFC00E27068 /* InfoPlist.strings */,
@@ -331,6 +345,10 @@
 				70E6D86615F30C6E00E3052B /* MyStat.m */,
 				7062626D15F504B30050EEA7 /* MySales.h */,
 				7062626E15F504B30050EEA7 /* MySales.m */,
+				7076884E15F9672E00115D99 /* Disposition.h */,
+				7076884F15F9672E00115D99 /* Disposition.m */,
+				707536D11591728B0087C95C /* Product.h */,
+				707536D21591728B0087C95C /* Product.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -470,6 +488,7 @@
 				707C05FB15F6D3FB000D972E /* settings.png in Resources */,
 				707C05FC15F6D3FB000D972E /* settings@2x.png in Resources */,
 				703650B415F8246100714423 /* Settings.bundle in Resources */,
+				707536D6159229300087C95C /* LocalSettings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +538,9 @@
 				7062627315F538890050EEA7 /* SalesDetailsViewController.m in Sources */,
 				707C05FF15F6D45D000D972E /* SettingsViewController.m in Sources */,
 				703650BB15F8412C00714423 /* Utility.m in Sources */,
+				70FA471A15F8E1BA0027862E /* AppointmentUpdateViewController.m in Sources */,
+				7076885015F9672E00115D99 /* Disposition.m in Sources */,
+				707536D31591728B0087C95C /* Product.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

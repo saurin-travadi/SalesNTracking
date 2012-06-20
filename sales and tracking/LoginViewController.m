@@ -153,16 +153,6 @@ NSString *localSettingsPath;
     [self performLogin];
 }
 
-//- (void)missingBaseUrl
-//{
-//    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Logon Failed"
-//                                                      message:@"The Base URL has not been set. Please assign a value in your iPhone Settings."
-//                                                     delegate:nil
-//                                            cancelButtonTitle:@"OK"
-//                                            otherButtonTitles:nil];
-//    [message show];
-//}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField 
 {
     BOOL didResign = [textField resignFirstResponder];

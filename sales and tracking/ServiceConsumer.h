@@ -15,6 +15,8 @@
 #import "AppointementDetail.h"
 #import "MyStat.h"
 #import "MySales.h"
+#import "Disposition.h"
+#import "Product.h"
 
 @interface ServiceConsumer : Consumer {
     
@@ -44,4 +46,9 @@
 
 -(void)getJobDetailsById: (NSString*)jobId withUserInof:(UserInfo *)userInfo :(void (^)(id))Success;
 
+-(void)getDispositionsByUser :(UserInfo*)userInfo :(void (^)(id))success;
+
+-(void)getProductsByUser :(UserInfo*)userInfo :(void (^)(id))success;
+
+-(void)updateAppointmentId:(NSString*)apptId withUserInfo:(UserInfo *)userInfo Disposition:(NSString*)dispositionText Products:(id)products Sales:(id)sales  Comments:(NSString*)comments :(void (^)(id))Success;
 @end

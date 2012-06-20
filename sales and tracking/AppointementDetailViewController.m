@@ -7,6 +7,7 @@
 //
 
 #import "AppointementDetailViewController.h"
+#import "AppointmentUpdateViewController.h"
 
 @implementation AppointementDetailViewController
 
@@ -170,4 +171,12 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://maps.google.com/maps?saddr=%@&daddr=%@", sAddress,dAddress]]];
 }
 
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [[segue destinationViewController] setDateTime:dateLabel.text];
+    [[segue destinationViewController] setName:nameLabel.text];
+    [[segue destinationViewController] setAddress:addressLabel.text];
+    [[segue destinationViewController] setCity:cityLabel.text];
+    [[segue destinationViewController] setApptId:[self apptId]];
+}
 @end

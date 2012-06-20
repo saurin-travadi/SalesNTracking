@@ -87,6 +87,16 @@
     } 
 }
 
+- (void)missingBaseUrl
+{
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Logon Failed"
+                                                      message:@"The Base URL has not been set. Please assign a value in your iPhone Settings."
+                                                     delegate:nil
+                                            cancelButtonTitle:@"Exit"
+                                            otherButtonTitles:nil];
+    [message show];
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];

@@ -11,5 +11,6 @@
 @interface Utility : NSObject
 
 +(NSString*)retrieveFromUserDefaults:(NSString*)key;
-
+-(NSString*)retrieveFromUserSavedData:(NSString*)key;
+-(void)saveToUserSavedDataWithKey:(NSString*)key Data:(NSString*)object;
 @end

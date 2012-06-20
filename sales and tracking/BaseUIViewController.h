@@ -22,6 +22,8 @@
 -(void)setUserInfo:(UserInfo*)userInfo;
 -(UserInfo*)getUserInfo;
 -(void)makeRoundRect:(UIButton*)sender;
+-(void)makeRoundRectView:(UIView*)view;
+
 -(void)logout;
 
 @end

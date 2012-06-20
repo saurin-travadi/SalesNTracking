@@ -19,5 +19,6 @@
 }
 
 -(void)getDataForElement:(NSString*)element Request:(NSMutableURLRequest *)req :(void (^)(id))Success :(void(^)(NSError *))Failure;
+- (void)missingBaseUrl;
 
 @end
