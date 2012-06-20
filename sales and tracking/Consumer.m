@@ -23,8 +23,18 @@
     _OnSuccess = [Success copy];
     _OnFailure = [Failure copy]; 
     
+    [self performSelector:@selector(checkConnection) withObject:nil afterDelay:60];          //this is to check if server is not responding
     conn = [[NSURLConnection alloc] initWithRequest:req delegate:self startImmediately:YES];
     webData = [NSMutableData data];
+}
+
+-(void)checkConnection {
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@""
+                                                      message:@"Server is not responding, Please check application settings in your iPhone Settings."
+                                                     delegate:self
+                                            cancelButtonTitle:@"Exit"
+                                            otherButtonTitles:nil];
+    [message show];
 }
 
 -(void) connection:(NSURLConnection *) connection didReceiveResponse:(NSURLResponse *) response {
@@ -58,8 +68,8 @@
     soapResults = [[NSMutableString alloc] init];
     xmlParser = [[NSXMLParser alloc] initWithData: webData];
     
-//    NSString* str = [[NSString alloc] initWithData:webData encoding:NSStringEncodingConversionAllowLossy];
-//    NSLog(@"%@",str);
+    NSString* str = [[NSString alloc] initWithData:webData encoding:NSStringEncodingConversionAllowLossy];
+    NSLog(@"%@",str);
     
     [xmlParser setDelegate: self];
     [xmlParser setShouldResolveExternalEntities:YES];
@@ -70,6 +80,7 @@
 {
     if( [elementName isEqualToString:_element]){
         elementFound = YES;
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(checkConnection) object:nil];     //first bit received to stop checking
     }
 }
 
@@ -89,9 +100,9 @@
 
 - (void)missingBaseUrl
 {
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Logon Failed"
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@""
                                                       message:@"The Base URL has not been set. Please assign a value in your iPhone Settings."
-                                                     delegate:nil
+                                                     delegate:self
                                             cancelButtonTitle:@"Exit"
                                             otherButtonTitles:nil];
     [message show];

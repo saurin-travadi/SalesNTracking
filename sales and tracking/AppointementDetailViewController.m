@@ -127,7 +127,8 @@
         if([appt.apptStatusCode isEqualToString:@"Y"])
         {
             UILabel *lbl = [[UILabel alloc] initWithFrame:acknowledgeButton.frame];
-            lbl.text = @"Acknowledged";
+            lbl.textAlignment  = UITextAlignmentCenter;
+            lbl.text = @"Acknowledged by Rep";
             [self.view addSubview:lbl];
             [acknowledgeButton setHidden:YES];
         }
