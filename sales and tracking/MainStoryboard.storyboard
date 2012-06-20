@@ -219,116 +219,6 @@
             </objects>
             <point key="canvasLocation" x="-735" y="-3675"/>
         </scene>
-        <!--Settings View Controller - Settings-->
-        <scene sceneID="jIM-go-ygb">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M8O-Dv-30I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="oCw-9x-HQL" customClass="SettingsViewController" sceneMemberID="viewController">
-                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="NgP-Vl-8P6">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="System" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Pf8-M7-cIY">
-                                <rect key="frame" x="9" y="34" width="94" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Security" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="EWe-V0-CxI">
-                                <rect key="frame" x="9" y="277" width="79" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" id="UsO-YZ-mJu">
-                                <rect key="frame" x="20" y="64" width="280" height="159"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your Client ID" minimumFontSize="17" clearButtonMode="whileEditing" id="vNl-gz-yPQ" customClass="NextUITextField">
-                                        <rect key="frame" x="96" y="15" width="164" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="oCw-9x-HQL" id="CGp-KV-vHw"/>
-                                            <outlet property="nextField" destination="d0M-KY-vL7" id="oFQ-xW-oWV"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your Site URL" minimumFontSize="17" clearButtonMode="whileEditing" id="7S9-R2-S6E" customClass="NextUITextField">
-                                        <rect key="frame" x="96" y="58" width="164" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="oCw-9x-HQL" id="hHQ-ph-DZo"/>
-                                        </connections>
-                                    </textField>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Client Id:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="gmU-cY-ArW">
-                                        <rect key="frame" x="15" y="20" width="68" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Site URL:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="sWg-NI-rWw">
-                                        <rect key="frame" x="15" y="62" width="73" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ndx-SD-7QZ">
-                                        <rect key="frame" x="15" y="109" width="245" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <state key="normal" title="Update">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="updateSettings:" destination="oCw-9x-HQL" eventType="touchUpInside" id="XJf-Mr-FGD"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleAspectFit" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="rAx-A3-IEM">
-                                <rect key="frame" x="20" y="309" width="280" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Log Out">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="logout:" destination="oCw-9x-HQL" eventType="touchUpInside" id="rrV-Y0-hEU"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Settings" id="r2W-wK-6CI"/>
-                    <connections>
-                        <outlet property="clientId" destination="vNl-gz-yPQ" id="rxc-G5-xa6"/>
-                        <outlet property="logOut" destination="rAx-A3-IEM" id="7kO-UN-x8f"/>
-                        <outlet property="siteURL" destination="7S9-R2-S6E" id="2wE-sN-yCm"/>
-                        <outlet property="update" destination="ndx-SD-7QZ" id="Zgh-Fo-sob"/>
-                        <outlet property="view" destination="NgP-Vl-8P6" id="1Mu-qd-ycK"/>
-                        <outlet property="view1" destination="UsO-YZ-mJu" id="pUX-cu-ANL"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="-485" y="-2988"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="QXr-Ke-2lB">
             <objects>
@@ -1415,6 +1305,129 @@
         <image name="house5a.jpg" width="250" height="167"/>
         <image name="lplogo_pos.gif" width="240" height="44"/>
     </resources>
+    <classes>
+        <class className="AppointementDetailViewController" superclassName="BaseUIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppointementDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="ackAppt:"/>
+                <relationship kind="action" name="phoneMade:"/>
+                <relationship kind="action" name="showMap:"/>
+                <relationship kind="outlet" name="acknowledgeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addressLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="altPhoneButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="altPhoneCaption" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="altPhoneLable" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mapButton1" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mapButton2" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="notesLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="notesScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="phoneButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="phoneLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="productLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="sourceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="updateApptButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="AppointmentUpdateViewController" superclassName="BaseUIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppointmentUpdateViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="update:"/>
+                <relationship kind="outlet" name="addressLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="btnUpdate" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="comments" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="dateTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dispositionText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="mainContainer" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="productText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="productText1" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="productText2" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="productText3" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="productText4" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saleText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saleText1" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saleText2" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saleText3" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saleText4" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="viewContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="viewContainer1" candidateClass="UIView"/>
+                <relationship kind="outlet" name="viewContainer2" candidateClass="UIView"/>
+                <relationship kind="outlet" name="viewContainer3" candidateClass="UIView"/>
+                <relationship kind="outlet" name="viewContainer4" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="AppointmentsViewController" superclassName="BaseUIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppointmentsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="BaseUIViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BaseUIViewController.h"/>
+        </class>
+        <class className="CalendarViewController" superclassName="BaseUIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewController.h"/>
+        </class>
+        <class className="HomeViewController" superclassName="BaseUIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logout:"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="BaseUIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="login:"/>
+                <relationship kind="outlet" name="logOnButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="settingsView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="userName" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MyStatsViewController" superclassName="BaseUIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyStatsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NextUITextField" superclassName="UITextField">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NextUITextField.h"/>
+            <relationships>
+                <relationship kind="outlet" name="nextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="previousField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SalesDetailsViewController" superclassName="BaseUIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SalesDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="phoneMade:"/>
+                <relationship kind="outlet" name="addressLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="altPhoneButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="altPhoneLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="altPhoneTypeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="jobStatusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="phoneButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="phoneLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="productLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="saleDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="saleDollarLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SalesTrackingViewController" superclassName="BaseUIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SalesTrackingViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -10,6 +10,7 @@
 #import "NextUITextField.h"
 #import "ServiceConsumer.h"
 #import "Disposition.h"
+#import "AppDelegate.h"
 
 @implementation AppointmentUpdateViewController {
     UIPickerView *picker;
@@ -18,6 +19,8 @@
     NSMutableArray *dispositions;
     
     UITextField *textBox;
+    NSTimer* showDecimalPointTimer;
+    UIButton *doneButton;
 }
 
 @synthesize dateTime,name,address,city,apptId;
@@ -63,6 +66,9 @@
     nameLabel.text=name;
     addressLabel.text=address;
     cityLabel.text=city;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -172,6 +178,11 @@
     return @"";
 }
 
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    [doneButton removeFromSuperview];
+    return  YES;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     textBox = textField;
     
@@ -207,6 +218,54 @@
     return YES;
 }
 
+
+- (void)keyboardWillShow:(NSNotification *)note {
+    if( textBox==saleText || textBox==saleText1 || textBox==saleText2 || textBox==saleText3 || textBox==saleText4 ||
+        textBox==productText || textBox==productText|| textBox==productText2 || textBox==productText3 || textBox==productText4){
+            
+        showDecimalPointTimer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(addDoneButton) userInfo:nil repeats:NO];
+        [[NSRunLoop currentRunLoop] addTimer:showDecimalPointTimer forMode:NSDefaultRunLoopMode];
+    }
+}
+
+-(void)addDoneButton {
+    if( textBox==saleText || textBox==saleText1 || textBox==saleText2 || textBox==saleText3 || textBox==saleText4) {
+        //Add a button to the top, above all windows
+        NSArray *allWindows = [[UIApplication sharedApplication] windows];
+        int topWindow = [allWindows count] - 1;
+        UIWindow *keyboardWindow = [allWindows objectAtIndex:topWindow];
+        
+        // create custom button
+        doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        doneButton.frame = CGRectMake(0, 427, 105, 53);
+        doneButton.titleLabel.font = [UIFont boldSystemFontOfSize:17];
+        [doneButton setTitleColor:[UIColor colorWithRed:77.0f/255.0f green:84.0f/255.0f blue:98.0f/255.0f alpha:1.0] forState:UIControlStateNormal];
+        [doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+        [doneButton setTitle:@"Done" forState:UIControlStateNormal];    
+
+        [doneButton addTarget:self action:@selector(doneButton) forControlEvents:UIControlEventTouchUpInside];
+        [keyboardWindow addSubview:doneButton];
+    }
+    else if (textBox==productText || textBox==productText|| textBox==productText2 || textBox==productText3 || textBox==productText4){
+        
+    }
+}
+
+-(void) doneButton {
+    [saleText resignFirstResponder];
+    [saleText1 resignFirstResponder];
+    [saleText2 resignFirstResponder];
+    [saleText3 resignFirstResponder];
+    [saleText4 resignFirstResponder];
+}
+
+
+
+- (void)keyboardDidHide:(NSNotification *)note
+{
+    [doneButton removeFromSuperview];
+    [viewDone removeFromSuperview];
+}
 
 #pragma mark -
 #pragma mark PickerView DataSource

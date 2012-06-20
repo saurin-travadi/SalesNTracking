@@ -8,7 +8,8 @@
 
 #import "BaseUIViewController.h"
 
-@interface AppointmentUpdateViewController : BaseUIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UIScrollViewDelegate, UITextFieldDelegate, UITextViewDelegate>
+@interface AppointmentUpdateViewController : BaseUIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UIScrollViewDelegate, UITextFieldDelegate, UITextViewDelegate> {
+}
 
 @property (nonatomic, retain) NSString* dateTime;
 @property (nonatomic, retain) NSString* name;

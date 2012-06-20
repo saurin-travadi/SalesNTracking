@@ -164,7 +164,6 @@
 		7084340815E9E1E900E27068 /* UserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		7084340915E9E20300E27068 /* Consumer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Consumer.h; sourceTree = "<group>"; };
 		7084340A15E9E20300E27068 /* Consumer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Consumer.m; sourceTree = "<group>"; };
-		7084340D15E9E51500E27068 /* sales and tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "sales and tracking.entitlements"; sourceTree = "<group>"; };
 		7084341215E9E79400E27068 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		7084341515E9E7FA00E27068 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7084341615E9E7FA00E27068 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -304,7 +303,6 @@
 				7062627215F538890050EEA7 /* SalesDetailsViewController.m */,
 				707C05FD15F6D45D000D972E /* SettingsViewController.h */,
 				707C05FE15F6D45D000D972E /* SettingsViewController.m */,
-				7084340D15E9E51500E27068 /* sales and tracking.entitlements */,
 				708433E815E9E06E00E27068 /* Global */,
 				708433E715E9E06200E27068 /* Model */,
 				708433D315E9DEFC00E27068 /* Supporting Files */,
@@ -579,6 +577,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -598,6 +597,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -606,14 +606,14 @@
 		708433E115E9DEFC00E27068 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "sales and tracking/sales and tracking.entitlements";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saurin Travadi (B39P29YN4Q)";
+				CODE_SIGN_ENTITLEMENTS = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sales and tracking/sales and tracking-Prefix.pch";
 				INFOPLIST_FILE = "sales and tracking/sales and tracking-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "71FEFAC6-DA2A-4759-AD89-B20FE159DD12";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -621,14 +621,14 @@
 		708433E215E9DEFC00E27068 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "sales and tracking/sales and tracking.entitlements";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saurin Travadi (B39P29YN4Q)";
+				CODE_SIGN_ENTITLEMENTS = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sales and tracking/sales and tracking-Prefix.pch";
 				INFOPLIST_FILE = "sales and tracking/sales and tracking-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "71FEFAC6-DA2A-4759-AD89-B20FE159DD12";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
