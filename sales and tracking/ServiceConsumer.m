@@ -230,6 +230,21 @@
                                                                     AltPhoneType:[obj valueForKey:@"AltPhone1Type"]==[NSNull null]?@"":[obj valueForKey:@"AltPhone1Type"]
                                                                     CanUpdate:[obj valueForKey:@"CanUpdateIndicator"]==[NSNull null]?@"":[obj valueForKey:@"CanUpdateIndicator"]
                                                                     ApptStatus:[obj valueForKey:@"ApptStatusCode"]==[NSNull null]?@"":[obj valueForKey:@"ApptStatusCode"]];
+            
+            //check previous value of hash to determine refreshing cached version of data
+            NSString * strHash = [[[Utility alloc] init] retrieveFromUserSavedData:@"HshDisposition"];
+            if(![strHash isEqualToString:[obj valueForKey:@"HshDisposition"]] ){
+                [[Utility alloc] saveToUserSavedDataWithKey:@"Dispositions" Data:@""];
+            }
+            
+            strHash = [[[Utility alloc] init] retrieveFromUserSavedData:@"HshProduct"];
+            if(![strHash isEqualToString:[obj valueForKey:@"HshProduct"]] ){
+                [[Utility alloc] saveToUserSavedDataWithKey:@"Products" Data:@""];
+            }
+            
+            //now store hash for disposition and products to be compared in future for refreshing cached version of data
+            [[[Utility alloc] init] saveToUserSavedDataWithKey:@"HshDisposition" Data:[obj valueForKey:@"HshDisposition"]];
+            [[[Utility alloc] init] saveToUserSavedDataWithKey:@"HshProduct" Data:[obj valueForKey:@"HshProduct"]];
         }
         
         _OnSearchSuccess(appointment);

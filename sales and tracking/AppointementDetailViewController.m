@@ -127,7 +127,7 @@
         if([appt.apptStatusCode isEqualToString:@"Y"])
         {
             UILabel *lbl = [[UILabel alloc] initWithFrame:acknowledgeButton.frame];
-            lbl.text = @"Appointment Acknowledged by Rep";
+            lbl.text = @"Acknowledged";
             [self.view addSubview:lbl];
             [acknowledgeButton setHidden:YES];
         }
