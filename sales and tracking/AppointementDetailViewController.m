@@ -17,10 +17,12 @@
 @synthesize nameLabel;
 @synthesize addressLabel;
 @synthesize cityLabel;
-@synthesize phoneLabel;
-@synthesize altPhoneLabel;
+@synthesize phoneLabel, phoneButton;
+@synthesize altPhoneLable, altPhoneButton;
 @synthesize sourceLabel;
 @synthesize notesLabel;
+@synthesize acknowledgeButton;
+@synthesize updateApptButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,6 +38,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     [self getAppointmentDetail];
 }
 
@@ -45,10 +53,14 @@
     [self setNameLabel:nil];
     [self setAddressLabel:nil];
     [self setCityLabel:nil];
-    [self setPhoneLabel:nil];
-    [self setAltPhoneLabel:nil];
     [self setSourceLabel:nil];
     [self setNotesLabel:nil];
+    [self setAcknowledgeButton:nil];
+    [self setUpdateApptButton:nil];
+    [self setPhoneLabel:nil];
+    [self setPhoneButton:nil];
+    [self setAltPhoneLable:nil];
+    [self setAltPhoneButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -63,23 +75,61 @@
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.dimBackground = YES;
     
-    [[[ServiceConsumer alloc] init] getSalesAppointmentDetailById:@"54" DateTime:@"2012-06-18" withUserInfo:[super getUserInfo] :^(id json) {
+    [[[ServiceConsumer alloc] init] getSalesAppointmentDetailById:[self apptId] DateTime:[self appDateTime] withUserInfo:[super getUserInfo] :^(id json) {
         
         AppointementDetail *appt = json;
         
-        dateLabel.text = appt.apptDate;
+        dateLabel.text = [NSString stringWithFormat:@"%@ %@",[appt.apptDate substringToIndex:10],[[appt.apptDate substringFromIndex:11] substringToIndex:5]];
         nameLabel.text=appt.custName;
-
-            addressLabel.text=appt.address;
-        
+        addressLabel.text=appt.address;
         cityLabel.text=appt.cSZ;
-        phoneLabel.text=appt.phone;
-        altPhoneLabel.text=appt.altPhone;
+        phoneLabel.text =appt.phone;
+        phoneButton.backgroundColor = [UIColor clearColor];
+        altPhoneLable.text=appt.altPhone;
+        altPhoneButton.backgroundColor = [UIColor clearColor];
+        
         sourceLabel.text=appt.source;
         notesLabel.text=appt.notes;
         
+        //set notesLabel
+        notesLabel.lineBreakMode = UILineBreakModeWordWrap;
+        notesLabel.numberOfLines = 0;
+        UIFont *cellFont = [UIFont systemFontOfSize:17];
+        CGSize constraintSize = CGSizeMake(175.0f, MAXFLOAT);
+        CGSize labelSize = [notesLabel.text sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+        CGRect frame = notesLabel.frame;
+        frame.size.height=labelSize.height;
+        notesLabel.frame = frame;
+        
+        //set remaining fields per notesLabel height
+        frame = acknowledgeButton.frame;
+        frame.origin.y += notesLabel.frame.size.height;
+        acknowledgeButton.frame = frame;
+
+        frame = updateApptButton.frame;
+        frame.origin.y +=notesLabel.frame.size.height;
+        updateApptButton.frame=frame;
+        
+        frame = self.view.bounds;
+        frame.size.height = self.view.bounds.size.height + notesLabel.frame.size.height;
+        self.scrollView.contentSize=frame.size;
+        
         [HUD hide:YES];
     }];
+}
+
+-(IBAction)phoneMade:(id)sender
+{
+    UIButton* btn = sender;
+    NSString *phoneNumber;
+    
+    if(btn==phoneButton)
+        phoneNumber = phoneLabel.text;
+    else
+        phoneNumber = altPhoneLable.text;
+    
+    phoneNumber = [NSString stringWithFormat:@"%@%@", @"tel://", phoneNumber];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
 }
 
 @end

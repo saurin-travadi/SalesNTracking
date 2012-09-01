@@ -9,7 +9,7 @@
 #import "AppointmentsViewController.h"
 #import "ServiceConsumer.h"
 #import "Appointment.h"
-#import "AppointementDetail.h"
+#import "AppointementDetailViewController.h"
 
 @implementation AppointmentsViewController {
     NSMutableArray *appointments;
@@ -51,7 +51,11 @@
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"appointmentDetailSegue"]) {
-        //[[segue destinationViewController] setApptDateTime:@"":[sender description]];
+
+        Appointment *appt = [appointments objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+
+        [[segue destinationViewController] setAppDateTime:appt.apptDate];
+        [[segue destinationViewController] setApptId:appt.id];
     }
 }
 
@@ -89,9 +93,9 @@
     
     Appointment *appt = [appointments objectAtIndex:indexPath.row];
 
-    ((UILabel *)[cell viewWithTag:101]).text = [NSString stringWithFormat:@"%@ %@",[appt.apptDate substringToIndex:10],[[appt.apptDate substringFromIndex:11] substringToIndex:5]];
-    ((UILabel *)[cell viewWithTag:102]).text = [appt custName];
-    ((UILabel *)[cell viewWithTag:103]).text = [appt cSZ];
+    ((UILabel *)[cell viewWithTag:100]).text = [NSString stringWithFormat:@"%@ %@",[appt.apptDate substringToIndex:10],[[appt.apptDate substringFromIndex:11] substringToIndex:5]];
+    ((UILabel *)[cell viewWithTag:101]).text = [appt custName];
+    ((UILabel *)[cell viewWithTag:102]).text = [appt cSZ];
         
     return cell;
 }

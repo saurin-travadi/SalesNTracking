@@ -227,6 +227,11 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   self.selectedTile = [frontMonthView tileForDate:date];
 }
 
+- (void)highLightDate:(KalDate *)date
+{
+    self.highlightedTile = [frontMonthView tileForDate:date];
+}
+
 - (void)swapMonthViews
 {
   KalMonthView *tmp = backMonthView;

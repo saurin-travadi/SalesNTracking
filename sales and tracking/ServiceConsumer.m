@@ -163,7 +163,10 @@
         NSArray *result = [json JSONValue];
         for (id obj in result) {
             
-            Appointment *appt = [[Appointment alloc] initWithAppointmentId:[obj valueForKey:@"ID"] CustomerName:[obj valueForKey:@"CustName"] Address:[obj valueForKey:@"CSZ"] ApptDate:[obj valueForKey:@"ApptDate"]];
+            Appointment *appt = [[Appointment alloc] initWithAppointmentId:[obj valueForKey:@"ID"]
+                                                              CustomerName:[obj valueForKey:@"CustName"]==[NSNull null]?@"":[obj valueForKey:@"CustName"]
+                                                                   Address:[obj valueForKey:@"CSZ"]==[NSNull null]?@"":[obj valueForKey:@"CSZ"]
+                                                                  ApptDate:[obj valueForKey:@"ApptDate"]];
             [appointments addObject:appt];
         }
         
@@ -176,8 +179,7 @@
 
 }
 
--(void)getSalesAppointmentDetailById:(NSString*)apptId DateTime:(NSString*)dateTime withUserInfo:(UserInfo *)userInfo :(void (^)(id))Success
-{
+-(void)getSalesAppointmentDetailById:(NSString*)apptId DateTime:(NSString*)dateTime withUserInfo:(UserInfo *)userInfo :(void (^)(id))Success {
     _OnSearchSuccess = [Success copy];
     
     NSString *soapMsg = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetSalesApptDetail xmlns=\"http://webservice.leadperfection.com/\"><clientid>%@</clientid><username>%@</username><password>%@</password><apptdate>%@</apptdate><issuedleadid>%d</issuedleadid></GetSalesApptDetail></soap:Body></soap:Envelope>", userInfo.clientID,userInfo.userName,userInfo.password,dateTime,[apptId intValue]];
@@ -200,13 +202,13 @@
         for (id obj in result) {
              appointment = [[AppointementDetail alloc] initWithAppointmentId:[obj valueForKey:@"ID"]
                                                                      Address:[obj valueForKey:@"Address1"]==[NSNull null]?@"":[obj valueForKey:@"Address1"]
-                                                                        Name:[obj valueForKey:@"CustName"]
-                                                                         CSZ:[obj valueForKey:@"CSZ"]
-                                                                    ApptDate:[obj valueForKey:@"ApptDate"]
-                                                                       Phone:[obj valueForKey:@"Phone"]
-                                                                    AltPhone:[obj valueForKey:@"AltPhone1"]
-                                                                      Source:[obj valueForKey:@"Source"]
-                                                                       Notes:[obj valueForKey:@"Notes"]];
+                                                                        Name:[obj valueForKey:@"CustName"]==[NSNull null]?@"":[obj valueForKey:@"CustName"]
+                                                                        CSZ:[obj valueForKey:@"CSZ"]==[NSNull null]?@"":[obj valueForKey:@"CSZ"]
+                                                                    ApptDate:[obj valueForKey:@"ApptDate"]==[NSNull null]?@"":[obj valueForKey:@"ApptDate"]
+                                                                       Phone:[obj valueForKey:@"Phone"]==[NSNull null]?@"":[obj valueForKey:@"Phone"]
+                                                                    AltPhone:[obj valueForKey:@"AltPhone1"]==[NSNull null]?@"":[obj valueForKey:@"AltPhone1"]
+                                                                      Source:[obj valueForKey:@"Source"]==[NSNull null]?@"":[obj valueForKey:@"Source"]
+                                                                       Notes:[obj valueForKey:@"Notes"]==[NSNull null]?@"":[obj valueForKey:@"Notes"]];
         }
         
         _OnSearchSuccess(appointment);

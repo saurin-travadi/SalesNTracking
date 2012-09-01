@@ -29,8 +29,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
-    [self getMessages];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -38,6 +36,8 @@
     [super viewWillAppear:animated];
     
     [self.navigationController setToolbarHidden:NO animated:NO];
+
+    [self getMessages];
 }
 
 - (void)viewDidUnload
@@ -73,8 +73,21 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = [messages objectAtIndex:indexPath.row];  
+    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.text = [messages objectAtIndex:indexPath.row];
+    
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *cellText = [messages objectAtIndex:indexPath.row];
+    UIFont *cellFont = [UIFont systemFontOfSize:17];
+    CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
+    CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+    
+    return labelSize.height + 20;
 }
 
 -(void)getMessages

@@ -58,6 +58,8 @@
 		70D12A4C15F1756A0040808D /* Job.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D12A4B15F1756A0040808D /* Job.m */; };
 		70D12A5415F1C5A20040808D /* AppointementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D12A5315F1C5A10040808D /* AppointementDetailViewController.m */; };
 		70D12A5715F1C7240040808D /* AppointementDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D12A5615F1C7240040808D /* AppointementDetail.m */; };
+		70D12A5A15F244BF0040808D /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D12A5815F244BF0040808D /* bullet.png */; };
+		70D12A5B15F244BF0040808D /* bullet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D12A5915F244BF0040808D /* bullet@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +152,8 @@
 		70D12A5315F1C5A10040808D /* AppointementDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointementDetailViewController.m; sourceTree = "<group>"; };
 		70D12A5515F1C7240040808D /* AppointementDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointementDetail.h; sourceTree = "<group>"; };
 		70D12A5615F1C7240040808D /* AppointementDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointementDetail.m; sourceTree = "<group>"; };
+		70D12A5815F244BF0040808D /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
+		70D12A5915F244BF0040808D /* bullet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bullet@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,6 +344,8 @@
 		7084350715EA676000E27068 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				70D12A5815F244BF0040808D /* bullet.png */,
+				70D12A5915F244BF0040808D /* bullet@2x.png */,
 				7032712315F0316200E87A5C /* chart.png */,
 				7032712415F0316200E87A5C /* chart@2x.png */,
 				7032711D15F02EB000E87A5C /* appointment.png */,
@@ -415,6 +421,8 @@
 				7032712515F0316200E87A5C /* chart.png in Resources */,
 				7032712615F0316200E87A5C /* chart@2x.png in Resources */,
 				70D12A4915F167650040808D /* Kal.bundle in Resources */,
+				70D12A5A15F244BF0040808D /* bullet.png in Resources */,
+				70D12A5B15F244BF0040808D /* bullet@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,11 +531,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "sales and tracking/sales and tracking.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saurin Travadi (B39P29YN4Q)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sales and tracking/sales and tracking-Prefix.pch";
 				INFOPLIST_FILE = "sales and tracking/sales and tracking-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "71FEFAC6-DA2A-4759-AD89-B20FE159DD12";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -536,11 +546,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "sales and tracking/sales and tracking.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saurin Travadi (B39P29YN4Q)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sales and tracking/sales and tracking-Prefix.pch";
 				INFOPLIST_FILE = "sales and tracking/sales and tracking-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "71FEFAC6-DA2A-4759-AD89-B20FE159DD12";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

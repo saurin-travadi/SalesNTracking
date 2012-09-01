@@ -164,9 +164,10 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   printf("[[self calendarView] jumpToSelectedMonth]: %.1f ms\n", tp.tv_nsec / 1e6);
 #endif
   
-  //Saurin: Following two lines commented as we dont want selected date event fire on load
+  //Saurin: Following two lines commented as we dont want selected date event fire on load, instead use new logic
   //[[self calendarView] selectDate:[KalDate dateFromNSDate:date]];
-  //[self reloadData];
+    [[self calendarView] showDate:[KalDate dateFromNSDate:date]];
+  [self reloadData];
 }
 
 - (NSDate *)selectedDate
@@ -198,7 +199,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   
   //Saurin: Following two lines commented as we dont want selected date event fire on load
   //[kalView selectDate:[KalDate dateFromNSDate:self.initialDate]];
-  //[self reloadData];
+  [self reloadData];
 }
 
 - (void)viewDidUnload

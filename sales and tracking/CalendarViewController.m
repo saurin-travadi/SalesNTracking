@@ -16,6 +16,7 @@
     KalViewController *kal;
 }
 
+@synthesize selectedDate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,9 +32,16 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    UIBarButtonItem *showAndSelectToday = [[UIBarButtonItem alloc] initWithTitle:@"Today" style:UIBarButtonItemStyleBordered target:self action:@selector(showAndSelectToday)];
+    UIBarButtonItem *showAndSelectToday = [[UIBarButtonItem alloc] initWithTitle:@"Today" style:UIBarButtonItemStyleBordered target:self action:@selector(showSelectToday)];
     self.navigationItem.rightBarButtonItem = showAndSelectToday;
+    
+    apptQueue = dispatch_queue_create("rjr.sales-and-tracking", NULL);
+}
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     [self.navigationController setToolbarHidden:YES animated:NO];
 
     [self getJobs];
@@ -59,10 +67,16 @@
 
 #pragma mark private methods
 
-- (void)showAndSelectToday
+- (void)showSelectToday
 {
     [kal showAndSelectDate:[NSDate date]];
 }
+
+- (void)showSelectedDate:(NSDate*)date
+{
+    [kal showAndSelectDate:date];
+}
+
 
 -(void)getJobs
 {
@@ -71,44 +85,77 @@
     
     [[[ServiceConsumer alloc] init] getSalesAppointments:[super getUserInfo] :^(id json) {
         
-        //Now configure calendar
+        //Now configure calendar, if calendar is getting reloaded, load it with previous selection
         kal = [[KalViewController alloc] init];
+        
         kal.delegate = self;
         kal.dataSource = self;
+        
+        if(selectedDate !=NULL){
+            [self showSelectedDate:selectedDate];
+        }
         
         [self.view addSubview:kal.view];
         
         CGRect frame=self.view.bounds;
         frame.origin.y=60;
         kal.calendarView.frame = frame;
-
-        //this is for debugging purpose
-//        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width,20)];
-//        lbl.text = [NSString stringWithFormat:@"#of jobs: %d",[json count]];
-//        lbl.textAlignment=UITextAlignmentCenter;
-//        [self.view addSubview:lbl];
         
         jobs = json;
         [HUD hide:YES];
     }];
 }
 
+static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
+{
+    return [date compare:begin] != NSOrderedAscending && [date compare:end] != NSOrderedDescending;
+}
+
 #pragma mark KalDataSource protocol conformance
 
 - (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate
 {
-    //get all appointments for the month here
+    dispatch_async(apptQueue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [delegate loadedDataSource:self];
+        });
+    });
 }
 
 - (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate
 {
-    // synchronous callback on the main thread
-    return nil;//[[self eventsFrom:fromDate to:toDate] valueForKeyPath:@"startDate"];
+    NSMutableArray *dates= [[NSMutableArray alloc] init];
+
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+
+    //filter jobs falling in current month view
+    for (Job *job in jobs) {
+
+        NSDate *date = [dateFormat dateFromString:[job.apptDate substringToIndex:10]];
+        if(IsDateBetweenInclusive(date, fromDate, toDate))
+            [dates addObject:date];
+        
+    }
+   
+    return dates;
 }
 
 - (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
 {
-    [self performSegueWithIdentifier:@"appointmentsSegue" sender:[fromDate description]];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    
+    for (Job *job in jobs) {
+        
+        NSDate *date = [dateFormat dateFromString:[job.apptDate substringToIndex:10]];
+        if([date isEqualToDate:fromDate]) {
+            selectedDate = fromDate;
+            [self performSegueWithIdentifier:@"appointmentsSegue" sender:[fromDate description]];
+            return;
+        }
+    }
+    [self showSelectedDate:fromDate];
 }
 
 - (void)removeAllItems

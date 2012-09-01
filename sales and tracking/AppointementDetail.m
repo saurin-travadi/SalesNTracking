@@ -27,7 +27,7 @@
         
         _id=apptId;
         _custName=name;
-        _cSZ=address;
+        _cSZ=cSZInfo;
         _apptDate=dateTime;
         _address=address;
         _phone=phoneNumber;
