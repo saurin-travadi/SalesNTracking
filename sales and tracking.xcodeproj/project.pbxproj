@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		70196BA715EEFA37008B964E /* AppointmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70196BA615EEFA37008B964E /* AppointmentsViewController.m */; };
 		70196BAF15EF02E4008B964E /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 70196BAE15EEFF8E008B964E /* Appointment.m */; };
+		701DA4E215F15D1F007EE2EF /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 701DA4E015F15CE5007EE2EF /* UIViewAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		701DA4E415F15D1F007EE2EF /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 701DA4DE15F15CDB007EE2EF /* NSDateAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		701DA4E715F15D1F007EE2EF /* KalDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 701DA4CD15F15CC8007EE2EF /* KalDataSource.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		701DA4E915F15D1F007EE2EF /* KalDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 701DA4CF15F15CC8007EE2EF /* KalDate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		701DA4EB15F15D1F007EE2EF /* KalGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 701DA4D115F15CC8007EE2EF /* KalGridView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		701DA4ED15F15D1F007EE2EF /* KalLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 701DA4D315F15CC8007EE2EF /* KalLogic.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		701DA4EF15F15D1F007EE2EF /* KalMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 701DA4D515F15CC8007EE2EF /* KalMonthView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		701DA4F215F15D1F007EE2EF /* KalTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 701DA4D815F15CC8007EE2EF /* KalTileView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		701DA4F415F15D1F007EE2EF /* KalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 701DA4DA15F15CC8007EE2EF /* KalView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		701DA4F615F15D1F007EE2EF /* KalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701DA4DC15F15CC8007EE2EF /* KalViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7032711515F0243600E87A5C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7032711415F0243600E87A5C /* HomeViewController.m */; };
 		7032711A15F02C5700E87A5C /* currency.png in Resources */ = {isa = PBXBuildFile; fileRef = 7032711915F02C5700E87A5C /* currency.png */; };
 		7032711C15F02CE200E87A5C /* currency@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7032711B15F02CE200E87A5C /* currency@2x.png */; };
@@ -41,10 +51,13 @@
 		7084350415EA5E8000E27068 /* ServiceConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7084350315EA5E7A00E27068 /* ServiceConsumer.m */; };
 		7084350615EA674E00E27068 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084350515EA674E00E27068 /* icon.png */; };
 		7084350B15EA676000E27068 /* house5a.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7084350815EA676000E27068 /* house5a.jpg */; };
-		7084350C15EA676000E27068 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084350915EA676000E27068 /* icon.png */; };
 		7084350D15EA676000E27068 /* lplogo_pos.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7084350A15EA676000E27068 /* lplogo_pos.gif */; };
 		7084351015EA6FDA00E27068 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7084350F15EA6FDA00E27068 /* CalendarViewController.m */; };
 		7084351215EA739C00E27068 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7084351115EA739C00E27068 /* EventKitUI.framework */; };
+		70D12A4915F167650040808D /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 701DA4CA15F15CC8007EE2EF /* Kal.bundle */; };
+		70D12A4C15F1756A0040808D /* Job.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D12A4B15F1756A0040808D /* Job.m */; };
+		70D12A5415F1C5A20040808D /* AppointementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D12A5315F1C5A10040808D /* AppointementDetailViewController.m */; };
+		70D12A5715F1C7240040808D /* AppointementDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D12A5615F1C7240040808D /* AppointementDetail.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +65,29 @@
 		70196BA615EEFA37008B964E /* AppointmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentsViewController.m; sourceTree = "<group>"; };
 		70196BAD15EEFF8E008B964E /* Appointment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Appointment.h; sourceTree = "<group>"; };
 		70196BAE15EEFF8E008B964E /* Appointment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Appointment.m; sourceTree = "<group>"; };
+		701DA4CA15F15CC8007EE2EF /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Kal.bundle; sourceTree = "<group>"; };
+		701DA4CB15F15CC8007EE2EF /* Kal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Kal.h; sourceTree = "<group>"; };
+		701DA4CC15F15CC8007EE2EF /* KalDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KalDataSource.h; sourceTree = "<group>"; };
+		701DA4CD15F15CC8007EE2EF /* KalDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KalDataSource.m; sourceTree = "<group>"; };
+		701DA4CE15F15CC8007EE2EF /* KalDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KalDate.h; sourceTree = "<group>"; };
+		701DA4CF15F15CC8007EE2EF /* KalDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KalDate.m; sourceTree = "<group>"; };
+		701DA4D015F15CC8007EE2EF /* KalGridView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KalGridView.h; sourceTree = "<group>"; };
+		701DA4D115F15CC8007EE2EF /* KalGridView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KalGridView.m; sourceTree = "<group>"; };
+		701DA4D215F15CC8007EE2EF /* KalLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KalLogic.h; sourceTree = "<group>"; };
+		701DA4D315F15CC8007EE2EF /* KalLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KalLogic.m; sourceTree = "<group>"; };
+		701DA4D415F15CC8007EE2EF /* KalMonthView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KalMonthView.h; sourceTree = "<group>"; };
+		701DA4D515F15CC8007EE2EF /* KalMonthView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KalMonthView.m; sourceTree = "<group>"; };
+		701DA4D615F15CC8007EE2EF /* KalPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KalPrivate.h; sourceTree = "<group>"; };
+		701DA4D715F15CC8007EE2EF /* KalTileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KalTileView.h; sourceTree = "<group>"; };
+		701DA4D815F15CC8007EE2EF /* KalTileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KalTileView.m; sourceTree = "<group>"; };
+		701DA4D915F15CC8007EE2EF /* KalView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KalView.h; sourceTree = "<group>"; };
+		701DA4DA15F15CC8007EE2EF /* KalView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KalView.m; sourceTree = "<group>"; };
+		701DA4DB15F15CC8007EE2EF /* KalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KalViewController.h; sourceTree = "<group>"; };
+		701DA4DC15F15CC8007EE2EF /* KalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KalViewController.m; sourceTree = "<group>"; };
+		701DA4DD15F15CDB007EE2EF /* NSDateAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSDateAdditions.h; sourceTree = "<group>"; };
+		701DA4DE15F15CDB007EE2EF /* NSDateAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSDateAdditions.m; sourceTree = "<group>"; };
+		701DA4DF15F15CE5007EE2EF /* UIViewAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
+		701DA4E015F15CE5007EE2EF /* UIViewAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
 		7032711315F0243600E87A5C /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		7032711415F0243600E87A5C /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		7032711915F02C5700E87A5C /* currency.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = currency.png; sourceTree = "<group>"; };
@@ -104,11 +140,16 @@
 		7084350315EA5E7A00E27068 /* ServiceConsumer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceConsumer.m; sourceTree = "<group>"; };
 		7084350515EA674E00E27068 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		7084350815EA676000E27068 /* house5a.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = house5a.jpg; sourceTree = "<group>"; };
-		7084350915EA676000E27068 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		7084350A15EA676000E27068 /* lplogo_pos.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = lplogo_pos.gif; sourceTree = "<group>"; };
 		7084350E15EA6FDA00E27068 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		7084350F15EA6FDA00E27068 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		7084351115EA739C00E27068 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		70D12A4A15F1756A0040808D /* Job.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Job.h; sourceTree = "<group>"; };
+		70D12A4B15F1756A0040808D /* Job.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Job.m; sourceTree = "<group>"; };
+		70D12A5215F1C5A10040808D /* AppointementDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointementDetailViewController.h; sourceTree = "<group>"; };
+		70D12A5315F1C5A10040808D /* AppointementDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointementDetailViewController.m; sourceTree = "<group>"; };
+		70D12A5515F1C7240040808D /* AppointementDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointementDetail.h; sourceTree = "<group>"; };
+		70D12A5615F1C7240040808D /* AppointementDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointementDetail.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +169,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		701DA4C915F15C8C007EE2EF /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				701DA4CA15F15CC8007EE2EF /* Kal.bundle */,
+				701DA4DF15F15CE5007EE2EF /* UIViewAdditions.h */,
+				701DA4E015F15CE5007EE2EF /* UIViewAdditions.m */,
+				701DA4DD15F15CDB007EE2EF /* NSDateAdditions.h */,
+				701DA4DE15F15CDB007EE2EF /* NSDateAdditions.m */,
+				701DA4CB15F15CC8007EE2EF /* Kal.h */,
+				701DA4CC15F15CC8007EE2EF /* KalDataSource.h */,
+				701DA4CD15F15CC8007EE2EF /* KalDataSource.m */,
+				701DA4CE15F15CC8007EE2EF /* KalDate.h */,
+				701DA4CF15F15CC8007EE2EF /* KalDate.m */,
+				701DA4D015F15CC8007EE2EF /* KalGridView.h */,
+				701DA4D115F15CC8007EE2EF /* KalGridView.m */,
+				701DA4D215F15CC8007EE2EF /* KalLogic.h */,
+				701DA4D315F15CC8007EE2EF /* KalLogic.m */,
+				701DA4D415F15CC8007EE2EF /* KalMonthView.h */,
+				701DA4D515F15CC8007EE2EF /* KalMonthView.m */,
+				701DA4D615F15CC8007EE2EF /* KalPrivate.h */,
+				701DA4D715F15CC8007EE2EF /* KalTileView.h */,
+				701DA4D815F15CC8007EE2EF /* KalTileView.m */,
+				701DA4D915F15CC8007EE2EF /* KalView.h */,
+				701DA4DA15F15CC8007EE2EF /* KalView.m */,
+				701DA4DB15F15CC8007EE2EF /* KalViewController.h */,
+				701DA4DC15F15CC8007EE2EF /* KalViewController.m */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
 		708433BD15E9DEFC00E27068 = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +236,9 @@
 		708433D215E9DEFC00E27068 /* sales and tracking */ = {
 			isa = PBXGroup;
 			children = (
+				701DA4C915F15C8C007EE2EF /* Calendar */,
+				708433DB15E9DEFC00E27068 /* AppDelegate.h */,
+				708433DC15E9DEFC00E27068 /* AppDelegate.m */,
 				7084341515E9E7FA00E27068 /* LoginViewController.h */,
 				7084341615E9E7FA00E27068 /* LoginViewController.m */,
 				7032711315F0243600E87A5C /* HomeViewController.h */,
@@ -173,11 +247,11 @@
 				7084350F15EA6FDA00E27068 /* CalendarViewController.m */,
 				70196BA515EEFA37008B964E /* AppointmentsViewController.h */,
 				70196BA615EEFA37008B964E /* AppointmentsViewController.m */,
+				70D12A5215F1C5A10040808D /* AppointementDetailViewController.h */,
+				70D12A5315F1C5A10040808D /* AppointementDetailViewController.m */,
 				7084340D15E9E51500E27068 /* sales and tracking.entitlements */,
 				708433E815E9E06E00E27068 /* Global */,
 				708433E715E9E06200E27068 /* Model */,
-				708433DB15E9DEFC00E27068 /* AppDelegate.h */,
-				708433DC15E9DEFC00E27068 /* AppDelegate.m */,
 				708433D315E9DEFC00E27068 /* Supporting Files */,
 				7084341215E9E79400E27068 /* MainStoryboard.storyboard */,
 			);
@@ -206,8 +280,12 @@
 				7084340A15E9E20300E27068 /* Consumer.m */,
 				7084340715E9E1E900E27068 /* UserInfo.h */,
 				7084340815E9E1E900E27068 /* UserInfo.m */,
+				70D12A4A15F1756A0040808D /* Job.h */,
+				70D12A4B15F1756A0040808D /* Job.m */,
 				70196BAD15EEFF8E008B964E /* Appointment.h */,
 				70196BAE15EEFF8E008B964E /* Appointment.m */,
+				70D12A5515F1C7240040808D /* AppointementDetail.h */,
+				70D12A5615F1C7240040808D /* AppointementDetail.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -269,7 +347,6 @@
 				7032711B15F02CE200E87A5C /* currency@2x.png */,
 				7032711915F02C5700E87A5C /* currency.png */,
 				7084350815EA676000E27068 /* house5a.jpg */,
-				7084350915EA676000E27068 /* icon.png */,
 				7084350A15EA676000E27068 /* lplogo_pos.gif */,
 			);
 			path = Images;
@@ -330,7 +407,6 @@
 				7084341315E9E79400E27068 /* MainStoryboard.storyboard in Resources */,
 				7084350615EA674E00E27068 /* icon.png in Resources */,
 				7084350B15EA676000E27068 /* house5a.jpg in Resources */,
-				7084350C15EA676000E27068 /* icon.png in Resources */,
 				7084350D15EA676000E27068 /* lplogo_pos.gif in Resources */,
 				7032711A15F02C5700E87A5C /* currency.png in Resources */,
 				7032711C15F02CE200E87A5C /* currency@2x.png in Resources */,
@@ -338,6 +414,7 @@
 				7032712015F02EB000E87A5C /* appointment@2x.png in Resources */,
 				7032712515F0316200E87A5C /* chart.png in Resources */,
 				7032712615F0316200E87A5C /* chart@2x.png in Resources */,
+				70D12A4915F167650040808D /* Kal.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +425,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				701DA4E215F15D1F007EE2EF /* UIViewAdditions.m in Sources */,
+				701DA4E415F15D1F007EE2EF /* NSDateAdditions.m in Sources */,
+				701DA4E715F15D1F007EE2EF /* KalDataSource.m in Sources */,
+				701DA4E915F15D1F007EE2EF /* KalDate.m in Sources */,
+				701DA4EB15F15D1F007EE2EF /* KalGridView.m in Sources */,
+				701DA4ED15F15D1F007EE2EF /* KalLogic.m in Sources */,
+				701DA4EF15F15D1F007EE2EF /* KalMonthView.m in Sources */,
+				701DA4F215F15D1F007EE2EF /* KalTileView.m in Sources */,
+				701DA4F415F15D1F007EE2EF /* KalView.m in Sources */,
+				701DA4F615F15D1F007EE2EF /* KalViewController.m in Sources */,
 				70196BAF15EF02E4008B964E /* Appointment.m in Sources */,
 				7084350415EA5E8000E27068 /* ServiceConsumer.m in Sources */,
 				7084350115EA5E1200E27068 /* MBProgressHUD.m in Sources */,
@@ -367,6 +454,9 @@
 				7084351015EA6FDA00E27068 /* CalendarViewController.m in Sources */,
 				70196BA715EEFA37008B964E /* AppointmentsViewController.m in Sources */,
 				7032711515F0243600E87A5C /* HomeViewController.m in Sources */,
+				70D12A4C15F1756A0040808D /* Job.m in Sources */,
+				70D12A5415F1C5A20040808D /* AppointementDetailViewController.m in Sources */,
+				70D12A5715F1C7240040808D /* AppointementDetail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,7 +494,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -422,7 +512,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -436,6 +526,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sales and tracking/sales and tracking-Prefix.pch";
 				INFOPLIST_FILE = "sales and tracking/sales and tracking-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -448,6 +539,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sales and tracking/sales and tracking-Prefix.pch";
 				INFOPLIST_FILE = "sales and tracking/sales and tracking-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

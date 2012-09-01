@@ -51,8 +51,8 @@
     soapResults = [[NSMutableString alloc] init];
     xmlParser = [[NSXMLParser alloc] initWithData: webData];
     
-    NSString* str = [[NSString alloc] initWithData:webData encoding:NSStringEncodingConversionAllowLossy];
-    NSLog(@"%@",str);
+//    NSString* str = [[NSString alloc] initWithData:webData encoding:NSStringEncodingConversionAllowLossy];
+//    NSLog(@"%@",str);
     
     [xmlParser setDelegate: self];
     [xmlParser setShouldResolveExternalEntities:YES];

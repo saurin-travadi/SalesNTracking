@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseUIViewController.h"
+#import "Kal.h"
 
-@interface CalendarViewController : BaseUIViewController
+@interface CalendarViewController : BaseUIViewController <UITableViewDataSource, UITableViewDelegate, KalDataSource>
 
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

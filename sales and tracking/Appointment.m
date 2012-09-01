@@ -10,21 +10,24 @@
 
 @implementation Appointment
 
+@synthesize id = _id;
+@synthesize custName =_custName;
+@synthesize cSZ = _cSZ;
 @synthesize apptDate=_apptDate;
-@synthesize numAppts=_numAppts;
 
 
--(id)initWithApptDate:(NSString *)date NumAppts:(NSString*)num {
+-(id)initWithAppointmentId:(NSString*)apptId CustomerName:(NSString*)name Address:(NSString*)address ApptDate:(NSString *)date {
     
     self = [super init];
     if (self) {
+        _id=apptId;
+        _custName=name;
+        _cSZ=address;
         _apptDate=date;
-        _numAppts=num;
         
         return self;
     }
     return nil;
-    
 }
 
 @end

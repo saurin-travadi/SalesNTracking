@@ -11,10 +11,11 @@
 
 @interface Appointment : Consumer
 
+@property (nonatomic, retain) NSString *id;
+@property (nonatomic, retain) NSString *custName;
+@property (nonatomic, retain) NSString *cSZ;
 @property (nonatomic, retain) NSString *apptDate;
-@property (nonatomic, retain) NSString *numAppts;
 
-
--(id)initWithApptDate:(NSString *)date NumAppts:(NSString*)num;
+-(id)initWithAppointmentId:(NSString*)apptId CustomerName:(NSString*)name Address:(NSString*)address ApptDate:(NSString *)date;
 
 @end

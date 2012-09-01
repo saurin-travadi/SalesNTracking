@@ -9,12 +9,14 @@
 #import "AppointmentsViewController.h"
 #import "ServiceConsumer.h"
 #import "Appointment.h"
+#import "AppointementDetail.h"
 
 @implementation AppointmentsViewController {
     NSMutableArray *appointments;
 }
 
-@synthesize tableView;
+
+@synthesize tableView, dateTime;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,7 +32,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self getAppointments];
+    [self getAppointmentByDateTime]; //get appointments for selected date and reload table
 }
 
 - (void)viewDidUnload
@@ -45,16 +47,25 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
--(void)getAppointments
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if ([segue.identifier isEqualToString:@"appointmentDetailSegue"]) {
+        //[[segue destinationViewController] setApptDateTime:@"":[sender description]];
+    }
+}
+
+-(void)getAppointmentByDateTime
+{
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.dimBackground = YES;
     
-    [[[ServiceConsumer alloc] init] getSalesAppointmentsByDate: @"06/18/2012" withUserInfo:[super getUserInfo] :^(id json) {
-        
-        [HUD hide:YES];
+    [[[ServiceConsumer alloc] init] getSalesAppointmentsByDate:[dateTime substringToIndex:10] withUserInfo:[super getUserInfo] :^(id json) {
         
         appointments = json;
         [self.tableView reloadData];
         
+        [HUD hide:YES];
     }];
 }
 
@@ -64,11 +75,12 @@
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return [appointments count];
 }
 
--(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"customerCell";
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"cell";
     
     UITableViewCell *cell = (UITableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -76,9 +88,11 @@
     }
     
     Appointment *appt = [appointments objectAtIndex:indexPath.row];
-    ((UILabel*)[cell viewWithTag:0]).text = appt.apptDate;
-    ((UILabel*)[cell viewWithTag:1]).text = appt.numAppts;
-    
+
+    ((UILabel *)[cell viewWithTag:101]).text = [NSString stringWithFormat:@"%@ %@",[appt.apptDate substringToIndex:10],[[appt.apptDate substringFromIndex:11] substringToIndex:5]];
+    ((UILabel *)[cell viewWithTag:102]).text = [appt custName];
+    ((UILabel *)[cell viewWithTag:103]).text = [appt cSZ];
+        
     return cell;
 }
 

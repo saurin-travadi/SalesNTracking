@@ -33,6 +33,13 @@
     [self getMessages];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setToolbarHidden:NO animated:NO];
+}
+
 - (void)viewDidUnload
 {
     [self setTableView:nil];
@@ -66,7 +73,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = [messages objectAtIndex:indexPath.row];
+    cell.textLabel.text = [messages objectAtIndex:indexPath.row];  
     return cell;
 }
 

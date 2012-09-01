@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JSON.h"
 #import "Consumer.h"
 #import "UserInfo.h"
+#import "Job.h"
+#import "Appointment.h"
+#import "AppointementDetail.h"
 
 @interface ServiceConsumer : Consumer {
     
@@ -25,5 +29,7 @@
 -(void)getSalesAppointments:(UserInfo *)userInfo :(void (^)(id))Success;
 
 -(void)getSalesAppointmentsByDate:(NSString*)dateTime withUserInfo:(UserInfo *)userInfo :(void (^)(id))Success;
+
+-(void)getSalesAppointmentDetailById:(NSString*)apptId DateTime:(NSString*)dateTime withUserInfo:(UserInfo *)userInfo :(void (^)(id))Success;
 
 @end
