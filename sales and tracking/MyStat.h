@@ -19,4 +19,8 @@
 @property (nonatomic, retain) NSString *demoRate;
 @property (nonatomic, retain) NSString *closingRate;
 
+@property (nonatomic, retain) NSString *descr;
+@property (nonatomic, retain) NSString *statValue;
+-(id)initWithDesc:(NSString*)description StatValue:(NSString*)stat;
+
 @end

@@ -197,6 +197,8 @@
     
     [self getDataForElement:@"GetSalesApptDetailResult" Request:req :^(id json) {
         
+        NSLog(@"%@",[json description]);
+
         NSArray *result = [json JSONValue];
         AppointementDetail *appointment;
         for (id obj in result) {
@@ -208,7 +210,9 @@
                                                                        Phone:[obj valueForKey:@"Phone"]==[NSNull null]?@"":[obj valueForKey:@"Phone"]
                                                                     AltPhone:[obj valueForKey:@"AltPhone1"]==[NSNull null]?@"":[obj valueForKey:@"AltPhone1"]
                                                                       Source:[obj valueForKey:@"Source"]==[NSNull null]?@"":[obj valueForKey:@"Source"]
-                                                                       Notes:[obj valueForKey:@"Notes"]==[NSNull null]?@"":[obj valueForKey:@"Notes"]];
+                                                                       Notes:[obj valueForKey:@"Notes"]==[NSNull null]?@"":[obj valueForKey:@"Notes"]
+                                                                    ProductId:[obj valueForKey:@"ProductID"]==[NSNull null]?@"":[obj valueForKey:@"ProductID"]
+                                                                    AltPhoneType:[obj valueForKey:@"AltPhone1Type"]==[NSNull null]?@"":[obj valueForKey:@"AltPhone1Type"]];
         }
         
         _OnSearchSuccess(appointment);
@@ -220,7 +224,7 @@
     
 }
 
--(void)getSalesStatesByUser: (UserInfo *)userInfo :(void (^)(id))Success {
+-(void)getSalesStatsByUser: (UserInfo *)userInfo :(void (^)(id))Success {
     
     _OnSearchSuccess = [Success copy];
     
@@ -260,6 +264,43 @@
         _OnSearchSuccess(nil);
     }];
  
+}
+
+-(void)getSalesStatsForUser: (UserInfo *)userInfo :(void (^)(id))Success {
+    _OnSearchSuccess = [Success copy];
+    
+    NSString *soapMsg = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetSalesStats xmlns=\"http://webservice.leadperfection.com/\"><clientid>%@</clientid><username>%@</username><password>%@</password></GetSalesStats></soap:Body></soap:Envelope>", userInfo.clientID,userInfo.userName,userInfo.password];
+    
+
+    
+    NSURL *url = [NSURL URLWithString: @"http://lptest.leadperfection.com/batch/lpservice.asmx"];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
+    [req addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [req addValue:@"http://webservice.leadperfection.com/GetSalesStats" forHTTPHeaderField:@"SOAPAction"];
+    [req addValue:msgLength forHTTPHeaderField:@"Content-Length"];
+    [req setHTTPMethod:@"POST"];
+    [req setHTTPBody: [soapMsg dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [self getDataForElement:@"GetSalesStatsResponse" Request:req :^(id json) {
+
+        NSMutableArray *stats = [[NSMutableArray alloc] init];
+        
+        NSArray *result = [json JSONValue];
+        for (id obj in result) {
+            
+            MyStat *stat = [[MyStat alloc] initWithDesc:[obj valueForKey:@"Descr"] StatValue:[obj valueForKey:@"StatValue"]];
+            [stats addObject:stat];
+        }
+
+        _OnSearchSuccess(stats);
+        
+    } :^(NSError *error) {
+        NSLog(@"%@",[error description]);
+        _OnSearchSuccess(nil);
+    }];
+
 }
 
 @end

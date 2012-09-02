@@ -33,6 +33,8 @@
 
 -(void)getSalesAppointmentDetailById:(NSString*)apptId DateTime:(NSString*)dateTime withUserInfo:(UserInfo *)userInfo :(void (^)(id))Success;
 
--(void)getSalesStatesByUser: (UserInfo *)userInfo :(void (^)(id))Success;
+-(void)getSalesStatsByUser: (UserInfo *)userInfo :(void (^)(id))Success;
+
+-(void)getSalesStatsForUser: (UserInfo *)userInfo :(void (^)(id))Success;
 
 @end

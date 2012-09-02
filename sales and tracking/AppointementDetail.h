@@ -18,8 +18,10 @@
 @property (nonatomic, retain) NSString *apptDate;
 @property (nonatomic, retain) NSString *phone;
 @property (nonatomic, retain) NSString *altPhone;
+@property (nonatomic, retain) NSString *altPhoneType;
+@property (nonatomic, retain) NSString *productID;
 @property (nonatomic, retain) NSString *source;
 @property (nonatomic, retain) NSString *notes;
 
--(id)initWithAppointmentId:(NSString*)apptId Address:(NSString*)address Name:(NSString*)name CSZ:(NSString*)cSZInfo ApptDate:(NSString*)dateTime Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber Source:(NSString*)sourceNumber Notes:(NSString*)notesData;
+-(id)initWithAppointmentId:(NSString*)apptId Address:(NSString*)address Name:(NSString*)name CSZ:(NSString*)cSZInfo ApptDate:(NSString*)dateTime Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber Source:(NSString*)sourceNumber Notes:(NSString*)notesData ProductId:(NSString*)product AltPhoneType:(NSString*)alterPhoneType;
 @end

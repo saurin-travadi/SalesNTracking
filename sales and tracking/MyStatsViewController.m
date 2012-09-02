@@ -10,15 +10,11 @@
 #import "MyStat.h"
 
 @implementation MyStatsViewController {
-    MyStat *stat;
+    NSMutableArray *stats;
 }
-@synthesize apptsLabel;
-@synthesize demosLabel;
-@synthesize demoRateLabel;
-@synthesize salesLabel;
-@synthesize closingRateLabel;
-@synthesize grossVolumeLabel;
-@synthesize netVolumeLabel;
+
+@synthesize tableView;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,19 +34,13 @@
 -(void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:YES animated:NO];
     
     [self getStats];
 }
 - (void)viewDidUnload
 {
-    [self setApptsLabel:nil];
-    [self setDemosLabel:nil];
-    [self setDemoRateLabel:nil];
-    [self setSalesLabel:nil];
-    [self setClosingRateLabel:nil];
-    [self setGrossVolumeLabel:nil];
-    [self setNetVolumeLabel:nil];
-    
+    [self setTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -65,21 +55,41 @@
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.dimBackground = YES;
     
-    [[[ServiceConsumer alloc] init] getSalesStatesByUser:[super getUserInfo] :^(id json) {
+    [[[ServiceConsumer alloc] init] getSalesStatsForUser:[super getUserInfo] :^(id json) {
         
-        stat=json;
-        
-        apptsLabel.text=stat.numIssued;
-        demosLabel.text=stat.numDemo;
-        demoRateLabel.text=stat.demoRate;
-        salesLabel.text=stat.numSale;
-        closingRateLabel.text=stat.closingRate;
-        grossVolumeLabel.text=stat.grossAmount;
-        netVolumeLabel.text=stat.netAmount;
+        stats=json;
+        [self.tableView reloadData];
         
         [HUD hide:YES];
 
     }];
+}
+
+#pragma tableview events
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [stats count];
+}
+
+-(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"cell";
+    
+    UITableViewCell *cell = (UITableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    
+    MyStat* stat = [stats objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"     %@",stat.descr];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@     ", stat.statValue];
+    
+    return cell;
 }
 
 @end

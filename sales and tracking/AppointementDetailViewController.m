@@ -21,6 +21,8 @@
 @synthesize altPhoneLable, altPhoneButton;
 @synthesize sourceLabel;
 @synthesize notesLabel, notesScrollView;
+@synthesize productLabel;
+@synthesize altPhoneCaption;
 @synthesize acknowledgeButton;
 @synthesize updateApptButton;
 
@@ -63,6 +65,8 @@
     [self setPhoneButton:nil];
     [self setAltPhoneLable:nil];
     [self setAltPhoneButton:nil];
+    [self setProductLabel:nil];
+    [self setAltPhoneCaption:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -88,8 +92,11 @@
         phoneLabel.text =appt.phone;
         phoneButton.backgroundColor = [UIColor clearColor];
         altPhoneLable.text=appt.altPhone;
+        if(![appt.altPhoneType isEqualToString:@""])
+            altPhoneCaption.text=[appt.altPhoneType stringByAppendingString:@":"];
         altPhoneButton.backgroundColor = [UIColor clearColor];
         
+        productLabel.text = appt.productID;
         sourceLabel.text=appt.source;
         notesLabel.text=[NSString stringWithFormat:@"%@",appt.notes];
         

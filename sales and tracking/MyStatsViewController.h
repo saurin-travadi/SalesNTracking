@@ -11,12 +11,7 @@
 
 @interface MyStatsViewController : BaseUIViewController
 
-@property (strong, nonatomic) IBOutlet UILabel *apptsLabel;
-@property (strong, nonatomic) IBOutlet UILabel *demosLabel;
-@property (strong, nonatomic) IBOutlet UILabel *demoRateLabel;
-@property (strong, nonatomic) IBOutlet UILabel *salesLabel;
-@property (strong, nonatomic) IBOutlet UILabel *closingRateLabel;
-@property (strong, nonatomic) IBOutlet UILabel *grossVolumeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *netVolumeLabel;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end

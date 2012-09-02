@@ -17,10 +17,12 @@
 @synthesize apptDate=_apptDate;
 @synthesize phone=_phone;
 @synthesize altPhone=_altPhone;
+@synthesize altPhoneType=_altPhoneType;
+@synthesize productID=_productID;
 @synthesize source=_source;
 @synthesize notes=_notes;
 
--(id)initWithAppointmentId:(NSString*)apptId Address:(NSString*)address Name:(NSString*)name CSZ:(NSString*)cSZInfo ApptDate:(NSString*)dateTime Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber Source:(NSString*)sourceNumber Notes:(NSString*)notesData {
+-(id)initWithAppointmentId:(NSString*)apptId Address:(NSString*)address Name:(NSString*)name CSZ:(NSString*)cSZInfo ApptDate:(NSString*)dateTime Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber Source:(NSString*)sourceNumber Notes:(NSString*)notesData ProductId:(NSString *)product AltPhoneType:(NSString *)alterPhoneType {
     
     self = [super init];
     if (self) {
@@ -32,6 +34,8 @@
         _address=address;
         _phone=phoneNumber;
         _altPhone=altPhoneNumber;
+        _altPhoneType = alterPhoneType;
+        _productID=product;
         _source=sourceNumber;
         _notes=notesData;
         

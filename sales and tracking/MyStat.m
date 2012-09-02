@@ -18,6 +18,20 @@
 @synthesize demoRate=_demoRate;
 @synthesize closingRate=_closingRate;
 
+@synthesize descr=_descr;
+@synthesize statValue=_statValue;
 
+-(id)initWithDesc:(NSString*)description StatValue:(NSString*)stat {
+
+    self = [super init];
+    if (self) {
+
+        _descr=description;
+        _statValue=stat;
+
+        return self;
+    }
+    return nil;
+}
 
 @end
