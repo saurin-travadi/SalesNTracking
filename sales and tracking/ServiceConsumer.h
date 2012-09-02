@@ -13,6 +13,7 @@
 #import "Job.h"
 #import "Appointment.h"
 #import "AppointementDetail.h"
+#import "MyStat.h"
 
 @interface ServiceConsumer : Consumer {
     
@@ -31,5 +32,7 @@
 -(void)getSalesAppointmentsByDate:(NSString*)dateTime withUserInfo:(UserInfo *)userInfo :(void (^)(id))Success;
 
 -(void)getSalesAppointmentDetailById:(NSString*)apptId DateTime:(NSString*)dateTime withUserInfo:(UserInfo *)userInfo :(void (^)(id))Success;
+
+-(void)getSalesStatesByUser: (UserInfo *)userInfo :(void (^)(id))Success;
 
 @end

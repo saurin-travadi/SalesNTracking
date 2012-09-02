@@ -35,6 +35,10 @@
     [self getAppointmentByDateTime]; //get appointments for selected date and reload table
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setToolbarHidden:YES animated:NO];
+}
+
 - (void)viewDidUnload
 {
     [self setTableView:nil];

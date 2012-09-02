@@ -20,7 +20,7 @@
 @synthesize phoneLabel, phoneButton;
 @synthesize altPhoneLable, altPhoneButton;
 @synthesize sourceLabel;
-@synthesize notesLabel;
+@synthesize notesLabel, notesScrollView;
 @synthesize acknowledgeButton;
 @synthesize updateApptButton;
 
@@ -43,7 +43,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+ 
+    [self.navigationController setToolbarHidden:YES animated:NO];
     [self getAppointmentDetail];
 }
 
@@ -55,6 +56,7 @@
     [self setCityLabel:nil];
     [self setSourceLabel:nil];
     [self setNotesLabel:nil];
+    [self setNotesScrollView:nil];
     [self setAcknowledgeButton:nil];
     [self setUpdateApptButton:nil];
     [self setPhoneLabel:nil];
@@ -89,7 +91,7 @@
         altPhoneButton.backgroundColor = [UIColor clearColor];
         
         sourceLabel.text=appt.source;
-        notesLabel.text=appt.notes;
+        notesLabel.text=[NSString stringWithFormat:@"%@",appt.notes];
         
         //set notesLabel
         notesLabel.lineBreakMode = UILineBreakModeWordWrap;
@@ -101,18 +103,20 @@
         frame.size.height=labelSize.height;
         notesLabel.frame = frame;
         
-        //set remaining fields per notesLabel height
-        frame = acknowledgeButton.frame;
-        frame.origin.y += notesLabel.frame.size.height;
-        acknowledgeButton.frame = frame;
-
-        frame = updateApptButton.frame;
-        frame.origin.y +=notesLabel.frame.size.height;
-        updateApptButton.frame=frame;
+        notesScrollView.contentSize=notesLabel.frame.size;
         
-        frame = self.view.bounds;
-        frame.size.height = self.view.bounds.size.height + notesLabel.frame.size.height;
-        self.scrollView.contentSize=frame.size;
+        //set remaining fields per notesLabel height
+//        frame = acknowledgeButton.frame;
+//        frame.origin.y += notesLabel.frame.size.height;
+//        acknowledgeButton.frame = frame;
+//
+//        frame = updateApptButton.frame;
+//        frame.origin.y +=notesLabel.frame.size.height;
+//        updateApptButton.frame=frame;
+        
+//        frame = self.view.bounds;
+//        frame.size.height = self.view.bounds.size.height + notesLabel.frame.size.height;
+//        self.scrollView.contentSize=frame.size;
         
         [HUD hide:YES];
     }];

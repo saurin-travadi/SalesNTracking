@@ -98,7 +98,7 @@
         [self.view addSubview:kal.view];
         
         CGRect frame=self.view.bounds;
-        frame.origin.y=60;
+        frame.origin.y=0;
         kal.calendarView.frame = frame;
         
         jobs = json;

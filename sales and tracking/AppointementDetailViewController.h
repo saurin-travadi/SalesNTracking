@@ -24,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *altPhoneButton;
 @property (strong, nonatomic) IBOutlet UILabel *sourceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *notesLabel;
+@property (strong, nonatomic) IBOutlet UIScrollView *notesScrollView;
 
 @property (strong, nonatomic) IBOutlet UIButton *acknowledgeButton;
 @property (strong, nonatomic) IBOutlet UIButton *updateApptButton;

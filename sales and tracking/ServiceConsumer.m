@@ -220,6 +220,48 @@
     
 }
 
+-(void)getSalesStatesByUser: (UserInfo *)userInfo :(void (^)(id))Success {
+    
+    _OnSearchSuccess = [Success copy];
+    
+    NSString *soapMsg = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetSalesMyStat xmlns=\"http://webservice.leadperfection.com/\"><clientid>%@</clientid><username>%@</username><password>%@</password></GetSalesMyStat></soap:Body></soap:Envelope>", userInfo.clientID,userInfo.userName,userInfo.password];
+    
+    NSURL *url = [NSURL URLWithString: @"http://lptest.leadperfection.com/batch/lpservice.asmx"];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
+    [req addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [req addValue:@"http://webservice.leadperfection.com/GetSalesMyStat" forHTTPHeaderField:@"SOAPAction"];
+    [req addValue:msgLength forHTTPHeaderField:@"Content-Length"];
+    [req setHTTPMethod:@"POST"];
+    [req setHTTPBody: [soapMsg dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [self getDataForElement:@"GetSalesMyStatResponse" Request:req :^(id json) {
+        
+        NSArray *result = [json JSONValue];
+
+        MyStat *stat = [[MyStat alloc] init];
+        for (id obj in result) {
+            
+            stat.numIssued=[obj valueForKey:@"NumIssued"]==[NSNull null]?@"":[[obj valueForKey:@"NumIssued"] description];
+            stat.numDemo=[obj valueForKey:@"NumDemo"]==[NSNull null]?@"":[[obj valueForKey:@"NumDemo"] description];
+            stat.numSale=[obj valueForKey:@"NumSale"]==[NSNull null]?@"":[[obj valueForKey:@"NumSale"] description];
+            stat.grossAmount=[obj valueForKey:@"GrossAmount"]==[NSNull null]?@"":[[obj valueForKey:@"GrossAmount"] description];
+            stat.netAmount=[obj valueForKey:@"NetAmount"]==[NSNull null]?@"":[[obj valueForKey:@"NetAmount"] description];
+            stat.demoRate=[obj valueForKey:@"DemoRate"]==[NSNull null]?@"":[[obj valueForKey:@"DemoRate"] description];
+            stat.closingRate=[obj valueForKey:@"ClosingRate"]==[NSNull null]?@"":[[obj valueForKey:@"ClosingRate"] description];
+            
+        }
+        
+        _OnSearchSuccess(stat);
+        
+    } :^(NSError *error) {
+        NSLog(@"%@",[error description]);
+        _OnSearchSuccess(nil);
+    }];
+ 
+}
+
 @end
 
 

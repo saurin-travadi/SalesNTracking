@@ -92,6 +92,8 @@
 
 -(void)getMessages
 {
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.dimBackground = YES;
     
     [[[ServiceConsumer alloc] init] getLoginMessages:[super getUserInfo] :^(id json) {
         
