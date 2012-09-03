@@ -33,4 +33,5 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 -(IBAction)phoneMade:(id)sender;
+-(IBAction)ackAppt:(id)sender;
 @end

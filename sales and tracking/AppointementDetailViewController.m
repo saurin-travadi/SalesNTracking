@@ -112,19 +112,6 @@
         
         notesScrollView.contentSize=notesLabel.frame.size;
         
-        //set remaining fields per notesLabel height
-//        frame = acknowledgeButton.frame;
-//        frame.origin.y += notesLabel.frame.size.height;
-//        acknowledgeButton.frame = frame;
-//
-//        frame = updateApptButton.frame;
-//        frame.origin.y +=notesLabel.frame.size.height;
-//        updateApptButton.frame=frame;
-        
-//        frame = self.view.bounds;
-//        frame.size.height = self.view.bounds.size.height + notesLabel.frame.size.height;
-//        self.scrollView.contentSize=frame.size;
-        
         [HUD hide:YES];
     }];
 }
@@ -142,5 +129,20 @@
     phoneNumber = [NSString stringWithFormat:@"%@%@", @"tel://", phoneNumber];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
 }
+
+-(IBAction)ackAppt:(id)sender{
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.dimBackground = YES;
+    
+    [[[ServiceConsumer alloc] init] acknowledgeAppointmentId:[self apptId] withUserInfo:[super getUserInfo] :^(id json) {
+        
+        [HUD hide:YES];
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Appointment" message:[json description] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+    }];
+
+}
+
 
 @end

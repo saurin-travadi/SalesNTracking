@@ -303,6 +303,69 @@
 
 }
 
+-(void)acknowledgeAppointmentId:(NSString *)apptId withUserInfo:(UserInfo *)userInfo :(void (^)(id))Success {
+    
+    _OnSearchSuccess = [Success copy];
+    
+    NSString *soapMsg = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><UpdateSalesAck xmlns=\"http://webservice.leadperfection.com/\"><clientid>%@</clientid><username>%@</username><password>%@</password><issuedleadid>%d</issuedleadid></UpdateSalesAck></soap:Body></soap:Envelope>", userInfo.clientID,userInfo.userName,userInfo.password,[apptId intValue]];
+    
+    NSURL *url = [NSURL URLWithString: @"http://lptest.leadperfection.com/batch/lpservice.asmx"];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
+    [req addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [req addValue:@"http://webservice.leadperfection.com/UpdateSalesAck" forHTTPHeaderField:@"SOAPAction"];
+    [req addValue:msgLength forHTTPHeaderField:@"Content-Length"];
+    [req setHTTPMethod:@"POST"];
+    [req setHTTPBody: [soapMsg dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [self getDataForElement:@"UpdateSalesAckResponse" Request:req :^(id json) {
+
+        _OnSearchSuccess([json description]);
+        
+    } :^(NSError *error) {
+        NSLog(@"%@",[error description]);
+        _OnSearchSuccess(nil);
+    }];
+
+}
+
+-(void)getSalesTrackingForUser: (UserInfo *)userInfo :(void (^)(id))Success {
+    _OnSearchSuccess = [Success copy];
+    
+    NSString *soapMsg = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetSalesOpen xmlns=\"http://webservice.leadperfection.com/\"><clientid>%@</clientid><username>%@</username><password>%@</password></GetSalesOpen></soap:Body></soap:Envelope>", userInfo.clientID,userInfo.userName,userInfo.password];
+    
+    NSURL *url = [NSURL URLWithString: @"http://lptest.leadperfection.com/batch/lpservice.asmx"];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
+    [req addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [req addValue:@"http://webservice.leadperfection.com/GetSalesOpen" forHTTPHeaderField:@"SOAPAction"];
+    [req addValue:msgLength forHTTPHeaderField:@"Content-Length"];
+    [req setHTTPMethod:@"POST"];
+    [req setHTTPBody: [soapMsg dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [self getDataForElement:@"GetSalesOpenResponse" Request:req :^(id json) {
+
+        NSMutableArray *sales = [[NSMutableArray alloc] init];
+        
+        NSArray *result = [json JSONValue];
+        for (id obj in result) {
+            
+            MySales *sale = [[MySales alloc] initWithJobId:[obj valueForKey:@"JobID"] CustomerName:[obj valueForKey:@"CustName"] ProductId:[obj valueForKey:@"ProductID"] SaleDate:[obj valueForKey:@"ContractDate"] SaleAmt:[obj valueForKey:@"GrossAmount"] JobStatus:[obj valueForKey:@"JobStatusDescr"]];
+            
+            [sales addObject:sale];
+        }
+        
+        _OnSearchSuccess(sales);
+        
+    } :^(NSError *error) {
+        NSLog(@"%@",[error description]);
+        _OnSearchSuccess(nil);
+    }];
+
+}
+
 @end
 
 

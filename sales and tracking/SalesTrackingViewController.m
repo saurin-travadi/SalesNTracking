@@ -1,20 +1,19 @@
 //
-//  MyStatesViewController.m
+//  SalesTrackingViewController.m
 //  sales and tracking
 //
-//  Created by Sejal Pandya on 9/1/12.
+//  Created by Sejal Pandya on 9/2/12.
 //
 //
 
-#import "MyStatsViewController.h"
-#import "MyStat.h"
+#import "SalesTrackingViewController.h"
+#import "ServiceConsumer.h"
 
-@implementation MyStatsViewController {
-    NSMutableArray *stats;
+
+
+@implementation SalesTrackingViewController {
+    NSMutableArray *array;
 }
-
-@synthesize tableView;
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,15 +31,14 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:YES animated:NO];
-    
-    [self getStats];
+
+    [self getSales];
 }
+
 - (void)viewDidUnload
 {
-    [self setTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -50,18 +48,18 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
--(void)getStats
+-(void)getSales
 {
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.dimBackground = YES;
     
     [[[ServiceConsumer alloc] init] getSalesTrackingForUser:[super getUserInfo] :^(id json) {
         
-        stats=json;
+        array = json;
         [self.tableView reloadData];
-        
+ 
         [HUD hide:YES];
-
+        
     }];
 }
 
@@ -73,7 +71,7 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [stats count];
+    return [array count];
 }
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -85,11 +83,20 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    MyStat* stat = [stats objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"     %@",stat.descr];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@     ", stat.statValue];
+    MySales *sale = [array objectAtIndex:indexPath.row];
+    ((UILabel *)[cell viewWithTag:100]).text = sale.custName;
+    ((UILabel *)[cell viewWithTag:101]).text = sale.productID;
+    ((UILabel *)[cell viewWithTag:102]).text = [NSString stringWithFormat:@"%@ %@",[sale.contractDate substringToIndex:10],[[sale.contractDate substringFromIndex:11] substringToIndex:5]];;
+    ((UILabel *)[cell viewWithTag:103]).text = sale.grossAmount;
+    ((UILabel *)[cell viewWithTag:104]).text = sale.jobStatusDescr;
     
     return cell;
 }
 
+
+
 @end
+
+
+
+

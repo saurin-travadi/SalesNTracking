@@ -14,6 +14,7 @@
 #import "Appointment.h"
 #import "AppointementDetail.h"
 #import "MyStat.h"
+#import "MySales.h"
 
 @interface ServiceConsumer : Consumer {
     
@@ -33,8 +34,12 @@
 
 -(void)getSalesAppointmentDetailById:(NSString*)apptId DateTime:(NSString*)dateTime withUserInfo:(UserInfo *)userInfo :(void (^)(id))Success;
 
--(void)getSalesStatsByUser: (UserInfo *)userInfo :(void (^)(id))Success;
+-(void)getSalesStatsByUser: (UserInfo *)userInfo :(void (^)(id))Success;            //old method,not to be used
 
 -(void)getSalesStatsForUser: (UserInfo *)userInfo :(void (^)(id))Success;
+
+-(void)acknowledgeAppointmentId:(NSString *)apptId withUserInfo:(UserInfo *)userInfo :(void (^)(id))Success;
+
+-(void)getSalesTrackingForUser: (UserInfo *)userInfo :(void (^)(id))Success;
 
 @end
