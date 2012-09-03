@@ -366,6 +366,40 @@
 
 }
 
+-(void)getJobDetailsById: (NSString*)jobId withUserInof:(UserInfo *)userInfo :(void (^)(id))Success {
+    
+    _OnSearchSuccess = [Success copy];
+    
+    NSString *soapMsg = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetSalesJobDetail xmlns=\"http://webservice.leadperfection.com/\"><clientid>%@</clientid><username>%@</username><password>%@</password><jobid>%d</jobid></GetSalesJobDetail></soap:Body></soap:Envelope>", userInfo.clientID,userInfo.userName,userInfo.password, [jobId intValue]];
+    
+    NSURL *url = [NSURL URLWithString: @"http://lptest.leadperfection.com/batch/lpservice.asmx"];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
+    [req addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [req addValue:@"http://webservice.leadperfection.com/GetSalesJobDetail" forHTTPHeaderField:@"SOAPAction"];
+    [req addValue:msgLength forHTTPHeaderField:@"Content-Length"];
+    [req setHTTPMethod:@"POST"];
+    [req setHTTPBody: [soapMsg dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [self getDataForElement:@"GetSalesJobDetailResponse" Request:req :^(id json) {
+        
+        MySales *sale;
+        NSArray *result = [json JSONValue];
+        for (id obj in result) {
+            
+            sale = [[MySales alloc] initDetailWithJobId:[obj valueForKey:@"JobID"] CustomerName:[obj valueForKey:@"CustName"] ProductId:[obj valueForKey:@"ProductID"] SaleDate:[obj valueForKey:@"ContractDate"] SaleAmt:[obj valueForKey:@"GrossAmount"] JobStatus:[obj valueForKey:@"JobStatusDescr"] Address:[obj valueForKey:@"Address1"] CSZ:[obj valueForKey:@"CSZ"] Phone:[obj valueForKey:@"Phone"] AltPhone:[obj valueForKey:@"AltPhone1"] AltPhoneType:[obj valueForKey:@"AltPhone1Type"]];
+            
+        }
+        
+        _OnSearchSuccess(sale);
+        
+    } :^(NSError *error) {
+        NSLog(@"%@",[error description]);
+        _OnSearchSuccess(nil);
+    }];
+
+}
 @end
 
 

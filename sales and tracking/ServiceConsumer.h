@@ -42,4 +42,6 @@
 
 -(void)getSalesTrackingForUser: (UserInfo *)userInfo :(void (^)(id))Success;
 
+-(void)getJobDetailsById: (NSString*)jobId withUserInof:(UserInfo *)userInfo :(void (^)(id))Success;
+
 @end

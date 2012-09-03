@@ -17,6 +17,14 @@
 @property (nonatomic, retain) NSString *grossAmount;
 @property (nonatomic, retain) NSString *jobStatusDescr;
 
+@property (nonatomic, retain) NSString *address;
+@property (nonatomic, retain) NSString *cSZ;
+@property (nonatomic, retain) NSString *phone;
+@property (nonatomic, retain) NSString *altPhone;
+@property (nonatomic, retain) NSString *altPhoneType;
+
 -(id)initWithJobId:(NSString*)job CustomerName:(NSString*)name ProductId:(NSString*)product SaleDate:(NSString*)saleDate SaleAmt:(NSString*)saleAmt JobStatus:(NSString*)jobStatus;
+
+-(id)initDetailWithJobId:(NSString*)job CustomerName:(NSString*)name ProductId:(NSString*)product SaleDate:(NSString*)saleDate SaleAmt:(NSString*)saleAmt JobStatus:(NSString*)jobStatus Address:(NSString*)address CSZ:(NSString*)cityInfo Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber AltPhoneType:(NSString*)altPhoneNumberType;
 
 @end

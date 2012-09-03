@@ -28,6 +28,7 @@
 		7032712615F0316200E87A5C /* chart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7032712415F0316200E87A5C /* chart@2x.png */; };
 		7062626715F467610050EEA7 /* SalesTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062626615F467610050EEA7 /* SalesTrackingViewController.m */; };
 		7062626F15F504B30050EEA7 /* MySales.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062626E15F504B30050EEA7 /* MySales.m */; };
+		7062627315F538890050EEA7 /* SalesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062627215F538890050EEA7 /* SalesDetailsViewController.m */; };
 		708433CD15E9DEFC00E27068 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 708433CC15E9DEFC00E27068 /* UIKit.framework */; };
 		708433CF15E9DEFC00E27068 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 708433CE15E9DEFC00E27068 /* Foundation.framework */; };
 		708433D115E9DEFC00E27068 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 708433D015E9DEFC00E27068 /* CoreGraphics.framework */; };
@@ -106,6 +107,8 @@
 		7062626615F467610050EEA7 /* SalesTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalesTrackingViewController.m; sourceTree = "<group>"; };
 		7062626D15F504B30050EEA7 /* MySales.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySales.h; sourceTree = "<group>"; };
 		7062626E15F504B30050EEA7 /* MySales.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySales.m; sourceTree = "<group>"; };
+		7062627115F538890050EEA7 /* SalesDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalesDetailsViewController.h; sourceTree = "<group>"; };
+		7062627215F538890050EEA7 /* SalesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalesDetailsViewController.m; sourceTree = "<group>"; };
 		708433C815E9DEFC00E27068 /* sales and tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sales and tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		708433CC15E9DEFC00E27068 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		708433CE15E9DEFC00E27068 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -269,6 +272,8 @@
 				70E6D86315F30A6000E3052B /* MyStatsViewController.m */,
 				7062626515F467610050EEA7 /* SalesTrackingViewController.h */,
 				7062626615F467610050EEA7 /* SalesTrackingViewController.m */,
+				7062627115F538890050EEA7 /* SalesDetailsViewController.h */,
+				7062627215F538890050EEA7 /* SalesDetailsViewController.m */,
 				7084340D15E9E51500E27068 /* sales and tracking.entitlements */,
 				708433E815E9E06E00E27068 /* Global */,
 				708433E715E9E06200E27068 /* Model */,
@@ -489,6 +494,7 @@
 				70E6D86715F30C6E00E3052B /* MyStat.m in Sources */,
 				7062626715F467610050EEA7 /* SalesTrackingViewController.m in Sources */,
 				7062626F15F504B30050EEA7 /* MySales.m in Sources */,
+				7062627315F538890050EEA7 /* SalesDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

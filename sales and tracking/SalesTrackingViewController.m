@@ -7,9 +7,8 @@
 //
 
 #import "SalesTrackingViewController.h"
+#import "SalesDetailsViewController.h"
 #import "ServiceConsumer.h"
-
-
 
 @implementation SalesTrackingViewController {
     NSMutableArray *array;
@@ -46,6 +45,12 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    MySales *sale = [array objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+    [[segue destinationViewController] setSelectedJobId:sale.jobID];
 }
 
 -(void)getSales
