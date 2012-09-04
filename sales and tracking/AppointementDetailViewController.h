@@ -18,6 +18,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *addressLabel;
 @property (strong, nonatomic) IBOutlet UILabel *cityLabel;
+@property (strong, nonatomic) IBOutlet UIButton *mapButton1;
+@property (strong, nonatomic) IBOutlet UIButton *mapButton2;
+
 @property (strong, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (strong, nonatomic) IBOutlet UIButton *phoneButton;
 @property (strong, nonatomic) IBOutlet UILabel *altPhoneLable;
@@ -34,4 +37,5 @@
 
 -(IBAction)phoneMade:(id)sender;
 -(IBAction)ackAppt:(id)sender;
+-(IBAction)showMap:(id)sender;
 @end

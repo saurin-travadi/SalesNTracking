@@ -8,15 +8,14 @@
 
 #import "AppointementDetailViewController.h"
 
-
 @implementation AppointementDetailViewController
 
 @synthesize appDateTime, apptId;
 
 @synthesize dateLabel;
 @synthesize nameLabel;
-@synthesize addressLabel;
-@synthesize cityLabel;
+@synthesize addressLabel,mapButton1;
+@synthesize cityLabel,mapButton2;
 @synthesize phoneLabel, phoneButton;
 @synthesize altPhoneLable, altPhoneButton;
 @synthesize sourceLabel;
@@ -67,6 +66,9 @@
     [self setAltPhoneButton:nil];
     [self setProductLabel:nil];
     [self setAltPhoneCaption:nil];
+    [self setMapButton1:nil];
+    [self setMapButton2:nil];
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -89,6 +91,12 @@
         nameLabel.text=appt.custName;
         addressLabel.text=appt.address;
         cityLabel.text=appt.cSZ;
+        mapButton1.titleLabel.text=[NSString stringWithFormat:@"%@ %@",appt.address, appt.cSZ];
+        mapButton2.titleLabel.text=[NSString stringWithFormat:@"%@ %@",appt.address, appt.cSZ];
+        mapButton1.backgroundColor  = [UIColor clearColor];
+        mapButton2.backgroundColor = [UIColor clearColor];
+       
+        
         phoneLabel.text =appt.phone;
         phoneButton.backgroundColor = [UIColor clearColor];
         altPhoneLable.text=appt.altPhone;
@@ -144,5 +152,12 @@
 
 }
 
+-(IBAction)showMap:(id)sender {
+    UIButton *btn = sender;
+    NSString* dAddress = [btn.titleLabel.text stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+    NSString *sAddress = [NSString stringWithFormat:@"%f,%f", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://maps.google.com/maps?saddr=%@&daddr=%@", sAddress,dAddress]]];
+}
 
 @end

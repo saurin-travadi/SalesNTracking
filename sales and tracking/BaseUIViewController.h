@@ -10,16 +10,16 @@
 #import <QuartzCore/QuartzCore.h>  
 #import "MBProgressHUD.h"
 #import "UserInfo.h"
-
+#import <CoreLocation/CoreLocation.h>
 
 @class SidebarViewController;
 
 @interface BaseUIViewController : UIViewController <MBProgressHUDDelegate> {
     MBProgressHUD *HUD;
+    CLLocationManager *locationManager;
 }
 
 @property (nonatomic,retain) NSString *baseUrl;
-
 -(void)setUserInfo:(UserInfo*)userInfo;
 -(UserInfo*)getUserInfo;
 - (void)loadDefaults;

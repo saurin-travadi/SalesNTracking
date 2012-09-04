@@ -19,6 +19,7 @@
 		701DA4F215F15D1F007EE2EF /* KalTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 701DA4D815F15CC8007EE2EF /* KalTileView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		701DA4F415F15D1F007EE2EF /* KalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 701DA4DA15F15CC8007EE2EF /* KalView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		701DA4F615F15D1F007EE2EF /* KalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701DA4DC15F15CC8007EE2EF /* KalViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7029083F15F6823300DFB683 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7029083E15F6823300DFB683 /* CoreLocation.framework */; };
 		7032711515F0243600E87A5C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7032711415F0243600E87A5C /* HomeViewController.m */; };
 		7032711A15F02C5700E87A5C /* currency.png in Resources */ = {isa = PBXBuildFile; fileRef = 7032711915F02C5700E87A5C /* currency.png */; };
 		7032711C15F02CE200E87A5C /* currency@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7032711B15F02CE200E87A5C /* currency@2x.png */; };
@@ -95,6 +96,7 @@
 		701DA4DE15F15CDB007EE2EF /* NSDateAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSDateAdditions.m; sourceTree = "<group>"; };
 		701DA4DF15F15CE5007EE2EF /* UIViewAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
 		701DA4E015F15CE5007EE2EF /* UIViewAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
+		7029083E15F6823300DFB683 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7032711315F0243600E87A5C /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		7032711415F0243600E87A5C /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		7032711915F02C5700E87A5C /* currency.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = currency.png; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7029083F15F6823300DFB683 /* CoreLocation.framework in Frameworks */,
 				7084351215EA739C00E27068 /* EventKitUI.framework in Frameworks */,
 				7084340215E9E12900E27068 /* QuartzCore.framework in Frameworks */,
 				7084340015E9E10100E27068 /* Security.framework in Frameworks */,
@@ -239,6 +242,7 @@
 		708433CB15E9DEFC00E27068 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7029083E15F6823300DFB683 /* CoreLocation.framework */,
 				7084351115EA739C00E27068 /* EventKitUI.framework */,
 				7084340415E9E15000E27068 /* SFHFKeychain */,
 				7084340315E9E14100E27068 /* MBProgress */,
