@@ -76,6 +76,10 @@
 #pragma mark -
 #pragma mark Public methods
 
+-(void)makeRoundRect:(UIButton*)sender {
+     sender.layer.cornerRadius = 8.0;
+}
+
 - (void)loadDefaults {
     
     NSString *errorDesc = nil;
@@ -119,15 +123,39 @@
     NSMutableDictionary *project = [[NSMutableDictionary alloc] initWithContentsOfFile: localSettingsPath];
     NSString *settingsUserName = [project objectForKey:@"UserName"];
     
-    NSError *error = nil;
-    NSString *savedPassword = [SFHFKeychainUtils getPasswordForUsername:settingsUserName andServiceName:@"leadperfection" error:&error]; 
-    
-    UserInfo* currentUserInfo = [[UserInfo alloc] initWithUserName:settingsUserName Password:savedPassword ClientID:@"" SiteURL:@""];
-    currentUserInfo.userName = settingsUserName;
-    currentUserInfo.password = savedPassword;
-    
-    return currentUserInfo;
+    if(settingsUserName!=nil && settingsUserName!=@"") {
+
+        NSError *error = nil;
+        NSString *savedPassword = [SFHFKeychainUtils getPasswordForUsername:settingsUserName andServiceName:@"leadperfection" error:&error];
+
+        UserInfo* currentUserInfo = [[UserInfo alloc] initWithUserName:settingsUserName Password:savedPassword ClientID:@"" SiteURL:@""];
+        currentUserInfo.userName = settingsUserName;
+        currentUserInfo.password = savedPassword;
+
+        return currentUserInfo;
+    }
+    return nil;
 }
 
+-(void)logout {
+    UserInfo* user = [self getUserInfo];
+    
+    NSError *error;
+    
+    [SFHFKeychainUtils deleteItemForUsername:user.userName andServiceName:@"leadperfection" error:&error];
+    
+    NSString *localSettingsPath = ((AppDelegate *) [[UIApplication sharedApplication] delegate]).localSettingsPath;
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile: localSettingsPath];
+    [data setObject:@"" forKey:@"UserName"];
+    [data writeToFile: localSettingsPath atomically:YES];
+
+    
+    //[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        //do nothing
+    }];
+    //[self performSegueWithIdentifier:@"LogoutSegue" sender:self];
+
+}
 
 @end

@@ -285,13 +285,13 @@
 				7062626615F467610050EEA7 /* SalesTrackingViewController.m */,
 				7062627115F538890050EEA7 /* SalesDetailsViewController.h */,
 				7062627215F538890050EEA7 /* SalesDetailsViewController.m */,
+				707C05FD15F6D45D000D972E /* SettingsViewController.h */,
+				707C05FE15F6D45D000D972E /* SettingsViewController.m */,
 				7084340D15E9E51500E27068 /* sales and tracking.entitlements */,
 				708433E815E9E06E00E27068 /* Global */,
 				708433E715E9E06200E27068 /* Model */,
 				708433D315E9DEFC00E27068 /* Supporting Files */,
 				7084341215E9E79400E27068 /* MainStoryboard.storyboard */,
-				707C05FD15F6D45D000D972E /* SettingsViewController.h */,
-				707C05FE15F6D45D000D972E /* SettingsViewController.m */,
 			);
 			path = "sales and tracking";
 			sourceTree = "<group>";

@@ -23,6 +23,6 @@
 -(void)setUserInfo:(UserInfo*)userInfo;
 -(UserInfo*)getUserInfo;
 - (void)loadDefaults;
-
-
+-(void)makeRoundRect:(UIButton*)sender;
+-(void)logout;
 @end

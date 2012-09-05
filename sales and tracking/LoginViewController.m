@@ -11,10 +11,12 @@
 #import "AppDelegate.h"
 #import "ServiceConsumer.h"
 
-@implementation LoginViewController
+@implementation LoginViewController {
+    NSString *pwd;
+}
 
 @synthesize logOnButton;
-@synthesize userName, password, delegate;
+@synthesize userName, password, delegate, clientId, siteURL;
 NSString *localSettingsPath;
 
 - (id) init {
@@ -51,19 +53,27 @@ NSString *localSettingsPath;
     
     password.secureTextEntry = YES;
     
-    UserInfo* user = [super getUserInfo];
-    userName.text = user.userName;
-    if (user.password != NULL){
-        password.text = user.password;
-        
-        [self performSelector:@selector(performLogin) withObject:nil afterDelay:0.1];
-    }
     
-    logOnButton.layer.cornerRadius = 8.0;
+    //logOnButton.layer.cornerRadius = 8.0;
+    [super makeRoundRect:logOnButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
+    UserInfo* user = [super getUserInfo];
+    
+    if(user==nil)
+        return;
+    
+    userName.text = user.userName;
+    if (user.password != NULL){
+        clientId.text = user.clientID;
+        siteURL.text = user.siteURL;
+        
+        pwd = user.password;
+        [self performSelector:@selector(performLogin) withObject:nil afterDelay:0.1];
+    }
 }
 
 - (void)viewDidUnload
@@ -96,7 +106,28 @@ NSString *localSettingsPath;
 }
 
 -(void) performLogin{
-    [self login:self];
+    
+    UserInfo *info = [[UserInfo alloc] initWithUserName:userName.text Password:pwd ClientID:@"" SiteURL:@"" ];
+    [[[ServiceConsumer alloc] init] performLogin:info :^(bool* success) {
+        
+        [HUD hide:YES];
+        
+        if(*success){
+            
+            [super setUserInfo:info];
+            [self performSegueWithIdentifier:@"homeSegue" sender:self];
+        }
+        else {
+            
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Logon Failed"
+                                                              message:@"The system was not able to log you on. Please check your User ID and Password and try again."
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles:nil];
+            [message show];
+        }
+    }];
+
 }
 
 - (IBAction)login:(id)sender {
@@ -107,26 +138,11 @@ NSString *localSettingsPath;
     [password resignFirstResponder];
     [userName resignFirstResponder];     
     
-    UserInfo *info = [[UserInfo alloc] initWithUserName:userName.text Password:password.text ClientID:@"" SiteURL:@"" ];
-    [[[ServiceConsumer alloc] init] performLogin:info :^(bool* success) {
-        
-        if(*success){
-            
-            [super setUserInfo:info];
-            [self performSegueWithIdentifier:@"homeSegue" sender:self];
-        }
-        else {
-            [HUD hide:YES];
-            
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Logon Failed"
-                                                              message:@"The system was not able to log you on. Please check your User ID and Password and try again."
-                                                             delegate:nil
-                                                    cancelButtonTitle:@"OK"
-                                                    otherButtonTitles:nil];
-            [message show];
-        }
-    }];
-}        
+    pwd=password.text;
+    password.text=@"";
+    
+    [self performLogin];
+}
 
 - (void)missingBaseUrl
 {

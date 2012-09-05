@@ -34,7 +34,7 @@
                                 <rect key="frame" x="25" y="155" width="269" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                 <connections>
                                     <outlet property="delegate" destination="p4q-tG-yo4" id="Seh-cs-jff"/>
                                     <outlet property="nextField" destination="d0M-KY-vL7" id="UKP-ef-aqS"/>
@@ -44,7 +44,7 @@
                                 <rect key="frame" x="26" y="200" width="269" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="p4q-tG-yo4" id="w1E-th-M8h"/>
                                 </connections>
@@ -223,12 +223,88 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M8O-Dv-30I" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="oCw-9x-HQL" customClass="SettingsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZZm-yJ-K9d">
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="NgP-Vl-8P6">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="System" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Pf8-M7-cIY">
+                                <rect key="frame" x="9" y="34" width="94" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Security" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="EWe-V0-CxI">
+                                <rect key="frame" x="9" y="205" width="79" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" id="UsO-YZ-mJu">
+                                <rect key="frame" x="20" y="64" width="280" height="108"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your Client ID" minimumFontSize="17" clearButtonMode="whileEditing" id="vNl-gz-yPQ" customClass="NextUITextField">
+                                        <rect key="frame" x="96" y="15" width="177" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="oCw-9x-HQL" id="CGp-KV-vHw"/>
+                                            <outlet property="nextField" destination="d0M-KY-vL7" id="oFQ-xW-oWV"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your Site URL" minimumFontSize="17" clearButtonMode="whileEditing" id="7S9-R2-S6E" customClass="NextUITextField">
+                                        <rect key="frame" x="96" y="58" width="177" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="oCw-9x-HQL" id="hHQ-ph-DZo"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Client Id:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="gmU-cY-ArW">
+                                        <rect key="frame" x="15" y="20" width="68" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Site URL:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="sWg-NI-rWw">
+                                        <rect key="frame" x="15" y="62" width="73" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleAspectFit" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="rAx-A3-IEM">
+                                <rect key="frame" x="20" y="237" width="269" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.79211176658163263" green="0.11211470844446753" blue="0.0079580480060373517" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="oCw-9x-HQL" eventType="touchUpInside" id="rrV-Y0-hEU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="r2W-wK-6CI"/>
+                    <connections>
+                        <outlet property="logOut" destination="rAx-A3-IEM" id="7kO-UN-x8f"/>
+                        <outlet property="view" destination="NgP-Vl-8P6" id="1Mu-qd-ycK"/>
+                        <outlet property="view1" destination="UsO-YZ-mJu" id="pUX-cu-ANL"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="-485" y="-2988"/>
@@ -1002,8 +1078,10 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
                 <relationship kind="action" name="login:"/>
+                <relationship kind="outlet" name="clientId" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="logOnButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="siteURL" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="userName" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -1046,6 +1124,15 @@
         </class>
         <class className="SettingsViewController" superclassName="BaseUIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logout:"/>
+                <relationship kind="outlet" name="clientId" candidateClass="NextUITextField"/>
+                <relationship kind="outlet" name="logOut" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="siteURL" candidateClass="NextUITextField"/>
+                <relationship kind="outlet" name="view" candidateClass="UIView"/>
+                <relationship kind="outlet" name="view1" candidateClass="UIView"/>
+                <relationship kind="outlet" name="view2" candidateClass="UIView"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

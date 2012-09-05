@@ -13,6 +13,11 @@
 @end
 
 @implementation SettingsViewController
+@synthesize view1;
+@synthesize view2;
+@synthesize clientId;
+@synthesize siteURL;
+@synthesize logOut;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,10 +32,30 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [super makeRoundRect:logOut];
+    view1.layer.cornerRadius = 5;
+    view1.layer.masksToBounds = YES;
+    
+    view2.layer.cornerRadius = 5;
+    view2.layer.masksToBounds = YES;
+
+    self.view.layer.cornerRadius = 5;
+    self.view.layer.masksToBounds = YES;
+   
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    
 }
 
 - (void)viewDidUnload
 {
+    [self setLogOut:nil];
+    [self setClientId:nil];
+    [self setSiteURL:nil];
+    [self setView1:nil];
+    [self setView2:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -39,5 +64,13 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+- (IBAction)logout:(id)sender {
+    
+    [super logout];
+    
+}
+
+
 
 @end
