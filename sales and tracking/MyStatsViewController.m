@@ -55,7 +55,7 @@
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.dimBackground = YES;
     
-    [[[ServiceConsumer alloc] init] getSalesTrackingForUser:[super getUserInfo] :^(id json) {
+    [[[ServiceConsumer alloc] init] getSalesStatsForUser:[super getUserInfo] :^(id json) {
         
         stats=json;
         [self.tableView reloadData];

@@ -21,8 +21,10 @@
 @synthesize productID=_productID;
 @synthesize source=_source;
 @synthesize notes=_notes;
+@synthesize canUpdateIndicator=_canUpdateIndicator;
+@synthesize apptStatusCode=_apptStatusCode;
 
--(id)initWithAppointmentId:(NSString*)apptId Address:(NSString*)address Name:(NSString*)name CSZ:(NSString*)cSZInfo ApptDate:(NSString*)dateTime Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber Source:(NSString*)sourceNumber Notes:(NSString*)notesData ProductId:(NSString *)product AltPhoneType:(NSString *)alterPhoneType {
+-(id)initWithAppointmentId:(NSString*)apptId Address:(NSString*)address Name:(NSString*)name CSZ:(NSString*)cSZInfo ApptDate:(NSString*)dateTime Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber Source:(NSString*)sourceNumber Notes:(NSString*)notesData ProductId:(NSString *)product AltPhoneType:(NSString *)alterPhoneType CanUpdate:(NSString*)canUpdate ApptStatus:(NSString*)statusCode{
     
     self = [super init];
     if (self) {
@@ -38,6 +40,9 @@
         _productID=product;
         _source=sourceNumber;
         _notes=notesData;
+        
+        _canUpdateIndicator=[canUpdate boolValue];
+        _apptStatusCode=statusCode;
         
         return self;
     }

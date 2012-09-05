@@ -36,6 +36,13 @@
 }
 
 -(void) connection:(NSURLConnection *) connection didFailWithError:(NSError *) error {
+    if(error.code==-1009){              //check for connectivity
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection" message:[error localizedDescription] delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
+
+        [alert show];
+        return;
+    }
+    
     _OnFailure(error);
 }
 
@@ -78,6 +85,16 @@
     if ([elementName isEqualToString:_element]){
         _OnSuccess(soapResults);
     } 
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    if([title isEqualToString:@"Exit"])
+    {
+        exit(0);
+    }
 }
 
 @end

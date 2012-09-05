@@ -22,6 +22,9 @@
 @property (nonatomic, retain) NSString *productID;
 @property (nonatomic, retain) NSString *source;
 @property (nonatomic, retain) NSString *notes;
+@property BOOL canUpdateIndicator;
+@property (nonatomic, retain) NSString *apptStatusCode;
 
--(id)initWithAppointmentId:(NSString*)apptId Address:(NSString*)address Name:(NSString*)name CSZ:(NSString*)cSZInfo ApptDate:(NSString*)dateTime Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber Source:(NSString*)sourceNumber Notes:(NSString*)notesData ProductId:(NSString*)product AltPhoneType:(NSString*)alterPhoneType;
+-(id)initWithAppointmentId:(NSString*)apptId Address:(NSString*)address Name:(NSString*)name CSZ:(NSString*)cSZInfo ApptDate:(NSString*)dateTime Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber Source:(NSString*)sourceNumber Notes:(NSString*)notesData ProductId:(NSString *)product AltPhoneType:(NSString *)alterPhoneType CanUpdate:(NSString*)canUpdate ApptStatus:(NSString*)statusCode;
+
 @end

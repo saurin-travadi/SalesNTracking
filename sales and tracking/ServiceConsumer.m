@@ -65,7 +65,6 @@
         
         _OnLoginSuccess(&success);
     } :^(NSError *error) {
-        
         bool success = false;
         _OnLoginSuccess(&success);
     }];
@@ -212,7 +211,9 @@
                                                                       Source:[obj valueForKey:@"Source"]==[NSNull null]?@"":[obj valueForKey:@"Source"]
                                                                        Notes:[obj valueForKey:@"Notes"]==[NSNull null]?@"":[obj valueForKey:@"Notes"]
                                                                     ProductId:[obj valueForKey:@"ProductID"]==[NSNull null]?@"":[obj valueForKey:@"ProductID"]
-                                                                    AltPhoneType:[obj valueForKey:@"AltPhone1Type"]==[NSNull null]?@"":[obj valueForKey:@"AltPhone1Type"]];
+                                                                    AltPhoneType:[obj valueForKey:@"AltPhone1Type"]==[NSNull null]?@"":[obj valueForKey:@"AltPhone1Type"]
+                                                                    CanUpdate:[obj valueForKey:@"CanUpdateIndicator"]==[NSNull null]?@"":[obj valueForKey:@"CanUpdateIndicator"]
+                                                                    ApptStatus:[obj valueForKey:@"ApptStatusCode"]==[NSNull null]?@"":[obj valueForKey:@"ApptStatusCode"]];
         }
         
         _OnSearchSuccess(appointment);

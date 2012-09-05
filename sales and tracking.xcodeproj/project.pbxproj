@@ -30,6 +30,9 @@
 		7062626715F467610050EEA7 /* SalesTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062626615F467610050EEA7 /* SalesTrackingViewController.m */; };
 		7062626F15F504B30050EEA7 /* MySales.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062626E15F504B30050EEA7 /* MySales.m */; };
 		7062627315F538890050EEA7 /* SalesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062627215F538890050EEA7 /* SalesDetailsViewController.m */; };
+		707C05FB15F6D3FB000D972E /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 707C05F915F6D3FB000D972E /* settings.png */; };
+		707C05FC15F6D3FB000D972E /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 707C05FA15F6D3FB000D972E /* settings@2x.png */; };
+		707C05FF15F6D45D000D972E /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 707C05FE15F6D45D000D972E /* SettingsViewController.m */; };
 		708433CD15E9DEFC00E27068 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 708433CC15E9DEFC00E27068 /* UIKit.framework */; };
 		708433CF15E9DEFC00E27068 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 708433CE15E9DEFC00E27068 /* Foundation.framework */; };
 		708433D115E9DEFC00E27068 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 708433D015E9DEFC00E27068 /* CoreGraphics.framework */; };
@@ -111,6 +114,10 @@
 		7062626E15F504B30050EEA7 /* MySales.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySales.m; sourceTree = "<group>"; };
 		7062627115F538890050EEA7 /* SalesDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalesDetailsViewController.h; sourceTree = "<group>"; };
 		7062627215F538890050EEA7 /* SalesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalesDetailsViewController.m; sourceTree = "<group>"; };
+		707C05F915F6D3FB000D972E /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		707C05FA15F6D3FB000D972E /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		707C05FD15F6D45D000D972E /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		707C05FE15F6D45D000D972E /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		708433C815E9DEFC00E27068 /* sales and tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sales and tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		708433CC15E9DEFC00E27068 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		708433CE15E9DEFC00E27068 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -283,6 +290,8 @@
 				708433E715E9E06200E27068 /* Model */,
 				708433D315E9DEFC00E27068 /* Supporting Files */,
 				7084341215E9E79400E27068 /* MainStoryboard.storyboard */,
+				707C05FD15F6D45D000D972E /* SettingsViewController.h */,
+				707C05FE15F6D45D000D972E /* SettingsViewController.m */,
 			);
 			path = "sales and tracking";
 			sourceTree = "<group>";
@@ -373,6 +382,8 @@
 		7084350715EA676000E27068 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				707C05F915F6D3FB000D972E /* settings.png */,
+				707C05FA15F6D3FB000D972E /* settings@2x.png */,
 				70D12A5815F244BF0040808D /* bullet.png */,
 				70D12A5915F244BF0040808D /* bullet@2x.png */,
 				7032712315F0316200E87A5C /* chart.png */,
@@ -452,6 +463,8 @@
 				70D12A4915F167650040808D /* Kal.bundle in Resources */,
 				70D12A5A15F244BF0040808D /* bullet.png in Resources */,
 				70D12A5B15F244BF0040808D /* bullet@2x.png in Resources */,
+				707C05FB15F6D3FB000D972E /* settings.png in Resources */,
+				707C05FC15F6D3FB000D972E /* settings@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +512,7 @@
 				7062626715F467610050EEA7 /* SalesTrackingViewController.m in Sources */,
 				7062626F15F504B30050EEA7 /* MySales.m in Sources */,
 				7062627315F538890050EEA7 /* SalesDetailsViewController.m in Sources */,
+				707C05FF15F6D45D000D972E /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

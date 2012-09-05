@@ -120,6 +120,16 @@
         
         notesScrollView.contentSize=notesLabel.frame.size;
         
+        if(!appt.canUpdateIndicator)
+            [updateApptButton setHidden:YES];
+        
+        if([appt.apptStatusCode isEqualToString:@"Y"])
+        {
+            UILabel *lbl = [[UILabel alloc] initWithFrame:acknowledgeButton.frame];
+            lbl.text = @"Appointment Acknowledged by Rep";
+            [self.view addSubview:lbl];
+            [acknowledgeButton setHidden:YES];
+        }
         [HUD hide:YES];
     }];
 }
@@ -146,7 +156,7 @@
         
         [HUD hide:YES];
 
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Appointment" message:[json description] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Appointment" message:@"Appointment Acknowledged" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
     }];
 

@@ -83,7 +83,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-1678" y="-2308"/>
+            <point key="canvasLocation" x="-2108" y="-3256"/>
         </scene>
         <!--Home View Controller - Home-->
         <scene sceneID="gt8-Rj-sDQ">
@@ -146,6 +146,12 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Chr-Aa-Fbh"/>
+                        <barButtonItem image="settings.png" style="plain" id="bEY-V0-M8C">
+                            <connections>
+                                <segue destination="oCw-9x-HQL" kind="push" id="pss-nm-oHg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="2tY-yP-fgF"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Home" id="dKU-c6-izK"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackOpaque"/>
@@ -154,7 +160,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-801" y="-2323"/>
+            <point key="canvasLocation" x="-1310" y="-3325"/>
         </scene>
         <!--My Stats View Controller - My Stats-->
         <scene sceneID="ejQ-SY-Mff">
@@ -210,7 +216,22 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-393" y="-2999"/>
+            <point key="canvasLocation" x="-735" y="-3675"/>
+        </scene>
+        <!--Settings View Controller - Settings-->
+        <scene sceneID="jIM-go-ygb">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M8O-Dv-30I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="oCw-9x-HQL" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZZm-yJ-K9d">
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="r2W-wK-6CI"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-485" y="-2988"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QXr-Ke-2lB">
@@ -233,7 +254,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-1260" y="-2308"/>
+            <point key="canvasLocation" x="-1690" y="-3256"/>
         </scene>
         <!--Sales Tracking View Controller - Sales Tracking-->
         <scene sceneID="uyV-6v-mq6">
@@ -348,7 +369,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-735" y="-1646"/>
+            <point key="canvasLocation" x="-1723" y="-1626"/>
         </scene>
         <!--Calendar View Controller - Calendar-->
         <scene sceneID="EXL-0p-cOy">
@@ -369,7 +390,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-337" y="-2184"/>
+            <point key="canvasLocation" x="-747" y="-2242"/>
         </scene>
         <!--Appointments View Controller - Appointments-->
         <scene sceneID="Ol2-MN-c71">
@@ -457,7 +478,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="164" y="-2218"/>
+            <point key="canvasLocation" x="-252" y="-2214"/>
         </scene>
         <!--Appointement Detail View Controller - Detail-->
         <scene sceneID="Q8C-I9-zYy">
@@ -727,7 +748,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="624" y="-2323"/>
+            <point key="canvasLocation" x="268" y="-2242"/>
         </scene>
         <!--Sales Details View Controller - Sales Detail-->
         <scene sceneID="s8Z-sf-T6T">
@@ -921,7 +942,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-257" y="-1611"/>
+            <point key="canvasLocation" x="-1245" y="-1591"/>
         </scene>
     </scenes>
     <resources>
@@ -930,6 +951,7 @@
         <image name="currency.png" width="24" height="24"/>
         <image name="house5a.jpg" width="250" height="167"/>
         <image name="lplogo_pos.gif" width="240" height="44"/>
+        <image name="settings.png" width="24" height="24"/>
     </resources>
     <classes>
         <class className="AppointementDetailViewController" superclassName="BaseUIViewController">
@@ -1021,6 +1043,9 @@
             <relationships>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
+        </class>
+        <class className="SettingsViewController" superclassName="BaseUIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
