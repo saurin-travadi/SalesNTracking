@@ -27,6 +27,8 @@
 		7032712015F02EB000E87A5C /* appointment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7032711E15F02EB000E87A5C /* appointment@2x.png */; };
 		7032712515F0316200E87A5C /* chart.png in Resources */ = {isa = PBXBuildFile; fileRef = 7032712315F0316200E87A5C /* chart.png */; };
 		7032712615F0316200E87A5C /* chart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7032712415F0316200E87A5C /* chart@2x.png */; };
+		703650B415F8246100714423 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 703650B315F8246100714423 /* Settings.bundle */; };
+		703650BB15F8412C00714423 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 703650BA15F8412B00714423 /* Utility.m */; };
 		7062626715F467610050EEA7 /* SalesTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062626615F467610050EEA7 /* SalesTrackingViewController.m */; };
 		7062626F15F504B30050EEA7 /* MySales.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062626E15F504B30050EEA7 /* MySales.m */; };
 		7062627315F538890050EEA7 /* SalesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062627215F538890050EEA7 /* SalesDetailsViewController.m */; };
@@ -46,7 +48,6 @@
 		708433FB15E9E09700E27068 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 708433F615E9E09700E27068 /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7084340015E9E10100E27068 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 708433FF15E9E10100E27068 /* Security.framework */; };
 		7084340215E9E12900E27068 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7084340115E9E12900E27068 /* QuartzCore.framework */; };
-		7084340C15E9E4B100E27068 /* LocalSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7084340B15E9E4B100E27068 /* LocalSettings.plist */; };
 		7084341315E9E79400E27068 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7084341215E9E79400E27068 /* MainStoryboard.storyboard */; };
 		7084341915E9ED6700E27068 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 708433FE15E9E0E500E27068 /* SFHFKeychainUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		708434FB15EA5DEF00E27068 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7084341615E9E7FA00E27068 /* LoginViewController.m */; };
@@ -108,6 +109,9 @@
 		7032711E15F02EB000E87A5C /* appointment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appointment@2x.png"; sourceTree = "<group>"; };
 		7032712315F0316200E87A5C /* chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chart.png; sourceTree = "<group>"; };
 		7032712415F0316200E87A5C /* chart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chart@2x.png"; sourceTree = "<group>"; };
+		703650B315F8246100714423 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		703650B915F8412B00714423 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		703650BA15F8412B00714423 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		7062626515F467610050EEA7 /* SalesTrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalesTrackingViewController.h; sourceTree = "<group>"; };
 		7062626615F467610050EEA7 /* SalesTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalesTrackingViewController.m; sourceTree = "<group>"; };
 		7062626D15F504B30050EEA7 /* MySales.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySales.h; sourceTree = "<group>"; };
@@ -151,7 +155,6 @@
 		7084340815E9E1E900E27068 /* UserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		7084340915E9E20300E27068 /* Consumer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Consumer.h; sourceTree = "<group>"; };
 		7084340A15E9E20300E27068 /* Consumer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Consumer.m; sourceTree = "<group>"; };
-		7084340B15E9E4B100E27068 /* LocalSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LocalSettings.plist; sourceTree = "<group>"; };
 		7084340D15E9E51500E27068 /* sales and tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "sales and tracking.entitlements"; sourceTree = "<group>"; };
 		7084341215E9E79400E27068 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		7084341515E9E7FA00E27068 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -231,6 +234,7 @@
 		708433BD15E9DEFC00E27068 = {
 			isa = PBXGroup;
 			children = (
+				703650B315F8246100714423 /* Settings.bundle */,
 				7084350515EA674E00E27068 /* icon.png */,
 				708433D215E9DEFC00E27068 /* sales and tracking */,
 				708433CB15E9DEFC00E27068 /* Frameworks */,
@@ -300,7 +304,6 @@
 			isa = PBXGroup;
 			children = (
 				7084350715EA676000E27068 /* Images */,
-				7084340B15E9E4B100E27068 /* LocalSettings.plist */,
 				708433D415E9DEFC00E27068 /* sales and tracking-Info.plist */,
 				708433D515E9DEFC00E27068 /* InfoPlist.strings */,
 				708433D815E9DEFC00E27068 /* main.m */,
@@ -341,6 +344,8 @@
 				7084341815E9EAA800E27068 /* NextUITextField.m */,
 				708433FD15E9E0E500E27068 /* SFHFKeychainUtils.h */,
 				708433FE15E9E0E500E27068 /* SFHFKeychainUtils.m */,
+				703650B915F8412B00714423 /* Utility.h */,
+				703650BA15F8412B00714423 /* Utility.m */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -449,7 +454,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				708433D715E9DEFC00E27068 /* InfoPlist.strings in Resources */,
-				7084340C15E9E4B100E27068 /* LocalSettings.plist in Resources */,
 				7084341315E9E79400E27068 /* MainStoryboard.storyboard in Resources */,
 				7084350615EA674E00E27068 /* icon.png in Resources */,
 				7084350B15EA676000E27068 /* house5a.jpg in Resources */,
@@ -465,6 +469,7 @@
 				70D12A5B15F244BF0040808D /* bullet@2x.png in Resources */,
 				707C05FB15F6D3FB000D972E /* settings.png in Resources */,
 				707C05FC15F6D3FB000D972E /* settings@2x.png in Resources */,
+				703650B415F8246100714423 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +518,7 @@
 				7062626F15F504B30050EEA7 /* MySales.m in Sources */,
 				7062627315F538890050EEA7 /* SalesDetailsViewController.m in Sources */,
 				707C05FF15F6D45D000D972E /* SettingsViewController.m in Sources */,
+				703650BB15F8412C00714423 /* Utility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

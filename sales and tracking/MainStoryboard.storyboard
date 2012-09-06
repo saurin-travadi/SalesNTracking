@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFit" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="fyL-BK-7tU">
-                                <rect key="frame" x="25" y="246" width="269" height="34"/>
+                                <rect key="frame" x="26" y="251" width="269" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -146,14 +146,15 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Chr-Aa-Fbh"/>
-                        <barButtonItem image="settings.png" style="plain" id="bEY-V0-M8C">
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Home" id="dKU-c6-izK">
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="X8B-X2-Oue">
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="oCw-9x-HQL" kind="push" id="pss-nm-oHg"/>
+                                <action selector="logout:" destination="YyK-3f-7VB" id="i8V-sU-1gP"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="2tY-yP-fgF"/>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" title="Home" id="dKU-c6-izK"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackOpaque"/>
                     <connections>
                         <outlet property="tableView" destination="QEg-gN-QYR" id="h3e-pj-YDx"/>
@@ -224,7 +225,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M8O-Dv-30I" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="oCw-9x-HQL" customClass="SettingsViewController" sceneMemberID="viewController">
                     <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="NgP-Vl-8P6">
-                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="System" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Pf8-M7-cIY">
@@ -235,18 +236,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Security" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="EWe-V0-CxI">
-                                <rect key="frame" x="9" y="205" width="79" height="24"/>
+                                <rect key="frame" x="9" y="277" width="79" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" id="UsO-YZ-mJu">
-                                <rect key="frame" x="20" y="64" width="280" height="108"/>
+                                <rect key="frame" x="20" y="64" width="280" height="159"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your Client ID" minimumFontSize="17" clearButtonMode="whileEditing" id="vNl-gz-yPQ" customClass="NextUITextField">
-                                        <rect key="frame" x="96" y="15" width="177" height="31"/>
+                                        <rect key="frame" x="96" y="15" width="164" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
@@ -256,7 +257,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your Site URL" minimumFontSize="17" clearButtonMode="whileEditing" id="7S9-R2-S6E" customClass="NextUITextField">
-                                        <rect key="frame" x="96" y="58" width="177" height="31"/>
+                                        <rect key="frame" x="96" y="58" width="164" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
@@ -278,13 +279,29 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ndx-SD-7QZ">
+                                        <rect key="frame" x="15" y="109" width="245" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <state key="normal" title="Update">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="updateSettings:" destination="oCw-9x-HQL" eventType="touchUpInside" id="XJf-Mr-FGD"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="rAx-A3-IEM">
-                                <rect key="frame" x="20" y="237" width="269" height="34"/>
+                                <rect key="frame" x="20" y="309" width="280" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.79211176658163263" green="0.11211470844446753" blue="0.0079580480060373517" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Log Out">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -301,7 +318,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="r2W-wK-6CI"/>
                     <connections>
+                        <outlet property="clientId" destination="vNl-gz-yPQ" id="rxc-G5-xa6"/>
                         <outlet property="logOut" destination="rAx-A3-IEM" id="7kO-UN-x8f"/>
+                        <outlet property="siteURL" destination="7S9-R2-S6E" id="2wE-sN-yCm"/>
+                        <outlet property="update" destination="ndx-SD-7QZ" id="Zgh-Fo-sob"/>
                         <outlet property="view" destination="NgP-Vl-8P6" id="1Mu-qd-ycK"/>
                         <outlet property="view1" destination="UsO-YZ-mJu" id="pUX-cu-ANL"/>
                     </connections>
@@ -1027,7 +1047,6 @@
         <image name="currency.png" width="24" height="24"/>
         <image name="house5a.jpg" width="250" height="167"/>
         <image name="lplogo_pos.gif" width="240" height="44"/>
-        <image name="settings.png" width="24" height="24"/>
     </resources>
     <classes>
         <class className="AppointementDetailViewController" superclassName="BaseUIViewController">
@@ -1071,6 +1090,7 @@
         <class className="HomeViewController" superclassName="BaseUIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="logout:"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
@@ -1078,10 +1098,9 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
                 <relationship kind="action" name="login:"/>
-                <relationship kind="outlet" name="clientId" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="logOnButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="siteURL" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="settingsView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="userName" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -1126,9 +1145,11 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
             <relationships>
                 <relationship kind="action" name="logout:"/>
+                <relationship kind="action" name="updateSettings:"/>
                 <relationship kind="outlet" name="clientId" candidateClass="NextUITextField"/>
                 <relationship kind="outlet" name="logOut" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="siteURL" candidateClass="NextUITextField"/>
+                <relationship kind="outlet" name="update" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="view" candidateClass="UIView"/>
                 <relationship kind="outlet" name="view1" candidateClass="UIView"/>
                 <relationship kind="outlet" name="view2" candidateClass="UIView"/>

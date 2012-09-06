@@ -17,10 +17,7 @@
 - (void)successfullyLoggedIn;
 @end
 
-@interface LoginViewController : BaseUIViewController  {
-    
-    
-}
+@interface LoginViewController : BaseUIViewController
 
 @property (nonatomic, assign) NSObject <LoginDelegate> *delegate;
 @property (weak, nonatomic) IBOutlet UITextField *userName;
@@ -28,8 +25,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *logOnButton;
 
 
-@property (weak, nonatomic) IBOutlet UITextField *clientId;
-@property (weak, nonatomic) IBOutlet UITextField *siteURL;
+@property (weak, nonatomic) IBOutlet UIView *settingsView;
 
 - (IBAction)login:(id)sender;
 

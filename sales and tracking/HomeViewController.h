@@ -12,5 +12,5 @@
 @interface HomeViewController : BaseUIViewController
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-
+-(IBAction)logout:(id)sender;
 @end

@@ -16,7 +16,7 @@
 }
 
 @synthesize logOnButton;
-@synthesize userName, password, delegate, clientId, siteURL;
+@synthesize userName, password, delegate, settingsView;
 NSString *localSettingsPath;
 
 - (id) init {
@@ -52,9 +52,8 @@ NSString *localSettingsPath;
     [super viewDidLoad];
     
     password.secureTextEntry = YES;
+    settingsView.backgroundColor  =[UIColor clearColor];
     
-    
-    //logOnButton.layer.cornerRadius = 8.0;
     [super makeRoundRect:logOnButton];
 }
 
@@ -62,16 +61,25 @@ NSString *localSettingsPath;
     [super viewWillAppear:animated];
 
     UserInfo* user = [super getUserInfo];
-    
-    if(user==nil)
+    if(user==nil){
+        pwd=@"";
         return;
-    
-    userName.text = user.userName;
-    if (user.password != NULL){
-        clientId.text = user.clientID;
-        siteURL.text = user.siteURL;
+    }
+    else{                                           //we have user data saved, use it to logon
+        [settingsView setHidden:YES];
+        CGRect frame = logOnButton.frame;
+        frame.origin.y -= settingsView.frame.size.height;
+        logOnButton.frame = frame;
         
-        pwd = user.password;
+        userName.text = user.userName;
+        
+        if (user.password != NULL){
+            pwd = user.password;
+        }
+        else
+            pwd = @"";
+    }
+    if (![pwd isEqualToString:@""]){
         [self performSelector:@selector(performLogin) withObject:nil afterDelay:0.1];
     }
 }
@@ -101,7 +109,8 @@ NSString *localSettingsPath;
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ( [segue.identifier isEqualToString:@"homeSegue"]) {
-        //default route
+        userName.text = @"";
+        password.text = @"";
     }
 }
 
@@ -144,15 +153,15 @@ NSString *localSettingsPath;
     [self performLogin];
 }
 
-- (void)missingBaseUrl
-{
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Logon Failed"
-                                                      message:@"The Base URL has not been set. Please assign a value in your iPhone Settings."
-                                                     delegate:nil
-                                            cancelButtonTitle:@"OK"
-                                            otherButtonTitles:nil];
-    [message show];
-}
+//- (void)missingBaseUrl
+//{
+//    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Logon Failed"
+//                                                      message:@"The Base URL has not been set. Please assign a value in your iPhone Settings."
+//                                                     delegate:nil
+//                                            cancelButtonTitle:@"OK"
+//                                            otherButtonTitles:nil];
+//    [message show];
+//}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField 
 {

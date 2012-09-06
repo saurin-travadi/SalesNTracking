@@ -17,7 +17,9 @@
 
 @property (strong, nonatomic) IBOutlet NextUITextField *clientId;
 @property (strong, nonatomic) IBOutlet NextUITextField *siteURL;
-
+@property (strong, nonatomic) IBOutlet UIButton* update;
 @property (strong, nonatomic) IBOutlet UIButton *logOut;
+
 - (IBAction)logout:(id)sender;
+- (IBAction)updateSettings:(id)sender;
 @end

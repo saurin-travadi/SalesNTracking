@@ -104,4 +104,8 @@
     }];
 }
 
+-(IBAction)logout:(id)sender {
+    [super logout];
+}
+
 @end

@@ -79,7 +79,6 @@
     }
     
     self.localSettingsPath = path;
-    
 }
 
 @end

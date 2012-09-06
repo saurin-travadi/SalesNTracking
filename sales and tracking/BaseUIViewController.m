@@ -11,12 +11,9 @@
 #import "AppDelegate.h"
 #import "SFHFKeychainUtils.h"
 #import "LoginViewController.h"
-
-
+#import "Utility.h"
 
 @implementation BaseUIViewController
-
-@synthesize baseUrl;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,8 +28,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self loadDefaults];
     
     //location service related code
     locationManager = [[CLLocationManager alloc] init];
@@ -76,31 +71,9 @@
 #pragma mark -
 #pragma mark Public methods
 
+
 -(void)makeRoundRect:(UIButton*)sender {
      sender.layer.cornerRadius = 8.0;
-}
-
-- (void)loadDefaults {
-    
-    NSString *errorDesc = nil;
-    NSPropertyListFormat format;
-    NSString *plistPath;
-    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                              NSUserDomainMask, YES) objectAtIndex:0];
-    plistPath = [rootPath stringByAppendingPathComponent:@"LocalSettings.plist"];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
-        plistPath = [[NSBundle mainBundle] pathForResource:@"LocalSettings" ofType:@"plist"];
-    }
-    NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
-    NSDictionary *temp = (NSDictionary *)[NSPropertyListSerialization
-                                          propertyListFromData:plistXML
-                                          mutabilityOption:NSPropertyListMutableContainersAndLeaves
-                                          format:&format
-                                          errorDescription:&errorDesc];
-    if (!temp) {
-        NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
-    }
-    baseUrl = [temp objectForKey:@"BaseUrl"];   
 }
 
 -(void)setUserInfo:(UserInfo*)userInfo {
@@ -113,6 +86,7 @@
     // Save UserName to local settings
     NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile: localSettingsPath];
     [data setObject:userInfo.userName forKey:@"UserName"];
+
     [data writeToFile: localSettingsPath atomically:YES];
 }
 
@@ -132,6 +106,9 @@
         currentUserInfo.userName = settingsUserName;
         currentUserInfo.password = savedPassword;
 
+        currentUserInfo.siteURL = [Utility retrieveFromUserDefaults:@"baseurl_preference"];
+        currentUserInfo.clientID = [Utility retrieveFromUserDefaults:@"clientId_preference"];
+
         return currentUserInfo;
     }
     return nil;
@@ -149,13 +126,15 @@
     [data setObject:@"" forKey:@"UserName"];
     [data writeToFile: localSettingsPath atomically:YES];
 
-    
     //[self dismissModalViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:^{
         //do nothing
     }];
-    //[self performSegueWithIdentifier:@"LogoutSegue" sender:self];
-
 }
 
 @end
+
+
+
+
+

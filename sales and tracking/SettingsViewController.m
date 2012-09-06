@@ -7,10 +7,7 @@
 //
 
 #import "SettingsViewController.h"
-
-@interface SettingsViewController ()
-
-@end
+#import "UserInfo.h"
 
 @implementation SettingsViewController
 @synthesize view1;
@@ -43,6 +40,9 @@
     self.view.layer.cornerRadius = 5;
     self.view.layer.masksToBounds = YES;
    
+    UserInfo* user = [super getUserInfo];
+    clientId.text = user.clientID;
+    siteURL.text = user.siteURL;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -71,6 +71,48 @@
     
 }
 
+- (IBAction)updateSettings:(id)sender {
+    [clientId resignFirstResponder];
+    [siteURL resignFirstResponder];
+    
+    UIAlertView *alert;
+    if([clientId.text isEqualToString:@""]){
+        alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Invalid Client ID" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    else if([siteURL.text isEqualToString:@""]){
+        alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Invalid Site URL" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    
 
+    alert = [[UIAlertView alloc] initWithTitle:@"Settings" message:@"Updated successfully" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [clientId resignFirstResponder];
+    [siteURL resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    BOOL didResign = [textField resignFirstResponder];
+    if (!didResign) return NO;
+    
+    if ([textField isKindOfClass:[NextUITextField class]]) {
+        if (((NextUITextField *) textField).nextField != nil)
+            [((NextUITextField *) textField).nextField becomeFirstResponder];
+        else {
+            [self updateSettings:nil];
+        }
+    }
+    
+    return YES;
+    
+}
 
 @end
