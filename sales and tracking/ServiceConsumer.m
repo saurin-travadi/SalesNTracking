@@ -217,19 +217,33 @@
         NSArray *result = [json JSONValue];
         AppointementDetail *appointment;
         for (id obj in result) {
-             appointment = [[AppointementDetail alloc] initWithAppointmentId:[obj valueForKey:@"ID"]
-                                                                     Address:[obj valueForKey:@"Address1"]==[NSNull null]?@"":[obj valueForKey:@"Address1"]
-                                                                        Name:[obj valueForKey:@"CustName"]==[NSNull null]?@"":[obj valueForKey:@"CustName"]
-                                                                        CSZ:[obj valueForKey:@"CSZ"]==[NSNull null]?@"":[obj valueForKey:@"CSZ"]
-                                                                    ApptDate:[obj valueForKey:@"ApptDate"]==[NSNull null]?@"":[obj valueForKey:@"ApptDate"]
-                                                                       Phone:[obj valueForKey:@"Phone"]==[NSNull null]?@"":[obj valueForKey:@"Phone"]
-                                                                    AltPhone:[obj valueForKey:@"AltPhone1"]==[NSNull null]?@"":[obj valueForKey:@"AltPhone1"]
-                                                                      Source:[obj valueForKey:@"Source"]==[NSNull null]?@"":[obj valueForKey:@"Source"]
-                                                                       Notes:[obj valueForKey:@"Notes"]==[NSNull null]?@"":[obj valueForKey:@"Notes"]
-                                                                    ProductId:[obj valueForKey:@"ProductID"]==[NSNull null]?@"":[obj valueForKey:@"ProductID"]
-                                                                    AltPhoneType:[obj valueForKey:@"AltPhone1Type"]==[NSNull null]?@"":[obj valueForKey:@"AltPhone1Type"]
-                                                                    CanUpdate:[obj valueForKey:@"CanUpdateIndicator"]==[NSNull null]?@"":[obj valueForKey:@"CanUpdateIndicator"]
-                                                                    ApptStatus:[obj valueForKey:@"ApptStatusCode"]==[NSNull null]?@"":[obj valueForKey:@"ApptStatusCode"]];
+            
+            appointment = [[AppointementDetail alloc] initWithAppointmentId:[obj valueForKey:@"ID"]
+                                                                    Address:[obj valueForKey:@"Address1"]
+                                                                       Name:[obj valueForKey:@"CustName"]
+                                                                        CSZ:[obj valueForKey:@"CSZ"]
+                                                                   ApptDate:[obj valueForKey:@"ApptDate"]
+                                                                      Phone:[obj valueForKey:@"Phone"]
+                                                                   AltPhone:[obj valueForKey:@"AltPhone1"]
+                                                                     Source:[obj valueForKey:@"Source"]
+                                                                      Notes:[obj valueForKey:@"Notes"]
+                                                                  ProductId:[obj valueForKey:@"ProductID"]
+                                                                 ProductId1:[obj valueForKey:@"ProductID1"]
+                                                                 ProductId2:[obj valueForKey:@"ProductID2"]
+                                                                 ProductId3:[obj valueForKey:@"ProductID3"]
+                                                                 ProductId4:[obj valueForKey:@"ProductID4"]
+                                                                 ProductId5:[obj valueForKey:@"ProductID5"]
+                                                                      Sale1:[obj valueForKey:@"GSA1"]
+                                                                      Sale2:[obj valueForKey:@"GSA2"]
+                                                                      Sale3:[obj valueForKey:@"GSA3"]
+                                                                      Sale4:[obj valueForKey:@"GSA4"]
+                                                                      Sale5:[obj valueForKey:@"GSA5"]
+                                                               AltPhoneType:[obj valueForKey:@"AltPhone1Type"]
+                                                                  CanUpdate:[obj valueForKey:@"CanUpdateIndicator"]
+                                                                 ApptStatus:[obj valueForKey:@"ApptStatusCode"]
+                                                                Disposition:[obj valueForKey:@"Disposition"]
+                                                            DispositionText:[obj valueForKey:@"DispositionComments"]];
+
             
             //check previous value of hash to determine refreshing cached version of data
             NSString * strHash = [[[Utility alloc] init] retrieveFromUserSavedData:@"HshDisposition"];

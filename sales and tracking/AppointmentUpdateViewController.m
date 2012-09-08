@@ -23,7 +23,7 @@
     UIButton *doneButton;
 }
 
-@synthesize dateTime,name,address,city,apptId;
+@synthesize apptObject;
 
 @synthesize mainContainer;
 @synthesize dateTimeLabel, nameLabel, addressLabel, cityLabel;
@@ -57,10 +57,10 @@
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
     [mainContainer addGestureRecognizer:singleTap];
     
-    dateTimeLabel.text = dateTime;
-    nameLabel.text=name;
-    addressLabel.text=address;
-    cityLabel.text=city;
+    dateTimeLabel.text = apptObject.apptDate;
+    nameLabel.text=apptObject.custName;
+    addressLabel.text=apptObject.address;
+    cityLabel.text=apptObject.cSZ;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
@@ -84,6 +84,7 @@
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.dimBackground = YES;
 
+    [self performSelector:@selector(loadDefaults) withObject:nil afterDelay:1];
     [[[ServiceConsumer alloc] init] getDispositionsByUser:[super getUserInfo] :^(id json) {
         dispositions = json;
         [dispositions insertObject:[[Disposition alloc] initWithCode:@"" Description:@""] atIndex:0];
@@ -92,8 +93,6 @@
     [[[ServiceConsumer alloc] init] getProductsByUser:[super getUserInfo] :^(id json) {
         products = json;
         [products insertObject:[[Product alloc] initWithCode:@"" Description:@""] atIndex:0];
-        
-        [HUD hide:YES];
     }];
 }
 
@@ -118,10 +117,8 @@
     [self setComments:nil];
     [self setBtnUpdate:nil];
     
-    [self setDateTimeLabel:nil];
-    [self setNameLabel:nil];
-    [self setAddressLabel:nil];
-    [self setCityLabel:nil];
+    [self setApptObject:nil];
+
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -139,6 +136,7 @@
     if(touchPoint.x>=frame.origin.x && touchPoint.x<=frame.origin.x+frame.size.width
        && touchPoint.y>=frame.origin.y && touchPoint.y<=frame.origin.y+frame.size.height)
     {
+        [self.btnUpdate setHighlighted:YES];
         [self update:nil];
     }
     else{
@@ -158,6 +156,30 @@
     }
 }
 
+-(void)loadDefaults {
+    if([dispositions count]<=0 || [products count]<=0){        //wait for service method to load product / disposition array
+        [self performSelector:@selector(loadDefaults) withObject:nil afterDelay:1];
+        return;
+    }
+
+    [HUD hide:YES];
+                              
+    dispositionText.text = [self getDispositionTextById:apptObject.disp];
+    productText.text=[self getProductTextById: apptObject.productID1];
+    productText1.text = [self getProductTextById: apptObject.productID2 ];
+    productText2.text=[self getProductTextById: apptObject.productID3 ];
+    productText3.text=[self getProductTextById: apptObject.productID4 ];
+    productText4.text=[self getProductTextById: apptObject.productID5 ];
+    
+    saleText.text=[apptObject.sale1 substringFromIndex:1] ;         //remove $
+    saleText1.text=[apptObject.sale2 substringFromIndex:1] ;
+    saleText2.text=[apptObject.sale3 substringFromIndex:1] ;
+    saleText3.text=[apptObject.sale4 substringFromIndex:1] ;
+    saleText4.text=[apptObject.sale5 substringFromIndex:1] ;
+    
+    comments.text = apptObject.dispText;
+}
+
 -(NSString*)getProductIdByProductText:(NSString*)text {
     for (int i=0;i<[products count];i++) {
         if([((Product*)[products objectAtIndex:i]).descr isEqualToString:text])
@@ -170,6 +192,22 @@
     for (int i=0;i<[dispositions count];i++) {
         if([((Disposition*)[dispositions objectAtIndex:i]).descr isEqualToString:text])
             return ((Disposition*)[dispositions objectAtIndex:i]).code;
+    }
+    return @"";
+}
+
+-(NSString*)getProductTextById:(NSString*)text {
+    for (int i=0;i<[products count];i++) {
+        if([((Product*)[products objectAtIndex:i]).code isEqualToString:text])
+            return ((Product*)[products objectAtIndex:i]).descr;
+    }
+    return @"";
+}
+
+-(NSString*)getDispositionTextById:(NSString*)text {
+    for (int i=0;i<[dispositions count];i++) {
+        if([((Disposition*)[dispositions objectAtIndex:i]).code isEqualToString:text])
+            return ((Disposition*)[dispositions objectAtIndex:i]).descr;
     }
     return @"";
 }
@@ -370,7 +408,7 @@ UIActionSheet *actionSheet;
                                  saleText4.text,
                                  nil];
     
-    [[[ServiceConsumer alloc] init] updateAppointmentId:[self apptId]
+    [[[ServiceConsumer alloc] init] updateAppointmentId:apptObject.id
                                            withUserInfo:[super getUserInfo]
                                             Disposition:[self getDispositionIdByDispositionText:dispositionText.text]
                                                Products:productArray
@@ -379,7 +417,8 @@ UIActionSheet *actionSheet;
                                                        :^(id json)  {
 
         [HUD hide:YES];
-        
+        [self.btnUpdate setHighlighted:NO];
+                                                           
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Appointment" message:@"Appointment Updated" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
         

@@ -9,7 +9,9 @@
 #import "AppointementDetailViewController.h"
 #import "AppointmentUpdateViewController.h"
 
-@implementation AppointementDetailViewController
+@implementation AppointementDetailViewController {
+    AppointementDetail *apptObject;
+}
 
 @synthesize appDateTime, apptId;
 
@@ -86,28 +88,28 @@
     
     [[[ServiceConsumer alloc] init] getSalesAppointmentDetailById:[self apptId] DateTime:[self appDateTime] withUserInfo:[super getUserInfo] :^(id json) {
         
-        AppointementDetail *appt = json;
+        apptObject = json;
         
-        dateLabel.text = [NSString stringWithFormat:@"%@ %@",[appt.apptDate substringToIndex:10],[[appt.apptDate substringFromIndex:11] substringToIndex:5]];
-        nameLabel.text=appt.custName;
-        addressLabel.text=appt.address;
-        cityLabel.text=appt.cSZ;
-        mapButton1.titleLabel.text=[NSString stringWithFormat:@"%@ %@",appt.address, appt.cSZ];
-        mapButton2.titleLabel.text=[NSString stringWithFormat:@"%@ %@",appt.address, appt.cSZ];
+        dateLabel.text = [NSString stringWithFormat:@"%@ %@",[apptObject.apptDate substringToIndex:10],[[apptObject.apptDate substringFromIndex:11] substringToIndex:5]];
+        nameLabel.text=apptObject.custName;
+        addressLabel.text=apptObject.address;
+        cityLabel.text=apptObject.cSZ;
+        mapButton1.titleLabel.text=[NSString stringWithFormat:@"%@ %@",apptObject.address, apptObject.cSZ];
+        mapButton2.titleLabel.text=[NSString stringWithFormat:@"%@ %@",apptObject.address, apptObject.cSZ];
         mapButton1.backgroundColor  = [UIColor clearColor];
         mapButton2.backgroundColor = [UIColor clearColor];
        
         
-        phoneLabel.text =appt.phone;
+        phoneLabel.text =apptObject.phone;
         phoneButton.backgroundColor = [UIColor clearColor];
-        altPhoneLable.text=appt.altPhone;
-        if(![appt.altPhoneType isEqualToString:@""])
-            altPhoneCaption.text=[appt.altPhoneType stringByAppendingString:@":"];
+        altPhoneLable.text=apptObject.altPhone;
+        if(![apptObject.altPhoneType isEqualToString:@""])
+            altPhoneCaption.text=[apptObject.altPhoneType stringByAppendingString:@":"];
         altPhoneButton.backgroundColor = [UIColor clearColor];
         
-        productLabel.text = appt.productID;
-        sourceLabel.text=appt.source;
-        notesLabel.text=[NSString stringWithFormat:@"%@",appt.notes];
+        productLabel.text = apptObject.productID;
+        sourceLabel.text=apptObject.source;
+        notesLabel.text=[NSString stringWithFormat:@"%@",apptObject.notes];
         
         //set notesLabel
         notesLabel.lineBreakMode = UILineBreakModeWordWrap;
@@ -121,10 +123,10 @@
         
         notesScrollView.contentSize=notesLabel.frame.size;
         
-        if(!appt.canUpdateIndicator)
+        if(!apptObject.canUpdateIndicator)
             [updateApptButton setHidden:YES];
         
-        if([appt.apptStatusCode isEqualToString:@"Y"])
+        if([apptObject.apptStatusCode isEqualToString:@"Y"])
         {
             UILabel *lbl = [[UILabel alloc] initWithFrame:acknowledgeButton.frame];
             lbl.textAlignment  = UITextAlignmentCenter;
@@ -174,10 +176,6 @@
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [[segue destinationViewController] setDateTime:dateLabel.text];
-    [[segue destinationViewController] setName:nameLabel.text];
-    [[segue destinationViewController] setAddress:addressLabel.text];
-    [[segue destinationViewController] setCity:cityLabel.text];
-    [[segue destinationViewController] setApptId:[self apptId]];
+    [[segue destinationViewController] setApptObject:apptObject];
 }
 @end

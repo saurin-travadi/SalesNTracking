@@ -80,6 +80,9 @@ NSString *localSettingsPath;
             pwd = @"";
     }
     if (![pwd isEqualToString:@""]){
+        HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        HUD.dimBackground = YES;
+        
         [self performSelector:@selector(performLogin) withObject:nil afterDelay:0.1];
     }
 }

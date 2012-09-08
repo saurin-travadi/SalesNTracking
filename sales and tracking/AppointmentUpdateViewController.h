@@ -7,15 +7,13 @@
 //
 
 #import "BaseUIViewController.h"
+#import "AppointementDetail.h"
 
 @interface AppointmentUpdateViewController : BaseUIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UIScrollViewDelegate, UITextFieldDelegate, UITextViewDelegate> {
 }
 
-@property (nonatomic, retain) NSString* dateTime;
-@property (nonatomic, retain) NSString* name;
-@property (nonatomic, retain) NSString* address;
-@property (nonatomic, retain) NSString* city;
-@property (nonatomic, retain) NSString* apptId;
+@property (nonatomic, retain) AppointementDetail* apptObject;
+
 
 @property (strong, nonatomic) IBOutlet UIScrollView *mainContainer;
 @property (strong, nonatomic) IBOutlet UILabel *dateTimeLabel;
