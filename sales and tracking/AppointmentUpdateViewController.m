@@ -54,11 +54,6 @@
     [super makeRoundRectView:viewContainer3];
     [super makeRoundRectView:viewContainer4];
     
-    picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 240, 320, 100)];
-    picker.delegate = self;
-    picker.dataSource = self;
-    picker.showsSelectionIndicator=YES;
-
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
     [mainContainer addGestureRecognizer:singleTap];
     
@@ -162,6 +157,7 @@
         [comments resignFirstResponder];
     }
 }
+
 -(NSString*)getProductIdByProductText:(NSString*)text {
     for (int i=0;i<[products count];i++) {
         if([((Product*)[products objectAtIndex:i]).descr isEqualToString:text])
@@ -187,7 +183,8 @@
     textBox = textField;
     
     if(textBox==dispositionText || textBox==productText || textBox==productText1 || textBox==productText2 || textBox==productText3 || textBox==productText4) {
-        [textBox setInputView:picker];
+        [self addDone2Picker];
+        [textBox setInputView:nil];
     
         [picker reloadAllComponents];
         if(textBox==productText || textBox==productText1 || textBox==productText2 || textBox==productText3 || textBox==productText4){
@@ -207,21 +204,20 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    BOOL didResign = [textField resignFirstResponder];
-    if (!didResign) return NO;
-    
-    if ([textField isKindOfClass:[NextUITextField class]]) {
-        if (((NextUITextField *) textField).nextField != nil)
-            [((NextUITextField *) textField).nextField becomeFirstResponder];
-    }
-    
+    [textField resignFirstResponder];
     return YES;
 }
 
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
 
 - (void)keyboardWillShow:(NSNotification *)note {
-    if( textBox==saleText || textBox==saleText1 || textBox==saleText2 || textBox==saleText3 || textBox==saleText4 ||
-        textBox==productText || textBox==productText|| textBox==productText2 || textBox==productText3 || textBox==productText4){
+    if( textBox==saleText || textBox==saleText1 || textBox==saleText2 || textBox==saleText3 || textBox==saleText4 ){
             
         showDecimalPointTimer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(addDoneButton) userInfo:nil repeats:NO];
         [[NSRunLoop currentRunLoop] addTimer:showDecimalPointTimer forMode:NSDefaultRunLoopMode];
@@ -243,7 +239,7 @@
         [doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
         [doneButton setTitle:@"Done" forState:UIControlStateNormal];    
 
-        [doneButton addTarget:self action:@selector(doneButton) forControlEvents:UIControlEventTouchUpInside];
+        [doneButton addTarget:self action:@selector(doneButtonPressed) forControlEvents:UIControlEventTouchUpInside];
         [keyboardWindow addSubview:doneButton];
     }
     else if (textBox==productText || textBox==productText|| textBox==productText2 || textBox==productText3 || textBox==productText4){
@@ -251,20 +247,61 @@
     }
 }
 
--(void) doneButton {
+-(void) doneButtonPressed {
+
+    [dispositionText resignFirstResponder];
+    [productText resignFirstResponder];
     [saleText resignFirstResponder];
+    [productText1 resignFirstResponder];
     [saleText1 resignFirstResponder];
+    [productText2 resignFirstResponder];
     [saleText2 resignFirstResponder];
+    [productText3 resignFirstResponder];
     [saleText3 resignFirstResponder];
+    [productText4 resignFirstResponder];
     [saleText4 resignFirstResponder];
+    [comments resignFirstResponder];
+    
+    [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
+    [doneButton removeFromSuperview];
 }
 
+
+UIActionSheet *actionSheet;
+- (void)addDone2Picker {
+    
+    actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+    [actionSheet setActionSheetStyle:UIActionSheetStyleBlackOpaque];
+    
+    CGRect ToolBarFrame= CGRectMake(0, 0, 320, 44);
+    CGRect pickerFrame =  CGRectMake(0, 44, 320, 100);
+    picker = [[UIPickerView alloc] initWithFrame:pickerFrame];
+    picker.delegate = self;
+    picker.dataSource = self;
+    picker.showsSelectionIndicator=YES;
+    
+    UIToolbar *pickerToolbar = [[UIToolbar alloc] initWithFrame:ToolBarFrame];
+    pickerToolbar.barStyle = UIBarStyleBlackOpaque;
+    
+    NSMutableArray *barItems = [[NSMutableArray alloc] init];
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    [barItems addObject:flexSpace];
+    
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed)];
+    [barItems addObject:doneBtn];
+    
+    [pickerToolbar setItems:barItems animated:YES];
+    
+    [actionSheet addSubview:pickerToolbar];
+    [actionSheet addSubview:picker];
+    [actionSheet showInView:mainContainer];
+    [actionSheet setBounds:CGRectMake(0,0,320, 464)];
+}
 
 
 - (void)keyboardDidHide:(NSNotification *)note
 {
     [doneButton removeFromSuperview];
-    [viewDone removeFromSuperview];
 }
 
 #pragma mark -
