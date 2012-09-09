@@ -171,13 +171,32 @@
     productText3.text=[self getProductTextById: apptObject.productID4 ];
     productText4.text=[self getProductTextById: apptObject.productID5 ];
     
-    saleText.text=[apptObject.sale1 substringFromIndex:1] ;         //remove $
-    saleText1.text=[apptObject.sale2 substringFromIndex:1] ;
-    saleText2.text=[apptObject.sale3 substringFromIndex:1] ;
+    if([apptObject.sale1 isEqualToString:@"$0"])
+        saleText.text = @"";
+    else
+        saleText.text=[apptObject.sale1 substringFromIndex:1] ;         //remove $
+
+    if([apptObject.sale2 isEqualToString:@"$0"])
+        saleText1.text=@"";
+    else
+        saleText1.text=[apptObject.sale2 substringFromIndex:1] ;
+
+    if([apptObject.sale2 isEqualToString:@"$0"])
+        saleText2.text=@"";
+    else
+        saleText2.text=[apptObject.sale3 substringFromIndex:1] ;
+
+    if([apptObject.sale4 isEqualToString:@"$0"])
+        saleText3.text=@"";
+    else
     saleText3.text=[apptObject.sale4 substringFromIndex:1] ;
+
+    if([apptObject.sale5 isEqualToString:@"$0"])
+        saleText4.text=@"";
+    else
     saleText4.text=[apptObject.sale5 substringFromIndex:1] ;
     
-    comments.text = apptObject.dispText;
+    comments.text = apptObject.presNotes;
 }
 
 -(NSString*)getProductIdByProductText:(NSString*)text {

@@ -242,7 +242,7 @@
                                                                   CanUpdate:[obj valueForKey:@"CanUpdateIndicator"]
                                                                  ApptStatus:[obj valueForKey:@"ApptStatusCode"]
                                                                 Disposition:[obj valueForKey:@"Disposition"]
-                                                            DispositionText:[obj valueForKey:@"DispositionComments"]];
+                                                            PresNotes:[obj valueForKey:@"PresNotes"]];
 
             
             //check previous value of hash to determine refreshing cached version of data
