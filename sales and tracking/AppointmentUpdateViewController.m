@@ -181,7 +181,7 @@
     else
         saleText1.text=[apptObject.sale2 substringFromIndex:1] ;
 
-    if([apptObject.sale2 isEqualToString:@"$0"])
+    if([apptObject.sale3 isEqualToString:@"$0"])
         saleText2.text=@"";
     else
         saleText2.text=[apptObject.sale3 substringFromIndex:1] ;
@@ -189,12 +189,12 @@
     if([apptObject.sale4 isEqualToString:@"$0"])
         saleText3.text=@"";
     else
-    saleText3.text=[apptObject.sale4 substringFromIndex:1] ;
+        saleText3.text=[apptObject.sale4 substringFromIndex:1] ;
 
     if([apptObject.sale5 isEqualToString:@"$0"])
         saleText4.text=@"";
     else
-    saleText4.text=[apptObject.sale5 substringFromIndex:1] ;
+        saleText4.text=[apptObject.sale5 substringFromIndex:1] ;
     
     comments.text = apptObject.presNotes;
 }
@@ -233,16 +233,17 @@
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     [doneButton removeFromSuperview];
+
     return  YES;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     textBox = textField;
-    
+
     if(textBox==dispositionText || textBox==productText || textBox==productText1 || textBox==productText2 || textBox==productText3 || textBox==productText4) {
         [self addDone2Picker];
         [textBox setInputView:nil];
-    
+        
         [picker reloadAllComponents];
         if(textBox==productText || textBox==productText1 || textBox==productText2 || textBox==productText3 || textBox==productText4){
             for (int i=0;i<[products count];i++) {
@@ -257,11 +258,13 @@
             }
         }
     }
+
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    textBox = nil;
     return YES;
 }
 
@@ -321,6 +324,7 @@
     
     [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
     [doneButton removeFromSuperview];
+    textBox=nil;
 }
 
 
