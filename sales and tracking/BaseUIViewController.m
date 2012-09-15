@@ -29,6 +29,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+//    UINavigationController *nav = self.navigationController;
+//    CGRect frame = nav.navigationBar.frame;
+//    frame.size.height += 5;
+//    self.navigationController.navigationBar.frame = frame;
+
+    [self setTitle];
+    
     
     //location service related code
     locationManager = [[CLLocationManager alloc] init];
@@ -60,6 +68,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [self setBackButton];
+}
+
 #pragma mark -
 #pragma mark MBProgressHUDDelegate methods
 
@@ -72,6 +85,51 @@
 #pragma mark -
 #pragma mark Public methods
 
+-(void)setTitle {
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont boldSystemFontOfSize:20.0];
+    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    label.textAlignment = UITextAlignmentCenter;
+    label.textColor = [UIColor blackColor]; // change this color
+    self.navigationItem.titleView = label;
+    label.text = self.navigationItem.title;
+    [label sizeToFit];
+}
+
+-(void)setBackButton {
+
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [UIColor orangeColor], UITextAttributeTextColor,
+                                [UIColor blackColor], UITextAttributeTextShadowColor,
+                                nil];
+    
+
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
+    backButton.tintColor = [UIColor blackColor];
+    backButton.title = @"Back";
+    self.navigationItem.backBarButtonItem = backButton;
+
+    [[UIBarButtonItem appearance] setTitleTextAttributes: attributes forState: UIControlStateNormal];
+}
+
+-(UIBarButtonItem*)setBarButton:(NSString*)title {
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [UIColor orangeColor], UITextAttributeTextColor,
+                                [UIColor blackColor], UITextAttributeTextShadowColor,
+                                nil];
+    
+    
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] init];
+    rightButton.tintColor = [UIColor blackColor];
+    rightButton.title = title;
+    self.navigationItem.rightBarButtonItem = rightButton;
+    
+    [[UIBarButtonItem appearance] setTitleTextAttributes: attributes forState: UIControlStateNormal];
+    
+    return rightButton;
+}
 
 -(void)makeRoundRect:(UIButton*)sender {
      sender.layer.cornerRadius = 8.0;

@@ -32,8 +32,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    UIBarButtonItem *showAndSelectToday = [[UIBarButtonItem alloc] initWithTitle:@"Today" style:UIBarButtonItemStyleBordered target:self action:@selector(showSelectToday)];
-    self.navigationItem.rightBarButtonItem = showAndSelectToday;
+//    UIBarButtonItem *showAndSelectToday = [[UIBarButtonItem alloc] initWithTitle:@"Today" style:UIBarButtonItemStyleBordered target:self action:@selector(showSelectToday)];
+//    self.navigationItem.rightBarButtonItem = showAndSelectToday;
+
+    UIBarButtonItem *showAndSelectToday =[super setBarButton:@"Today"];
+    showAndSelectToday.target=self;
+    showAndSelectToday.action=@selector(showSelectToday);
     
     apptQueue = dispatch_queue_create("rjr.sales-and-tracking", NULL);
 }
@@ -60,6 +64,7 @@
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqualToString:@"appointmentsSegue"]) {
         [[segue destinationViewController] setDateTime:[sender description]];
     }

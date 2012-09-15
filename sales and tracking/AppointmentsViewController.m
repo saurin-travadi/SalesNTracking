@@ -54,6 +54,8 @@
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [super prepareForSegue:segue sender:sender];
+    
     if ([segue.identifier isEqualToString:@"appointmentDetailSegue"]) {
 
         Appointment *appt = [appointments objectAtIndex:[self.tableView indexPathForSelectedRow].row];

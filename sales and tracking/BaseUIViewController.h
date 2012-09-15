@@ -23,7 +23,8 @@
 -(UserInfo*)getUserInfo;
 -(void)makeRoundRect:(UIButton*)sender;
 -(void)makeRoundRectView:(UIView*)view;
-
 -(void)logout;
+
+-(UIBarButtonItem*)setBarButton:(NSString*)title;
 
 @end

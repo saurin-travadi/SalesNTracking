@@ -29,12 +29,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    UIBarButtonItem *logout =[super setBarButton:@"Log Out"];
+    logout.target=self;
+    logout.action=@selector(logout:);
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [self.navigationController setToolbarHidden:NO animated:NO];
 
     [self getMessages];
@@ -72,10 +75,25 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, cell.textLabel.frame.origin.y-10, cell.frame.size.width, 30)];
+    view.backgroundColor = [UIColor lightGrayColor];
+    [cell.textLabel sendSubviewToBack:view];
+    [cell addSubview:view];
     
-    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-    cell.textLabel.numberOfLines = 0;
-    cell.textLabel.text = [messages objectAtIndex:indexPath.row];
+    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(10, cell.textLabel.frame.origin.y-17, cell.frame.size.width, 30)];
+    lbl.backgroundColor = [UIColor clearColor];
+    lbl.textColor = [UIColor blackColor];
+    lbl.font=[UIFont systemFontOfSize:17];
+    lbl.text = @"From";
+    lbl.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+    lbl.textAlignment = UITextAlignmentLeft;
+    [view addSubview:lbl];
+    
+    cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+    cell.detailTextLabel.numberOfLines = 0;
+    cell.detailTextLabel.text = [messages objectAtIndex:indexPath.row];
+
     
     return cell;
 }
@@ -87,7 +105,7 @@
     CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
     CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
     
-    return labelSize.height + 20;
+    return labelSize.height + 50;
 }
 
 -(void)getMessages

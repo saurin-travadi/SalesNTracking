@@ -49,6 +49,8 @@
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [super prepareForSegue:segue sender:sender];
+    
     MySales *sale = [array objectAtIndex:[self.tableView indexPathForSelectedRow].row];
     [[segue destinationViewController] setSelectedJobId:sale.jobID];
 }

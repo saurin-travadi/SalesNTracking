@@ -176,6 +176,7 @@
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [super prepareForSegue:segue sender:sender];
     [[segue destinationViewController] setApptObject:apptObject];
 }
 @end
