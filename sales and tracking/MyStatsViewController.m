@@ -85,9 +85,16 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
+    CGRect frame = cell.frame;
+    frame.origin.y = frame.size.height-10;
+    frame.size.height = 10;
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:frame];
+    imgView.image = [UIImage imageNamed:@"DottedLine.png"];
+    [cell addSubview:imgView];
+    
     MyStat* stat = [stats objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"     %@",stat.descr];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@     ", stat.statValue];
+    cell.textLabel.text = [NSString stringWithFormat:@" %@",stat.descr];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ ", stat.statValue];
     
     return cell;
 }

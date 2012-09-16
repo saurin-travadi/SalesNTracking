@@ -48,11 +48,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [super makeRoundRectView:viewContainer];
-    [super makeRoundRectView:viewContainer1];
-    [super makeRoundRectView:viewContainer2];
-    [super makeRoundRectView:viewContainer3];
-    [super makeRoundRectView:viewContainer4];
+//    [super makeRoundRectView:viewContainer];
+//    [super makeRoundRectView:viewContainer1];
+//    [super makeRoundRectView:viewContainer2];
+//    [super makeRoundRectView:viewContainer3];
+//    [super makeRoundRectView:viewContainer4];
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
     [mainContainer addGestureRecognizer:singleTap];

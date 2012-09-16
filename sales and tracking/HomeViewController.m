@@ -9,7 +9,6 @@
 #import "HomeViewController.h"
 #import "ServiceConsumer.h"
 
-
 @implementation HomeViewController {
     NSMutableArray *messages;
 }
@@ -30,9 +29,17 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    UIBarButtonItem *logout =[super setBarButton:@"Log Out"];
+    UIBarButtonItem *logout = [super setBarButton:@"Log Out"];
+//    [logout setBackgroundImage:[UIImage imageNamed:@"logoutButton.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+//    self.navigationItem.rightBarButtonItem = logout;
     logout.target=self;
     logout.action=@selector(logout:);
+    
+    CGRect frame = CGRectMake(0, 28, self.view.bounds.size.width, 20);
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:frame];
+    imgView.image = [UIImage imageNamed:@"DottedLine.png"];
+    [self.view addSubview:imgView];
+    [self.view sendSubviewToBack:imgView];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -76,32 +83,61 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
 
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, cell.textLabel.frame.origin.y-10, cell.frame.size.width, 30)];
-    view.backgroundColor = [UIColor lightGrayColor];
-    [cell.textLabel sendSubviewToBack:view];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, 25)];
+    view.backgroundColor = [UIColor colorWithRed:0.945 green:0.945 blue:0.945 alpha:1];
     [cell addSubview:view];
     
-    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(10, cell.textLabel.frame.origin.y-17, cell.frame.size.width, 30)];
-    lbl.backgroundColor = [UIColor clearColor];
-    lbl.textColor = [UIColor blackColor];
-    lbl.font=[UIFont systemFontOfSize:17];
-    lbl.text = @"From";
-    lbl.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-    lbl.textAlignment = UITextAlignmentLeft;
+    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 50, 25)];
     [view addSubview:lbl];
+    lbl.backgroundColor = [UIColor clearColor];
+    lbl.textColor = [UIColor darkGrayColor];
+    lbl.font = [UIFont fontWithName:@"Helvetica-Oblique" size:15];
+    lbl.text = @"From";
     
-    cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
-    cell.detailTextLabel.numberOfLines = 0;
-    cell.detailTextLabel.text = [messages objectAtIndex:indexPath.row];
+    UILabel *lblFrom= [[UILabel alloc] initWithFrame:CGRectMake(55, 0, 200, 25)];
+    [view addSubview:lblFrom];
+    [lblFrom setBackgroundColor:[UIColor clearColor]];
+    lblFrom.textColor = [UIColor colorWithRed:0.204 green:0.318 blue:0.416 alpha:1];
+    lblFrom.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
+    
+    NSString *date = [[messages objectAtIndex:indexPath.row] objectAtIndex:2];
+    date = [NSString stringWithFormat:@"%@ %@",[date substringToIndex:10],[[date substringFromIndex:11] substringToIndex:5]];
 
+    NSString *header = [@"" stringByAppendingFormat:@"%@ | %@",
+                            [[messages objectAtIndex:indexPath.row] objectAtIndex:1],
+                            date
+                        ];
+    lblFrom.text = header;
+
+    NSString *cellText = [[messages objectAtIndex:indexPath.row] objectAtIndex:0];
+    UIFont *cellFont = [UIFont fontWithName:@"Helvetica-Oblique" size:15];
+    CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
+    CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+
+    UILabel *lblText = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, 250, labelSize.height)];
+    [cell addSubview:lblText];
+    lblText.backgroundColor = [UIColor clearColor];
+    lblText.textColor = [UIColor darkGrayColor];
+    lblText.font = [UIFont fontWithName:@"Helvetica-Oblique" size:15];
+    lblText.lineBreakMode = UILineBreakModeWordWrap;
+    lblText.numberOfLines = 0;
+    lblText.text = [[messages objectAtIndex:indexPath.row] objectAtIndex:0];
+
+    CGRect frame = cell.frame;
+    frame.origin.y = labelSize.height+40;
+    frame.size.height = 10;
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:frame];
+    imgView.image = [UIImage imageNamed:@"DottedLine.png"];
+    [cell addSubview:imgView];
+    [self.view sendSubviewToBack:imgView];
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellText = [messages objectAtIndex:indexPath.row];
-    UIFont *cellFont = [UIFont systemFontOfSize:17];
+    NSString *cellText = [[messages objectAtIndex:indexPath.row] objectAtIndex:0];
+    UIFont *cellFont = [UIFont fontWithName:@"Helvetica-Oblique" size:15];
     CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
     CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
     

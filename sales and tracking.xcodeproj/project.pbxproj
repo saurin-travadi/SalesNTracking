@@ -29,6 +29,13 @@
 		7032712615F0316200E87A5C /* chart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7032712415F0316200E87A5C /* chart@2x.png */; };
 		703650B415F8246100714423 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 703650B315F8246100714423 /* Settings.bundle */; };
 		703650BB15F8412C00714423 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 703650BA15F8412B00714423 /* Utility.m */; };
+		705BD39C1605A0D500A6988E /* AcknowledgeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 705BD3981605A0D500A6988E /* AcknowledgeButton.png */; };
+		705BD39D1605A0D500A6988E /* AcknowledgeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705BD3991605A0D500A6988E /* AcknowledgeButton@2x.png */; };
+		705BD39E1605A0D500A6988E /* AcknowledgedOffButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 705BD39A1605A0D500A6988E /* AcknowledgedOffButton.png */; };
+		705BD39F1605A0D500A6988E /* AcknowledgedOffButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705BD39B1605A0D500A6988E /* AcknowledgedOffButton@2x.png */; };
+		705BD3A31605A15400A6988E /* UpdateButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 705BD3A11605A15400A6988E /* UpdateButton.png */; };
+		705BD3A41605A15400A6988E /* UpdateButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705BD3A21605A15400A6988E /* UpdateButton@2x.png */; };
+		705BD3A61605A4D400A6988E /* ProductSaleSection.png in Resources */ = {isa = PBXBuildFile; fileRef = 705BD3A51605A4D400A6988E /* ProductSaleSection.png */; };
 		7062626715F467610050EEA7 /* SalesTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062626615F467610050EEA7 /* SalesTrackingViewController.m */; };
 		7062626F15F504B30050EEA7 /* MySales.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062626E15F504B30050EEA7 /* MySales.m */; };
 		7062627315F538890050EEA7 /* SalesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062627215F538890050EEA7 /* SalesDetailsViewController.m */; };
@@ -40,6 +47,12 @@
 		706ED9BF160426C600887821 /* logoutButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 706ED9BD160426C600887821 /* logoutButton@2x.png */; };
 		706ED9C216042BF400887821 /* welcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 706ED9C016042BF400887821 /* welcome.png */; };
 		706ED9C316042BF400887821 /* welcome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 706ED9C116042BF400887821 /* welcome@2x.png */; };
+		706ED9C916052B0C00887821 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 706ED9C816052B0C00887821 /* icon@2x.png */; };
+		706ED9CD16052E7400887821 /* HeaderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 706ED9CB16052E7400887821 /* HeaderBar.png */; };
+		706ED9CE16052E7400887821 /* HeaderBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 706ED9CC16052E7400887821 /* HeaderBar@2x.png */; };
+		706ED9D316054FA000887821 /* BottomBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 706ED9D116054FA000887821 /* BottomBar.png */; };
+		706ED9D416054FA000887821 /* BottomBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 706ED9D216054FA000887821 /* BottomBar@2x.png */; };
+		706ED9DB16058FBE00887821 /* DottedLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 706ED9DA16058FBE00887821 /* DottedLine.png */; };
 		707536D31591728B0087C95C /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 707536D21591728B0087C95C /* Product.m */; };
 		707536D6159229300087C95C /* LocalSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 707536D5159229300087C95C /* LocalSettings.plist */; };
 		7076885015F9672E00115D99 /* Disposition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076884F15F9672E00115D99 /* Disposition.m */; };
@@ -124,6 +137,13 @@
 		703650B315F8246100714423 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		703650B915F8412B00714423 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		703650BA15F8412B00714423 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		705BD3981605A0D500A6988E /* AcknowledgeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcknowledgeButton.png; sourceTree = "<group>"; };
+		705BD3991605A0D500A6988E /* AcknowledgeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AcknowledgeButton@2x.png"; sourceTree = "<group>"; };
+		705BD39A1605A0D500A6988E /* AcknowledgedOffButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcknowledgedOffButton.png; sourceTree = "<group>"; };
+		705BD39B1605A0D500A6988E /* AcknowledgedOffButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AcknowledgedOffButton@2x.png"; sourceTree = "<group>"; };
+		705BD3A11605A15400A6988E /* UpdateButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UpdateButton.png; sourceTree = "<group>"; };
+		705BD3A21605A15400A6988E /* UpdateButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UpdateButton@2x.png"; sourceTree = "<group>"; };
+		705BD3A51605A4D400A6988E /* ProductSaleSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProductSaleSection.png; sourceTree = "<group>"; };
 		7062626515F467610050EEA7 /* SalesTrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalesTrackingViewController.h; sourceTree = "<group>"; };
 		7062626615F467610050EEA7 /* SalesTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalesTrackingViewController.m; sourceTree = "<group>"; };
 		7062626D15F504B30050EEA7 /* MySales.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySales.h; sourceTree = "<group>"; };
@@ -138,6 +158,12 @@
 		706ED9BD160426C600887821 /* logoutButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoutButton@2x.png"; sourceTree = "<group>"; };
 		706ED9C016042BF400887821 /* welcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome.png; sourceTree = "<group>"; };
 		706ED9C116042BF400887821 /* welcome@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome@2x.png"; sourceTree = "<group>"; };
+		706ED9C816052B0C00887821 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		706ED9CB16052E7400887821 /* HeaderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeaderBar.png; sourceTree = "<group>"; };
+		706ED9CC16052E7400887821 /* HeaderBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HeaderBar@2x.png"; sourceTree = "<group>"; };
+		706ED9D116054FA000887821 /* BottomBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BottomBar.png; sourceTree = "<group>"; };
+		706ED9D216054FA000887821 /* BottomBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BottomBar@2x.png"; sourceTree = "<group>"; };
+		706ED9DA16058FBE00887821 /* DottedLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DottedLine.png; sourceTree = "<group>"; };
 		707536D11591728B0087C95C /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
 		707536D21591728B0087C95C /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		707536D5159229300087C95C /* LocalSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LocalSettings.plist; sourceTree = "<group>"; };
@@ -262,6 +288,7 @@
 			children = (
 				703650B315F8246100714423 /* Settings.bundle */,
 				7084350515EA674E00E27068 /* icon.png */,
+				706ED9C816052B0C00887821 /* icon@2x.png */,
 				706ED9B3160420FE00887821 /* default.png */,
 				706ED9B4160420FE00887821 /* default@2x.png */,
 				708433D215E9DEFC00E27068 /* sales and tracking */,
@@ -421,6 +448,18 @@
 		7084350715EA676000E27068 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				705BD3A51605A4D400A6988E /* ProductSaleSection.png */,
+				705BD3A11605A15400A6988E /* UpdateButton.png */,
+				705BD3A21605A15400A6988E /* UpdateButton@2x.png */,
+				705BD3981605A0D500A6988E /* AcknowledgeButton.png */,
+				705BD3991605A0D500A6988E /* AcknowledgeButton@2x.png */,
+				705BD39A1605A0D500A6988E /* AcknowledgedOffButton.png */,
+				705BD39B1605A0D500A6988E /* AcknowledgedOffButton@2x.png */,
+				706ED9DA16058FBE00887821 /* DottedLine.png */,
+				706ED9D116054FA000887821 /* BottomBar.png */,
+				706ED9D216054FA000887821 /* BottomBar@2x.png */,
+				706ED9CB16052E7400887821 /* HeaderBar.png */,
+				706ED9CC16052E7400887821 /* HeaderBar@2x.png */,
 				706ED9C016042BF400887821 /* welcome.png */,
 				706ED9C116042BF400887821 /* welcome@2x.png */,
 				706ED9BC160426C600887821 /* logoutButton.png */,
@@ -519,6 +558,19 @@
 				706ED9BF160426C600887821 /* logoutButton@2x.png in Resources */,
 				706ED9C216042BF400887821 /* welcome.png in Resources */,
 				706ED9C316042BF400887821 /* welcome@2x.png in Resources */,
+				706ED9C916052B0C00887821 /* icon@2x.png in Resources */,
+				706ED9CD16052E7400887821 /* HeaderBar.png in Resources */,
+				706ED9CE16052E7400887821 /* HeaderBar@2x.png in Resources */,
+				706ED9D316054FA000887821 /* BottomBar.png in Resources */,
+				706ED9D416054FA000887821 /* BottomBar@2x.png in Resources */,
+				706ED9DB16058FBE00887821 /* DottedLine.png in Resources */,
+				705BD39C1605A0D500A6988E /* AcknowledgeButton.png in Resources */,
+				705BD39D1605A0D500A6988E /* AcknowledgeButton@2x.png in Resources */,
+				705BD39E1605A0D500A6988E /* AcknowledgedOffButton.png in Resources */,
+				705BD39F1605A0D500A6988E /* AcknowledgedOffButton@2x.png in Resources */,
+				705BD3A31605A15400A6988E /* UpdateButton.png in Resources */,
+				705BD3A41605A15400A6988E /* UpdateButton@2x.png in Resources */,
+				705BD3A61605A4D400A6988E /* ProductSaleSection.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

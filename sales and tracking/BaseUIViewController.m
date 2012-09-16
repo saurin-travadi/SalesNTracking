@@ -30,10 +30,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-//    UINavigationController *nav = self.navigationController;
-//    CGRect frame = nav.navigationBar.frame;
-//    frame.size.height += 5;
-//    self.navigationController.navigationBar.frame = frame;
+    CGRect frame;
+    UINavigationController *nav = self.navigationController;
+    [nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"HeaderBar.png"] forBarMetrics:UIBarMetricsDefault];
+    
+    frame = nav.toolbar.frame;
+    frame.size.height = 48;
+    nav.toolbar.frame = frame;
+    [nav.toolbar setBackgroundImage:[UIImage imageNamed:@"BottomBar.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    [nav.toolbar setBackgroundColor:[UIColor colorWithRed:0.098 green:0.137 blue:0.173 alpha:1]];
 
     [self setTitle];
     
@@ -91,6 +96,7 @@
     label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont boldSystemFontOfSize:20.0];
     label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    [label setFont:[UIFont boldSystemFontOfSize:17]];
     label.textAlignment = UITextAlignmentCenter;
     label.textColor = [UIColor blackColor]; // change this color
     self.navigationItem.titleView = label;
@@ -116,7 +122,7 @@
 
 -(UIBarButtonItem*)setBarButton:(NSString*)title {
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [UIColor orangeColor], UITextAttributeTextColor,
+                                [UIColor colorWithRed:1 green:0.643 blue:0.129 alpha:1], UITextAttributeTextColor,
                                 [UIColor blackColor], UITextAttributeTextShadowColor,
                                 nil];
     

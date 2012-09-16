@@ -11,6 +11,7 @@
 
 @implementation AppointementDetailViewController {
     AppointementDetail *apptObject;
+    bool ack;
 }
 
 @synthesize appDateTime, apptId;
@@ -128,11 +129,17 @@
         
         if([apptObject.apptStatusCode isEqualToString:@"Y"])
         {
-            UILabel *lbl = [[UILabel alloc] initWithFrame:acknowledgeButton.frame];
+            CGRect frame = acknowledgeButton.frame;
+            frame.origin.x=0;
+            frame.origin.y  -= frame.size.height + 5;
+            frame.size.width = self.view.bounds.size.width;
+            UILabel *lbl = [[UILabel alloc] initWithFrame:frame];
+            lbl.font = [UIFont fontWithName:@"Helvetica-Oblique" size:15];
             lbl.textAlignment  = UITextAlignmentCenter;
             lbl.text = @"Acknowledged by Rep";
             [self.view addSubview:lbl];
-            [acknowledgeButton setHidden:YES];
+            ack=YES;
+            [acknowledgeButton setBackgroundImage:[UIImage imageNamed:@"AcknowledgedOffButton.png"] forState:UIControlStateNormal];
         }
         [HUD hide:YES];
     }];
@@ -153,6 +160,10 @@
 }
 
 -(IBAction)ackAppt:(id)sender{
+    if(ack)
+        return;
+    
+    
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.dimBackground = YES;
     

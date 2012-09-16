@@ -66,7 +66,7 @@ extern const CGSize kTileSize;
   }
   
   if (flags.marked)
-    [markerImage drawInRect:CGRectMake(21.f, 5.f, 4.f, 5.f)];
+    [markerImage drawInRect:CGRectMake(35.f, 33.f, 8.f, 8.f)];
   
   NSUInteger n = [self.date day];
   NSString *dayText = [NSString stringWithFormat:@"%lu", (unsigned long)n];

@@ -90,6 +90,15 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
+    CGRect frame = cell.frame;
+    frame.origin.y = frame.size.height-10;
+    frame.size.height = 10;
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:frame];
+    imgView.image = [UIImage imageNamed:@"DottedLine.png"];
+    [cell addSubview:imgView];
+    
+    
+    
     MySales *sale = [array objectAtIndex:indexPath.row];
     ((UILabel *)[cell viewWithTag:100]).text = sale.custName;
     ((UILabel *)[cell viewWithTag:101]).text = sale.productID;

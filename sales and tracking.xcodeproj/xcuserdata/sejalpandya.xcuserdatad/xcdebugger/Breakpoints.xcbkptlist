@@ -7,13 +7,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "sales and tracking/AppointmentUpdateViewController.m"
-         timestampString = "368977893.074999"
+         filePath = "sales and tracking/HomeViewCell.m"
+         timestampString = "369458227.634869"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "280"
-         endingLineNumber = "280"
-         landmarkName = "-keyboardWillShow:"
+         startingLineNumber = "30"
+         endingLineNumber = "30"
+         landmarkName = "-setHeader:DetailText:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

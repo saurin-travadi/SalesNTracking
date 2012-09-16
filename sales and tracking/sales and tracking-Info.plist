@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>${PRODUCT_NAME}</string>
+	<string>LeadPerfection Salesman</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIcons</key>
@@ -15,6 +15,7 @@
 			<key>CFBundleIconFiles</key>
 			<array>
 				<string>icon.png</string>
+				<string>icon@2x.png</string>
 			</array>
 		</dict>
 	</dict>
