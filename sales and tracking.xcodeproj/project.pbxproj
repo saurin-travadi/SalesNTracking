@@ -92,6 +92,10 @@
 		70D12A5715F1C7240040808D /* AppointementDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D12A5615F1C7240040808D /* AppointementDetail.m */; };
 		70D12A5A15F244BF0040808D /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D12A5815F244BF0040808D /* bullet.png */; };
 		70D12A5B15F244BF0040808D /* bullet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D12A5915F244BF0040808D /* bullet@2x.png */; };
+		70D33091160653520005F7A1 /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D33090160653520005F7A1 /* LaunchViewController.m */; };
+		70D33094160657470005F7A1 /* AlternateLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D33093160657470005F7A1 /* AlternateLogin.xib */; };
+		70D33097160658650005F7A1 /* altLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D33095160658650005F7A1 /* altLogin.png */; };
+		70D33098160658650005F7A1 /* altLogin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D33096160658650005F7A1 /* altLogin@2x.png */; };
 		70E6D86415F30A6000E3052B /* MyStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E6D86315F30A6000E3052B /* MyStatsViewController.m */; };
 		70E6D86715F30C6E00E3052B /* MyStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E6D86615F30C6E00E3052B /* MyStat.m */; };
 		70FA471A15F8E1BA0027862E /* AppointmentUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FA471915F8E1BA0027862E /* AppointmentUpdateViewController.m */; };
@@ -227,6 +231,11 @@
 		70D12A5615F1C7240040808D /* AppointementDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointementDetail.m; sourceTree = "<group>"; };
 		70D12A5815F244BF0040808D /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
 		70D12A5915F244BF0040808D /* bullet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bullet@2x.png"; sourceTree = "<group>"; };
+		70D3308F160653520005F7A1 /* LaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
+		70D33090160653520005F7A1 /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
+		70D33093160657470005F7A1 /* AlternateLogin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlternateLogin.xib; sourceTree = "<group>"; };
+		70D33095160658650005F7A1 /* altLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = altLogin.png; sourceTree = "<group>"; };
+		70D33096160658650005F7A1 /* altLogin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "altLogin@2x.png"; sourceTree = "<group>"; };
 		70E6D86215F30A6000E3052B /* MyStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyStatsViewController.h; sourceTree = "<group>"; };
 		70E6D86315F30A6000E3052B /* MyStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyStatsViewController.m; sourceTree = "<group>"; };
 		70E6D86515F30C6E00E3052B /* MyStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyStat.h; sourceTree = "<group>"; };
@@ -328,6 +337,8 @@
 				701DA4C915F15C8C007EE2EF /* Calendar */,
 				708433DB15E9DEFC00E27068 /* AppDelegate.h */,
 				708433DC15E9DEFC00E27068 /* AppDelegate.m */,
+				70D3308F160653520005F7A1 /* LaunchViewController.h */,
+				70D33090160653520005F7A1 /* LaunchViewController.m */,
 				7084341515E9E7FA00E27068 /* LoginViewController.h */,
 				7084341615E9E7FA00E27068 /* LoginViewController.m */,
 				7032711315F0243600E87A5C /* HomeViewController.h */,
@@ -352,6 +363,7 @@
 				708433E715E9E06200E27068 /* Model */,
 				708433D315E9DEFC00E27068 /* Supporting Files */,
 				7084341215E9E79400E27068 /* MainStoryboard.storyboard */,
+				70D33093160657470005F7A1 /* AlternateLogin.xib */,
 			);
 			path = "sales and tracking";
 			sourceTree = "<group>";
@@ -448,6 +460,8 @@
 		7084350715EA676000E27068 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				70D33095160658650005F7A1 /* altLogin.png */,
+				70D33096160658650005F7A1 /* altLogin@2x.png */,
 				705BD3A51605A4D400A6988E /* ProductSaleSection.png */,
 				705BD3A11605A15400A6988E /* UpdateButton.png */,
 				705BD3A21605A15400A6988E /* UpdateButton@2x.png */,
@@ -571,6 +585,9 @@
 				705BD3A31605A15400A6988E /* UpdateButton.png in Resources */,
 				705BD3A41605A15400A6988E /* UpdateButton@2x.png in Resources */,
 				705BD3A61605A4D400A6988E /* ProductSaleSection.png in Resources */,
+				70D33094160657470005F7A1 /* AlternateLogin.xib in Resources */,
+				70D33097160658650005F7A1 /* altLogin.png in Resources */,
+				70D33098160658650005F7A1 /* altLogin@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +640,7 @@
 				70FA471A15F8E1BA0027862E /* AppointmentUpdateViewController.m in Sources */,
 				7076885015F9672E00115D99 /* Disposition.m in Sources */,
 				707536D31591728B0087C95C /* Product.m in Sources */,
+				70D33091160653520005F7A1 /* LaunchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

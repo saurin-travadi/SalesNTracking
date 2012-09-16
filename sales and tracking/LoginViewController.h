@@ -24,9 +24,14 @@
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (strong, nonatomic) IBOutlet UIButton *logOnButton;
 
+@property (nonatomic, retain) IBOutlet UIView *altViewFromNib;
+@property (weak, nonatomic) IBOutlet UITextField *clientID;
+@property (weak, nonatomic) IBOutlet UITextField *siteUrl;
+@property (weak, nonatomic) IBOutlet UITextField *emailAddress;
 
-@property (weak, nonatomic) IBOutlet UIView *settingsView;
 
 - (IBAction)login:(id)sender;
+-(IBAction)help:(id)sender;
+-(IBAction)signup:(id)sender;
 
 @end

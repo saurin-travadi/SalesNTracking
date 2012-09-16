@@ -10,13 +10,18 @@
 #import "NextUITextField.h"
 #import "AppDelegate.h"
 #import "ServiceConsumer.h"
+#import "Utility.h"
 
 @implementation LoginViewController {
     NSString *pwd;
+    NSString *cID;
+    
+    BOOL isFirstLogin;
 }
 
+@synthesize altViewFromNib, clientID, siteUrl, emailAddress;
 @synthesize logOnButton;
-@synthesize userName, password, delegate, settingsView;
+@synthesize userName, password, delegate;
 NSString *localSettingsPath;
 
 - (id) init {
@@ -32,9 +37,10 @@ NSString *localSettingsPath;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
     }
     return self;
+
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,38 +58,48 @@ NSString *localSettingsPath;
     [super viewDidLoad];
     
     password.secureTextEntry = YES;
-    settingsView.backgroundColor  =[UIColor clearColor];
     
-    [super makeRoundRect:logOnButton];
+    Utility *utility = [[Utility alloc] init];
+    NSInteger res = [utility getUserSettings:@"FirstLogin"];
+    if(res==0)
+    {
+        isFirstLogin=YES;
+        
+        NSArray* nibViews =[[NSBundle mainBundle] loadNibNamed:@"AlternateLogin" owner:self options:nil];
+        [[self.view.subviews objectAtIndex:0] removeFromSuperview];
+        [self.view addSubview:[nibViews objectAtIndex: 0]];
+    }
+    else
+    {
+        isFirstLogin=NO;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    UserInfo* user = [super getUserInfo];
-    if(user==nil){
-        pwd=@"";
-        return;
-    }
-    else{                                           //we have user data saved, use it to logon
-        [settingsView setHidden:YES];
-        CGRect frame = logOnButton.frame;
-        frame.origin.y -= settingsView.frame.size.height;
-        logOnButton.frame = frame;
-        
-        userName.text = user.userName;
-        
-        if (user.password != NULL){
-            pwd = user.password;
+    if(!isFirstLogin){
+        UserInfo* user = [super getUserInfo];
+        if(user==nil){
+            pwd=@"";
+            return;
         }
-        else
-            pwd = @"";
-    }
-    if (![pwd isEqualToString:@""]){
-        HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        HUD.dimBackground = YES;
-        
-        [self performSelector:@selector(performLogin) withObject:nil afterDelay:0.1];
+        else{                                           //we have user data saved, use it to logon
+            userName.text = user.userName;
+            
+            if (user.password != NULL){
+                pwd = user.password;
+                cID = [Utility retrieveFromUserDefaults:@"clientId_preference"];
+            }
+            else
+                pwd = @"";
+        }
+        if (![pwd isEqualToString:@""]){
+            HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            HUD.dimBackground = YES;
+            
+            [self performSelector:@selector(performLogin) withObject:nil afterDelay:0.5];
+        }
     }
 }
 
@@ -92,6 +108,10 @@ NSString *localSettingsPath;
     [self setUserName:nil];
     [self setPassword:nil];
     [self setLogOnButton:nil];
+    [self setClientID:nil];
+    [self setSiteUrl:nil];
+    [self setEmailAddress:nil];
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -107,6 +127,9 @@ NSString *localSettingsPath;
 {
     [password resignFirstResponder];
     [userName resignFirstResponder];
+    [clientID resignFirstResponder];
+    [siteUrl resignFirstResponder];
+    [emailAddress resignFirstResponder];
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -119,12 +142,13 @@ NSString *localSettingsPath;
 
 -(void) performLogin{
     
-    UserInfo *info = [[UserInfo alloc] initWithUserName:userName.text Password:pwd ClientID:@"" SiteURL:@"" ];
+    UserInfo *info = [[UserInfo alloc] initWithUserName:userName.text Password:pwd ClientID:cID SiteURL:@"" ];
     [[[ServiceConsumer alloc] init] performLogin:info :^(bool* success) {
         
         [HUD hide:YES];
         
         if(*success){
+            
             
             [super setUserInfo:info];
             [self performSegueWithIdentifier:@"homeSegue" sender:self];
@@ -144,15 +168,45 @@ NSString *localSettingsPath;
 
 - (IBAction)login:(id)sender {
     
+    if(isFirstLogin){
+        if([userName.text isEqualToString:@""] || [password.text isEqualToString:@""] || [clientID.text isEqualToString:@""] || [siteUrl.text isEqualToString:@""])
+        {
+            UIAlertView *alert  =[[UIAlertView alloc] initWithTitle:@"Configuration" message:@"Incorrect values provided for setup" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            
+            return;
+        }
+    }
+    
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.dimBackground = YES;
     
-    [password resignFirstResponder];
-    [userName resignFirstResponder];     
-    
-    pwd=password.text;
-    password.text=@"";
-    
+    if(isFirstLogin){
+        pwd=password.text;
+        password.text=@"";
+
+        cID = clientID.text;
+        
+        //update users default
+        Utility *u = [[Utility alloc] init];
+        [u setUserSettings:1 keyName:@"FirstLogin"];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:siteUrl.text forKey:@"baseurl_preference"];
+        [[NSUserDefaults standardUserDefaults] setObject:clientID.text forKey:@"clientId_preference"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+
+    }
+    else{
+        
+        [password resignFirstResponder];
+        [userName resignFirstResponder];     
+        
+        pwd=password.text;
+        password.text=@"";
+        
+        cID = [Utility retrieveFromUserDefaults:@"clientId_preference"];
+    }
+
     [self performLogin];
 }
 
@@ -171,6 +225,14 @@ NSString *localSettingsPath;
     
     return YES;
     
+}
+
+-(IBAction)help:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.leadperfection.com/help/index.aspx?topic=01A"]];
+}
+
+-(IBAction)signup:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.leadperfection.com/help/index.aspx?topic=02A"]];
 }
 
 

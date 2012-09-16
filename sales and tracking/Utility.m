@@ -51,6 +51,16 @@
 	return val;
 }
 
+
+-(void)setUserSettings:(NSInteger)keyValue keyName:(NSString *)keyName{
+    [[NSUserDefaults standardUserDefaults] setInteger:keyValue forKey:keyName];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+-(NSInteger)getUserSettings:(NSString *)keyName{
+    return [[NSUserDefaults standardUserDefaults] integerForKey:keyName];
+}
+
 -(NSString*)retrieveFromUserSavedData:(NSString*)key {
     
     NSString *localSettingsPath = ((AppDelegate *) [[UIApplication sharedApplication] delegate]).localSettingsPath;
