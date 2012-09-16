@@ -124,15 +124,18 @@
         
         notesScrollView.contentSize=notesLabel.frame.size;
         
+        frame = CGRectMake(0, notesScrollView.frame.origin.y+notesScrollView.frame.size.height, self.view.bounds.size.width, 20);
+        UIImageView *imgView = [[UIImageView alloc] initWithFrame:frame];
+        imgView.image = [UIImage imageNamed:@"DottedLine.png"];
+        [self.scrollView addSubview:imgView];
+        [self.scrollView sendSubviewToBack:imgView];
+        
         if(!apptObject.canUpdateIndicator)
             [updateApptButton setHidden:YES];
         
         if([apptObject.apptStatusCode isEqualToString:@"Y"])
         {
-            CGRect frame = acknowledgeButton.frame;
-            frame.origin.x=0;
-            frame.origin.y  -= frame.size.height + 5;
-            frame.size.width = self.view.bounds.size.width;
+            CGRect frame = CGRectMake(0, imgView.frame.origin.y+20, self.view.bounds.size.width, 20);
             UILabel *lbl = [[UILabel alloc] initWithFrame:frame];
             lbl.font = [UIFont fontWithName:@"Helvetica-Oblique" size:15];
             lbl.textAlignment  = UITextAlignmentCenter;
@@ -141,6 +144,7 @@
             ack=YES;
             [acknowledgeButton setBackgroundImage:[UIImage imageNamed:@"AcknowledgedOffButton.png"] forState:UIControlStateNormal];
         }
+        
         [HUD hide:YES];
     }];
 }
