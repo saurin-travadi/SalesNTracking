@@ -14,13 +14,17 @@
 
 @implementation AppointmentUpdateViewController {
     UIPickerView *picker;
+    UIActionSheet *actionSheet;
     
     NSMutableArray *products;
     NSMutableArray *dispositions;
     
     UITextField *textBox;
+    NSString* pickerValue;
     NSTimer* showDecimalPointTimer;
     UIButton *doneButton;
+    
+    CGPoint svos;
 }
 
 @synthesize apptObject;
@@ -48,16 +52,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-//    [super makeRoundRectView:viewContainer];
-//    [super makeRoundRectView:viewContainer1];
-//    [super makeRoundRectView:viewContainer2];
-//    [super makeRoundRectView:viewContainer3];
-//    [super makeRoundRectView:viewContainer4];
-    
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
     [mainContainer addGestureRecognizer:singleTap];
     
-    dateTimeLabel.text = apptObject.apptDate;
+    dateTimeLabel.text = apptObject.apptDisplayDate;
     nameLabel.text=apptObject.custName;
     addressLabel.text=apptObject.address;
     cityLabel.text=apptObject.cSZ;
@@ -96,8 +94,7 @@
     }];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [self setDispositionText:nil];
     [self setProductText:nil];
     [self setSaleText:nil];
@@ -123,13 +120,11 @@
     // Release any retained subviews of the main view.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)singleTapGestureCaptured:(UITapGestureRecognizer *)gesture
-{
+- (void)singleTapGestureCaptured:(UITapGestureRecognizer *)gesture {
     //determine if single tab has occured in response to button touch
     CGPoint touchPoint=[gesture locationInView:mainContainer];
     CGRect frame = self.btnUpdate.frame;
@@ -233,7 +228,8 @@
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     [doneButton removeFromSuperview];
-
+    [actionSheet removeFromSuperview];
+    
     return  YES;
 }
 
@@ -241,7 +237,7 @@
     textBox = textField;
 
     if(textBox==dispositionText || textBox==productText || textBox==productText1 || textBox==productText2 || textBox==productText3 || textBox==productText4) {
-        [self addDone2Picker];
+        [self addPickerButtons];
         [textBox setInputView:nil];
         
         [picker reloadAllComponents];
@@ -259,12 +255,43 @@
         }
     }
 
+    //change frame for scrollview for keyboard shown
+    svos = self.mainContainer.contentOffset;
+    CGPoint pt;
+    CGRect rc = [textField bounds];
+    rc = [textField convertRect:rc toView:self.mainContainer];
+    pt = rc.origin;
+    pt.x = 0;
+    pt.y -= 60;
+    [self.mainContainer setContentOffset:pt animated:YES];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     textBox = nil;
+
+    //change frame for scrollview for keyboard shown
+    [self.mainContainer setContentOffset:svos animated:YES];
+    [textField resignFirstResponder];
+    return YES;
+}
+
+-(void)textViewDidBeginEditing:(UITextView *)textView {
+    //change frame for scrollview for keyboard shown
+    svos = self.mainContainer.contentOffset;
+    CGPoint pt;
+    CGRect rc = [textView bounds];
+    rc = [textView convertRect:rc toView:self.mainContainer];
+    pt = rc.origin;
+    pt.x = 0;
+    pt.y -= 60;
+    [self.mainContainer setContentOffset:pt animated:YES]; 
+}
+
+-(BOOL)textViewShouldEndEditing:(UITextView *)textView {
+    //change frame for scrollview for keyboard shown
+    [self.mainContainer setContentOffset:svos animated:YES];
+    [textView resignFirstResponder];
     return YES;
 }
 
@@ -299,7 +326,7 @@
         [doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
         [doneButton setTitle:@"Done" forState:UIControlStateNormal];    
 
-        [doneButton addTarget:self action:@selector(doneButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+        [doneButton addTarget:self action:@selector(keyboardDonePressed) forControlEvents:UIControlEventTouchUpInside];
         [keyboardWindow addSubview:doneButton];
     }
     else if (textBox==productText || textBox==productText|| textBox==productText2 || textBox==productText3 || textBox==productText4){
@@ -307,32 +334,23 @@
     }
 }
 
--(void) doneButtonPressed {
+-(void) keyboardDonePressed {
 
-    [dispositionText resignFirstResponder];
-    [productText resignFirstResponder];
     [saleText resignFirstResponder];
-    [productText1 resignFirstResponder];
     [saleText1 resignFirstResponder];
-    [productText2 resignFirstResponder];
     [saleText2 resignFirstResponder];
-    [productText3 resignFirstResponder];
     [saleText3 resignFirstResponder];
-    [productText4 resignFirstResponder];
     [saleText4 resignFirstResponder];
     [comments resignFirstResponder];
     
-    [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
     [doneButton removeFromSuperview];
     textBox=nil;
 }
 
-
-UIActionSheet *actionSheet;
-- (void)addDone2Picker {
+- (void)addPickerButtons {
     
     actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
-    [actionSheet setActionSheetStyle:UIActionSheetStyleBlackOpaque];
+    [actionSheet setActionSheetStyle:UIActionSheetStyleAutomatic];
     
     CGRect ToolBarFrame= CGRectMake(0, 0, 320, 44);
     CGRect pickerFrame =  CGRectMake(0, 44, 320, 100);
@@ -345,12 +363,10 @@ UIActionSheet *actionSheet;
     pickerToolbar.barStyle = UIBarStyleBlackOpaque;
     
     NSMutableArray *barItems = [[NSMutableArray alloc] init];
-    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    [barItems addObject:flexSpace];
-    
-    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed)];
-    [barItems addObject:doneBtn];
-    
+    [barItems addObject:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(pickerCancelPressed)]];
+    [barItems addObject:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil]];
+    [barItems addObject:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(pickerDonePressed)]];
+
     [pickerToolbar setItems:barItems animated:YES];
     
     [actionSheet addSubview:pickerToolbar];
@@ -359,9 +375,30 @@ UIActionSheet *actionSheet;
     [actionSheet setBounds:CGRectMake(0,0,320, 464)];
 }
 
+-(void) pickerDonePressed {
+    [dispositionText resignFirstResponder];
+    [productText resignFirstResponder];
+    [productText1 resignFirstResponder];
+    [productText2 resignFirstResponder];
+    [productText3 resignFirstResponder];
+    [productText4 resignFirstResponder];
+    
+    textBox.text = pickerValue;
+    [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
+}
 
-- (void)keyboardDidHide:(NSNotification *)note
-{
+-(void) pickerCancelPressed {
+    [dispositionText resignFirstResponder];
+    [productText resignFirstResponder];
+    [productText1 resignFirstResponder];
+    [productText2 resignFirstResponder];
+    [productText3 resignFirstResponder];
+    [productText4 resignFirstResponder];
+    
+    [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+- (void)keyboardDidHide:(NSNotification *)note {
     [doneButton removeFromSuperview];
 }
 
@@ -376,9 +413,11 @@ UIActionSheet *actionSheet;
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     if(textBox==dispositionText){
+        pickerValue = textBox.text;
         return [dispositions count];
     }
     else if(textBox==productText || textBox==productText1 || textBox==productText2 || textBox==productText3 || textBox==productText4){
+        pickerValue = textBox.text;
         return [products count];
     }
     else
@@ -398,19 +437,16 @@ UIActionSheet *actionSheet;
 
 #pragma mark -
 #pragma mark PickerView Delegate
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if(textBox==dispositionText){
-        textBox.text = ((Disposition *)[dispositions objectAtIndex:row]).descr;
+        pickerValue = ((Disposition *)[dispositions objectAtIndex:row]).descr;
     }
     else if( textBox==productText || textBox==productText1 || textBox==productText2 || textBox==productText3 || textBox==productText4){
-        textBox.text = ((Product *)[products objectAtIndex:row]).descr;
+        pickerValue = ((Product *)[products objectAtIndex:row]).descr;
     }
     else
-        textBox.text = @"";
+        pickerValue = @"";
 }
-
-
 
 -(IBAction)update:(id)sender {
     

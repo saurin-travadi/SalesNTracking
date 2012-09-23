@@ -26,6 +26,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *altPhoneLable;
 @property (strong, nonatomic) IBOutlet UIButton *altPhoneButton;
 @property (strong, nonatomic) IBOutlet UILabel *sourceLabel;
+@property (strong, nonatomic) IBOutlet UILabel *dispLabel;
 @property (strong, nonatomic) IBOutlet UILabel *notesLabel;
 @property (strong, nonatomic) IBOutlet UIScrollView *notesScrollView;
 @property (strong, nonatomic) IBOutlet UILabel *productLabel;

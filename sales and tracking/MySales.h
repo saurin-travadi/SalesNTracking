@@ -14,6 +14,7 @@
 @property (nonatomic, retain) NSString *custName;
 @property (nonatomic, retain) NSString *productID;
 @property (nonatomic, retain) NSString *contractDate;
+@property (nonatomic, retain) NSString *contractDisplayDate;
 @property (nonatomic, retain) NSString *grossAmount;
 @property (nonatomic, retain) NSString *jobStatusDescr;
 
@@ -23,8 +24,8 @@
 @property (nonatomic, retain) NSString *altPhone;
 @property (nonatomic, retain) NSString *altPhoneType;
 
--(id)initWithJobId:(NSString*)job CustomerName:(NSString*)name ProductId:(NSString*)product SaleDate:(NSString*)saleDate SaleAmt:(NSString*)saleAmt JobStatus:(NSString*)jobStatus;
+-(id)initWithJobId:(NSString*)job CustomerName:(NSString*)name ProductId:(NSString*)product SaleDate:(NSString*)saleDate SaleDisplayDate:(NSString*)saleDisplayDate SaleAmt:(NSString*)saleAmt JobStatus:(NSString*)jobStatus;
 
--(id)initDetailWithJobId:(NSString*)job CustomerName:(NSString*)name ProductId:(NSString*)product SaleDate:(NSString*)saleDate SaleAmt:(NSString*)saleAmt JobStatus:(NSString*)jobStatus Address:(NSString*)address CSZ:(NSString*)cityInfo Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber AltPhoneType:(NSString*)altPhoneNumberType;
+-(id)initDetailWithJobId:(NSString*)job CustomerName:(NSString*)name ProductId:(NSString*)product SaleDate:(NSString*)saleDate SaleDisplayDate:(NSString*)saleDisplayDate SaleAmt:(NSString*)saleAmt JobStatus:(NSString*)jobStatus Address:(NSString*)address CSZ:(NSString*)cityInfo Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber AltPhoneType:(NSString*)altPhoneNumberType;
 
 @end

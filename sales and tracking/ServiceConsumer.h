@@ -24,7 +24,12 @@
     void (^_OnSearchSuccess)(id);
 }
 
+
 -(void)getEmployees:(UserInfo *)userInfo :(void (^)(bool*))Success;                     //test method
+
+-(id)initWithoutBaseURL;
+
+-(void)registerUser:(NSString*)userName Password:(NSString*)pwd ClientId:(NSString*)clientId SiteURL:(NSString*)url EmailAddress:(NSString*)email :(void (^)(bool*))Success;                    //validate username and password and store site URL forever
 
 -(void)performLogin:(UserInfo *)userInfo :(void (^)(bool*))Success;                     //validate username and password
 

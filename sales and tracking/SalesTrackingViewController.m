@@ -102,7 +102,7 @@
     MySales *sale = [array objectAtIndex:indexPath.row];
     ((UILabel *)[cell viewWithTag:100]).text = sale.custName;
     ((UILabel *)[cell viewWithTag:101]).text = sale.productID;
-    ((UILabel *)[cell viewWithTag:102]).text = [NSString stringWithFormat:@"%@ %@",[sale.contractDate substringToIndex:10],[[sale.contractDate substringFromIndex:11] substringToIndex:5]];;
+    ((UILabel *)[cell viewWithTag:102]).text = sale.contractDisplayDate;
     ((UILabel *)[cell viewWithTag:103]).text = sale.grossAmount;
     ((UILabel *)[cell viewWithTag:104]).text = sale.jobStatusDescr;
     

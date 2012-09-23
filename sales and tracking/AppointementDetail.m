@@ -15,6 +15,7 @@
 @synthesize custName=_custName;
 @synthesize cSZ=_cSZ;
 @synthesize apptDate=_apptDate;
+@synthesize apptDisplayDate = _apptDisplayDate;
 @synthesize phone=_phone;
 @synthesize altPhone=_altPhone;
 @synthesize altPhoneType=_altPhoneType;
@@ -36,7 +37,7 @@
 @synthesize canUpdateIndicator=_canUpdateIndicator;
 @synthesize apptStatusCode=_apptStatusCode;
 
--(id)initWithAppointmentId:(NSString*)apptId Address:(NSString*)address Name:(NSString*)name CSZ:(NSString*)cSZInfo ApptDate:(NSString*)dateTime Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber Source:(NSString*)sourceNumber Notes:(NSString*)notesData ProductId:(NSString *)product ProductId1:(NSString *)product1 ProductId2:(NSString *)product2 ProductId3:(NSString *)product3 ProductId4:(NSString *)product4 ProductId5:(NSString *)product5 Sale1:(NSString *)sale1 Sale2:(NSString *)sale2 Sale3:(NSString *)sale3 Sale4:(NSString *)sale4 Sale5:(NSString *)sale5 AltPhoneType:(NSString *)alterPhoneType CanUpdate:(NSString*)canUpdate ApptStatus:(NSString*)statusCode Disposition:(NSString *)disposition PresNotes:(NSString*)notes {
+-(id)initWithAppointmentId:(NSString*)apptId Address:(NSString*)address Name:(NSString*)name CSZ:(NSString*)cSZInfo ApptDate:(NSString*)dateTime ApptDisplayDate:(NSString*)displayDateTime Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber Source:(NSString*)sourceNumber Notes:(NSString*)notesData ProductId:(NSString *)product ProductId1:(NSString *)product1 ProductId2:(NSString *)product2 ProductId3:(NSString *)product3 ProductId4:(NSString *)product4 ProductId5:(NSString *)product5 Sale1:(NSString *)sale1 Sale2:(NSString *)sale2 Sale3:(NSString *)sale3 Sale4:(NSString *)sale4 Sale5:(NSString *)sale5 AltPhoneType:(NSString *)alterPhoneType CanUpdate:(NSString*)canUpdate ApptStatus:(NSString*)statusCode Disposition:(NSString *)disposition PresNotes:(NSString*)notes {
     
     self = [super init];
     if (self) {
@@ -45,6 +46,7 @@
         _custName=name;
         _cSZ=cSZInfo;
         _apptDate=dateTime;
+        _apptDisplayDate=displayDateTime;
         _address=address;
         _phone=phoneNumber;
         _altPhone=altPhoneNumber;

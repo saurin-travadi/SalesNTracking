@@ -91,7 +91,7 @@
         altPhoneButton.backgroundColor = [UIColor clearColor];
         
         productLabel.text = ((MySales*)json).productID;
-        saleDateLabel.text=[NSString stringWithFormat:@"%@ %@",[((MySales*)json).contractDate substringToIndex:10],[[((MySales*)json).contractDate substringFromIndex:11] substringToIndex:5]];
+        saleDateLabel.text= ((MySales*)json).contractDisplayDate;
         saleDollarLabel.text = ((MySales*)json).grossAmount;
         jobStatusLabel.text=((MySales*)json).jobStatusDescr;
         

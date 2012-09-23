@@ -23,6 +23,7 @@
 @synthesize phoneLabel, phoneButton;
 @synthesize altPhoneLable, altPhoneButton;
 @synthesize sourceLabel;
+@synthesize dispLabel;
 @synthesize notesLabel, notesScrollView;
 @synthesize productLabel;
 @synthesize altPhoneCaption;
@@ -91,7 +92,7 @@
         
         apptObject = json;
         
-        dateLabel.text = [NSString stringWithFormat:@"%@ %@",[apptObject.apptDate substringToIndex:10],[[apptObject.apptDate substringFromIndex:11] substringToIndex:5]];
+        dateLabel.text = apptObject.apptDisplayDate;
         nameLabel.text=apptObject.custName;
         addressLabel.text=apptObject.address;
         cityLabel.text=apptObject.cSZ;
@@ -110,6 +111,7 @@
         
         productLabel.text = apptObject.productID;
         sourceLabel.text=apptObject.source;
+        dispLabel.text = apptObject.disp;
         notesLabel.text=[NSString stringWithFormat:@"%@",apptObject.notes];
         
         //set notesLabel
@@ -123,6 +125,7 @@
         notesLabel.frame = frame;
         
         notesScrollView.contentSize=notesLabel.frame.size;
+        [notesScrollView scrollRectToVisible:CGRectMake(0, 0, notesScrollView.frame.size.width, notesScrollView.frame.size.height) animated:NO];
         
         frame = CGRectMake(0, notesScrollView.frame.origin.y+notesScrollView.frame.size.height, self.view.bounds.size.width, 20);
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:frame];
@@ -135,12 +138,6 @@
         
         if([apptObject.apptStatusCode isEqualToString:@"Y"])
         {
-            CGRect frame = CGRectMake(0, imgView.frame.origin.y+20, self.view.bounds.size.width, 20);
-            UILabel *lbl = [[UILabel alloc] initWithFrame:frame];
-            lbl.font = [UIFont fontWithName:@"Helvetica-Oblique" size:15];
-            lbl.textAlignment  = UITextAlignmentCenter;
-            lbl.text = @"Acknowledged by Rep";
-            [self.view addSubview:lbl];
             ack=YES;
             [acknowledgeButton setBackgroundImage:[UIImage imageNamed:@"AcknowledgedOffButton.png"] forState:UIControlStateNormal];
         }

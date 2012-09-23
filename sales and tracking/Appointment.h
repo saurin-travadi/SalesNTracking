@@ -15,7 +15,8 @@
 @property (nonatomic, retain) NSString *custName;
 @property (nonatomic, retain) NSString *cSZ;
 @property (nonatomic, retain) NSString *apptDate;
+@property (nonatomic, retain) NSString *apptDisplayDate;
 
--(id)initWithAppointmentId:(NSString*)apptId CustomerName:(NSString*)name Address:(NSString*)address ApptDate:(NSString *)date;
+-(id)initWithAppointmentId:(NSString*)apptId CustomerName:(NSString*)name Address:(NSString*)address ApptDate:(NSString *)date DisplayDate:(NSString *)displayDate;
 
 @end

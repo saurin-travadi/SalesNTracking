@@ -28,6 +28,14 @@
     return nil;
 }
 
+-(id)initWithoutBaseURL {
+    self = [super init];
+    if (self) {
+        return self;
+    }
+    return nil;
+}
+
 -(void)getEmployees:(UserInfo *)userInfo :(void (^)(bool*))Success {
     
     _OnLoginSuccess = [Success copy];
@@ -54,6 +62,38 @@
         bool success = false;
         _OnLoginSuccess(&success);
     }];    
+}
+
+
+-(void)registerUser:(NSString*)userName Password:(NSString*)pwd ClientId:(NSString*)clientId SiteURL:(NSString*)url EmailAddress:(NSString*)email :(void (^)(bool*))Success {
+
+        
+    _OnLoginSuccess = [Success copy];
+    
+    NSString *soapMsg = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?> <soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"> <soap:Body> <ValidateLogin xmlns=\"http://webservice.leadperfection.com/\"> <clientid>%@</clientid> <username>%@</username> <password>%@</password> <email>%@</email></ValidateLogin> </soap:Body> </soap:Envelope>",clientId,userName,pwd,email];
+    
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: url]];
+    
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
+    [req addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [req addValue:@"http://webservice.leadperfection.com/ValidateLogin" forHTTPHeaderField:@"SOAPAction"];
+    [req addValue:msgLength forHTTPHeaderField:@"Content-Length"];
+    [req setHTTPMethod:@"POST"];
+    [req setHTTPBody: [soapMsg dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [self getDataForElement:@"ValidateLoginResult" Request:req :^(id json) {
+        NSString* result = [NSString stringWithFormat:@"%@",[json description]];
+        
+        bool success = true;
+        if([result isEqualToString:@"\"NOT VALID USER\""])
+            success=false;
+        
+        _OnLoginSuccess(&success);
+    } :^(NSError *error) {
+        bool success = false;
+        _OnLoginSuccess(&success);
+    }];
+
 }
 
 -(void)performLogin:(UserInfo *)userInfo :(void (^)(bool*))Success {
@@ -108,7 +148,7 @@
         NSArray *result = [json JSONValue];
         for (id obj in result) {
             
-            NSMutableArray *data = [NSMutableArray arrayWithObjects:[obj valueForKey:@"Message"],[obj valueForKey:@"From"],[obj valueForKey:@"MessageDate"], nil];
+            NSMutableArray *data = [NSMutableArray arrayWithObjects:[obj valueForKey:@"Message"],[obj valueForKey:@"From"],[obj valueForKey:@"MessageDateDisplay"], nil];
             [messages addObject: data];
         }
         
@@ -182,7 +222,8 @@
             Appointment *appt = [[Appointment alloc] initWithAppointmentId:[obj valueForKey:@"ID"]
                                                               CustomerName:[obj valueForKey:@"CustName"]==[NSNull null]?@"":[obj valueForKey:@"CustName"]
                                                                    Address:[obj valueForKey:@"CSZ"]==[NSNull null]?@"":[obj valueForKey:@"CSZ"]
-                                                                  ApptDate:[obj valueForKey:@"ApptDate"]];
+                                                                  ApptDate:[obj valueForKey:@"ApptDate"]
+                                                                 DisplayDate:[obj valueForKey:@"ApptDateDisplay"]];
             [appointments addObject:appt];
         }
         
@@ -224,6 +265,7 @@
                                                                        Name:[obj valueForKey:@"CustName"]
                                                                         CSZ:[obj valueForKey:@"CSZ"]
                                                                    ApptDate:[obj valueForKey:@"ApptDate"]
+                                                                    ApptDisplayDate:[obj valueForKey:@"ApptDateDisplay"]
                                                                       Phone:[obj valueForKey:@"Phone"]
                                                                    AltPhone:[obj valueForKey:@"AltPhone1"]
                                                                      Source:[obj valueForKey:@"Source"]
@@ -242,7 +284,7 @@
                                                                AltPhoneType:[obj valueForKey:@"AltPhone1Type"]
                                                                   CanUpdate:[obj valueForKey:@"CanUpdateIndicator"]
                                                                  ApptStatus:[obj valueForKey:@"ApptStatusCode"]
-                                                                Disposition:[obj valueForKey:@"Disposition"]
+                                                                Disposition:[obj valueForKey:@"DispositionComments"]
                                                             PresNotes:[obj valueForKey:@"PresNotes"]];
 
             
@@ -399,7 +441,7 @@
         NSArray *result = [json JSONValue];
         for (id obj in result) {
             
-            MySales *sale = [[MySales alloc] initWithJobId:[obj valueForKey:@"JobID"] CustomerName:[obj valueForKey:@"CustName"] ProductId:[obj valueForKey:@"ProductID"] SaleDate:[obj valueForKey:@"ContractDate"] SaleAmt:[obj valueForKey:@"GrossAmount"] JobStatus:[obj valueForKey:@"JobStatusDescr"]];
+            MySales *sale = [[MySales alloc] initWithJobId:[obj valueForKey:@"JobID"] CustomerName:[obj valueForKey:@"CustName"] ProductId:[obj valueForKey:@"ProductID"] SaleDate:[obj valueForKey:@"ContractDate"] SaleDisplayDate:[obj valueForKey:@"ContractDateDisplay"] SaleAmt:[obj valueForKey:@"GrossAmount"] JobStatus:[obj valueForKey:@"JobStatusDescr"]];
             
             [sales addObject:sale];
         }
@@ -435,7 +477,7 @@
         NSArray *result = [json JSONValue];
         for (id obj in result) {
             
-            sale = [[MySales alloc] initDetailWithJobId:[obj valueForKey:@"JobID"] CustomerName:[obj valueForKey:@"CustName"] ProductId:[obj valueForKey:@"ProductID"] SaleDate:[obj valueForKey:@"ContractDate"] SaleAmt:[obj valueForKey:@"GrossAmount"] JobStatus:[obj valueForKey:@"JobStatusDescr"] Address:[obj valueForKey:@"Address1"] CSZ:[obj valueForKey:@"CSZ"] Phone:[obj valueForKey:@"Phone"] AltPhone:[obj valueForKey:@"AltPhone1"] AltPhoneType:[obj valueForKey:@"AltPhone1Type"]];
+            sale = [[MySales alloc] initDetailWithJobId:[obj valueForKey:@"JobID"] CustomerName:[obj valueForKey:@"CustName"] ProductId:[obj valueForKey:@"ProductID"] SaleDate:[obj valueForKey:@"ContractDate"] SaleDisplayDate:[obj valueForKey:@"ContractDateDisplay"] SaleAmt:[obj valueForKey:@"GrossAmount"] JobStatus:[obj valueForKey:@"JobStatusDescr"] Address:[obj valueForKey:@"Address1"] CSZ:[obj valueForKey:@"CSZ"] Phone:[obj valueForKey:@"Phone"] AltPhone:[obj valueForKey:@"AltPhone1"] AltPhoneType:[obj valueForKey:@"AltPhone1Type"]];
             
         }
         

@@ -15,6 +15,7 @@
 @synthesize custName=_custName;
 @synthesize productID=_productID;
 @synthesize contractDate=_contractDate;
+@synthesize contractDisplayDate=_contractDisplayDate;
 @synthesize grossAmount=_grossAmount;
 @synthesize jobStatusDescr=_jobStatusDescr;
 
@@ -24,7 +25,7 @@
 @synthesize altPhone=_altPhone;
 @synthesize altPhoneType=_altPhoneType;
 
--(id)initWithJobId:(NSString*)job CustomerName:(NSString*)name ProductId:(NSString*)product SaleDate:(NSString*)saleDate SaleAmt:(NSString*)saleAmt JobStatus:(NSString*)jobStatus {
+-(id)initWithJobId:(NSString*)job CustomerName:(NSString*)name ProductId:(NSString*)product SaleDate:(NSString*)saleDate SaleDisplayDate:(NSString*)saleDisplayDate SaleAmt:(NSString*)saleAmt JobStatus:(NSString*)jobStatus {
 
     self = [super init];
     if (self) {
@@ -33,6 +34,7 @@
         _custName=name;
         _productID=product;
         _contractDate=saleDate;
+        _contractDisplayDate=saleDisplayDate;
         _grossAmount=saleAmt;
         _jobStatusDescr=jobStatus;
         
@@ -42,7 +44,7 @@
 
 }
 
--(id)initDetailWithJobId:(NSString*)job CustomerName:(NSString*)name ProductId:(NSString*)product SaleDate:(NSString*)saleDate SaleAmt:(NSString*)saleAmt JobStatus:(NSString*)jobStatus Address:(NSString*)address CSZ:(NSString*)cityInfo Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber AltPhoneType:(NSString*)altPhoneNumberType {
+-(id)initDetailWithJobId:(NSString*)job CustomerName:(NSString*)name ProductId:(NSString*)product SaleDate:(NSString*)saleDate SaleDisplayDate:(NSString*)saleDisplayDate SaleAmt:(NSString*)saleAmt JobStatus:(NSString*)jobStatus Address:(NSString*)address CSZ:(NSString*)cityInfo Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber AltPhoneType:(NSString*)altPhoneNumberType {
 
     self = [super init];
     if (self) {
@@ -51,6 +53,7 @@
         _custName=name;
         _productID=product;
         _contractDate=saleDate;
+        _contractDisplayDate=saleDisplayDate;
         _grossAmount=saleAmt;
         _jobStatusDescr=jobStatus;
         _address=address;

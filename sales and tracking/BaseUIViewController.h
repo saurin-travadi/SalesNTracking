@@ -14,7 +14,7 @@
 
 @class SidebarViewController;
 
-@interface BaseUIViewController : UIViewController <MBProgressHUDDelegate> {
+@interface BaseUIViewController : UIViewController <MBProgressHUDDelegate, UITextFieldDelegate> {
     MBProgressHUD *HUD;
     CLLocationManager *locationManager;
 }

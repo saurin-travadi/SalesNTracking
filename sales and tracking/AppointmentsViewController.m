@@ -106,7 +106,8 @@
     
     Appointment *appt = [appointments objectAtIndex:indexPath.row];
 
-    ((UILabel *)[cell viewWithTag:100]).text = [NSString stringWithFormat:@"%@ %@",[appt.apptDate substringToIndex:10],[[appt.apptDate substringFromIndex:11] substringToIndex:5]];
+//    ((UILabel *)[cell viewWithTag:100]).text = [NSString stringWithFormat:@"%@ %@",[appt.apptDate substringToIndex:10],[[appt.apptDate substringFromIndex:11] substringToIndex:5]];
+    ((UILabel *)[cell viewWithTag:100]).text = appt.apptDisplayDate;
     ((UILabel *)[cell viewWithTag:101]).text = [appt custName];
     ((UILabel *)[cell viewWithTag:102]).text = [appt cSZ];
         
