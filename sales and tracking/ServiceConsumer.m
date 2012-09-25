@@ -284,6 +284,7 @@
                                                                AltPhoneType:[obj valueForKey:@"AltPhone1Type"]
                                                                   CanUpdate:[obj valueForKey:@"CanUpdateIndicator"]
                                                                  ApptStatus:[obj valueForKey:@"ApptStatusCode"]
+                                                                   Disp:[obj valueForKey:@"Disposition"]
                                                                 Disposition:[obj valueForKey:@"DispositionComments"]
                                                             PresNotes:[obj valueForKey:@"PresNotes"]];
 

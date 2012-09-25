@@ -117,8 +117,8 @@
         //set notesLabel
         notesLabel.lineBreakMode = UILineBreakModeWordWrap;
         notesLabel.numberOfLines = 0;
-        UIFont *cellFont = [UIFont systemFontOfSize:17];
-        CGSize constraintSize = CGSizeMake(175.0f, MAXFLOAT);
+        UIFont *cellFont = [UIFont fontWithName:@"Helvetica-Oblique" size:15];;
+        CGSize constraintSize = CGSizeMake(175.0f, notesLabel.frame.size.width);
         CGSize labelSize = [notesLabel.text sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
         CGRect frame = notesLabel.frame;
         frame.size.height=labelSize.height;

@@ -31,13 +31,14 @@
 @synthesize productID5=_productID5;
 @synthesize sale5=_sale5;
 @synthesize disp=_disp;
+@synthesize dispText = _dispText;
 @synthesize presNotes=_presNotes;
 @synthesize source=_source;
 @synthesize notes=_notes;
 @synthesize canUpdateIndicator=_canUpdateIndicator;
 @synthesize apptStatusCode=_apptStatusCode;
 
--(id)initWithAppointmentId:(NSString*)apptId Address:(NSString*)address Name:(NSString*)name CSZ:(NSString*)cSZInfo ApptDate:(NSString*)dateTime ApptDisplayDate:(NSString*)displayDateTime Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber Source:(NSString*)sourceNumber Notes:(NSString*)notesData ProductId:(NSString *)product ProductId1:(NSString *)product1 ProductId2:(NSString *)product2 ProductId3:(NSString *)product3 ProductId4:(NSString *)product4 ProductId5:(NSString *)product5 Sale1:(NSString *)sale1 Sale2:(NSString *)sale2 Sale3:(NSString *)sale3 Sale4:(NSString *)sale4 Sale5:(NSString *)sale5 AltPhoneType:(NSString *)alterPhoneType CanUpdate:(NSString*)canUpdate ApptStatus:(NSString*)statusCode Disposition:(NSString *)disposition PresNotes:(NSString*)notes {
+-(id)initWithAppointmentId:(NSString*)apptId Address:(NSString*)address Name:(NSString*)name CSZ:(NSString*)cSZInfo ApptDate:(NSString*)dateTime ApptDisplayDate:(NSString*)displayDateTime Phone:(NSString*)phoneNumber AltPhone:(NSString*)altPhoneNumber Source:(NSString*)sourceNumber Notes:(NSString*)notesData ProductId:(NSString *)product ProductId1:(NSString *)product1 ProductId2:(NSString *)product2 ProductId3:(NSString *)product3 ProductId4:(NSString *)product4 ProductId5:(NSString *)product5 Sale1:(NSString *)sale1 Sale2:(NSString *)sale2 Sale3:(NSString *)sale3 Sale4:(NSString *)sale4 Sale5:(NSString *)sale5 AltPhoneType:(NSString *)alterPhoneType CanUpdate:(NSString*)canUpdate ApptStatus:(NSString*)statusCode Disp:(NSString *)disp Disposition:(NSString *)disposition PresNotes:(NSString*)notes {
     
     self = [super init];
     if (self) {
@@ -64,7 +65,8 @@
         _sale5=sale5;
         _source=sourceNumber;
         _notes=notesData;
-        _disp=disposition;
+        _disp=disp;
+        _dispText = disposition;
         _presNotes=notes;
         
         _canUpdateIndicator=[canUpdate boolValue];

@@ -40,14 +40,21 @@
     imgView.image = [UIImage imageNamed:@"DottedLine.png"];
     [self.view addSubview:imgView];
     [self.view sendSubviewToBack:imgView];
+    
+    //[self getMessages];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:NO animated:NO];
-
+    
     [self getMessages];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    messages = [NSMutableArray new];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidUnload
@@ -116,7 +123,7 @@
 
     UILabel *lblText = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, 250, labelSize.height)];
     [cell addSubview:lblText];
-    lblText.backgroundColor = [UIColor clearColor];
+//    lblText.backgroundColor = [UIColor clearColor];
     lblText.textColor = [UIColor darkGrayColor];
     lblText.font = [UIFont fontWithName:@"Helvetica-Oblique" size:15];
     lblText.lineBreakMode = UILineBreakModeWordWrap;
@@ -130,6 +137,7 @@
     imgView.image = [UIImage imageNamed:@"DottedLine.png"];
     [cell addSubview:imgView];
     [self.view sendSubviewToBack:imgView];
+    
     
     return cell;
 }
