@@ -174,6 +174,10 @@
 
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Appointment" message:@"Appointment Acknowledged" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
+        
+        ack=YES;
+        [acknowledgeButton setBackgroundImage:[UIImage imageNamed:@"AcknowledgedOffButton.png"] forState:UIControlStateNormal];
+        
     }];
 
 }
