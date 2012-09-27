@@ -24,7 +24,7 @@
 @synthesize altPhoneLable, altPhoneButton;
 @synthesize sourceLabel;
 @synthesize dispLabel;
-@synthesize notesLabel, notesScrollView;
+@synthesize notesView;
 @synthesize productLabel;
 @synthesize altPhoneCaption;
 @synthesize acknowledgeButton;
@@ -61,8 +61,6 @@
     [self setAddressLabel:nil];
     [self setCityLabel:nil];
     [self setSourceLabel:nil];
-    [self setNotesLabel:nil];
-    [self setNotesScrollView:nil];
     [self setAcknowledgeButton:nil];
     [self setUpdateApptButton:nil];
     [self setPhoneLabel:nil];
@@ -112,27 +110,16 @@
         productLabel.text = apptObject.productID;
         sourceLabel.text=apptObject.source;
         dispLabel.text = apptObject.disp;
-        notesLabel.text=[NSString stringWithFormat:@"%@",apptObject.notes];
         
-        //set notesLabel
-        notesLabel.lineBreakMode = UILineBreakModeWordWrap;
-        notesLabel.numberOfLines = 0;
-        UIFont *cellFont = [UIFont fontWithName:@"Helvetica-Oblique" size:15];;
-        CGSize constraintSize = CGSizeMake(175.0f, notesLabel.frame.size.width);
-        CGSize labelSize = [notesLabel.text sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
-        CGRect frame = notesLabel.frame;
-        frame.size.height=labelSize.height;
-        notesLabel.frame = frame;
-        
-        notesScrollView.contentSize=notesLabel.frame.size;
-        [notesScrollView scrollRectToVisible:CGRectMake(0, 0, notesScrollView.frame.size.width, notesScrollView.frame.size.height) animated:NO];
-        
-        frame = CGRectMake(0, notesScrollView.frame.origin.y+notesScrollView.frame.size.height, self.view.bounds.size.width, 20);
+        notesView.text = apptObject.notes;
+        notesView.contentInset = UIEdgeInsetsMake(-4,-8,0,0);
+
+        CGRect frame = CGRectMake(0, notesView.frame.origin.y+notesView.frame.size.height, self.view.bounds.size.width, 20);
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:frame];
         imgView.image = [UIImage imageNamed:@"DottedLine.png"];
         [self.scrollView addSubview:imgView];
         [self.scrollView sendSubviewToBack:imgView];
-        
+
         if(!apptObject.canUpdateIndicator)
             [updateApptButton setHidden:YES];
         

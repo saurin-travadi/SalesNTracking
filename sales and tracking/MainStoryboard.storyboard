@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11G56" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3p4-39-fX6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11G56" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3p4-39-fX6">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="3BM-pr-SJe">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QlQ-NF-Gg8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="p4q-tG-yo4" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Ht-e5-jcn">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -80,13 +79,13 @@
                         <segue destination="slh-k7-X0H" kind="modal" identifier="homeSegue" id="dGe-RM-HA5"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QlQ-NF-Gg8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2108" y="-3256"/>
         </scene>
         <!--Home View Controller - Home-->
         <scene sceneID="gt8-Rj-sDQ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Vto-GA-nns" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="YyK-3f-7VB" customClass="HomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7tl-mk-qdP">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
@@ -146,13 +145,13 @@
                         <outlet property="tableView" destination="QEg-gN-QYR" id="h3e-pj-YDx"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vto-GA-nns" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1222" y="-3256"/>
         </scene>
         <!--My Stats View Controller - My Stats-->
         <scene sceneID="ejQ-SY-Mff">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WQd-yN-G9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="xIz-gR-Se0" customClass="MyStatsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ECh-Lr-UDU">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
@@ -203,13 +202,13 @@
                         <outlet property="tableView" destination="d3O-GZ-Z41" id="TCN-dx-WvJ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WQd-yN-G9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-735" y="-3675"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QXr-Ke-2lB">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hWZ-Ya-Bx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" toolbarHidden="NO" id="slh-k7-X0H" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="0Bs-8a-GEr"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
@@ -227,13 +226,13 @@
                         <segue destination="YyK-3f-7VB" kind="relationship" relationship="rootViewController" id="IYK-Rp-kMm"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hWZ-Ya-Bx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1690" y="-3256"/>
         </scene>
         <!--Launch View Controller-->
         <scene sceneID="Uae-XJ-SUc">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hhb-Yg-wzw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="3p4-39-fX6" customClass="LaunchViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B63-cG-e40">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -250,13 +249,13 @@
                         <segue destination="p4q-tG-yo4" kind="modal" identifier="login" id="0fY-83-scu"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hhb-Yg-wzw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2569" y="-3166"/>
         </scene>
         <!--Sales Tracking View Controller - Sales Tracking-->
         <scene sceneID="uyV-6v-mq6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w7w-0S-qt7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="XZM-8a-egt" customClass="SalesTrackingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Hv-LJ-3cS">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
@@ -366,13 +365,13 @@
                         <outlet property="tableView" destination="9RH-eY-xPX" id="mg4-Q4-Bbq"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w7w-0S-qt7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1561" y="-2456"/>
         </scene>
         <!--Calendar View Controller - Calendar-->
         <scene sceneID="EXL-0p-cOy">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bCo-L6-XT3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Calendar" id="APm-aD-bYT" customClass="CalendarViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sii-Hd-tuw">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -387,13 +386,13 @@
                         <segue destination="yLV-71-6Ld" kind="push" identifier="appointmentsSegue" id="ma5-PL-hMP"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bCo-L6-XT3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-701" y="-2806"/>
         </scene>
         <!--Appointments View Controller - Appointments-->
         <scene sceneID="Ol2-MN-c71">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F7K-Ml-8oL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="yLV-71-6Ld" customClass="AppointmentsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uVd-S5-CmQ">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -454,13 +453,13 @@
                         <outlet property="tableView" destination="29I-Er-naa" id="EDo-s3-W6I"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F7K-Ml-8oL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-278" y="-2806"/>
         </scene>
         <!--Appointment Update View Controller - Update-->
         <scene sceneID="pj5-Oy-xTu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a35-BW-W5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="J6g-ot-Lse" customClass="AppointmentUpdateViewController" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="i1g-0N-3UM">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -822,13 +821,13 @@
                         <outlet property="viewContainer4" destination="dcz-Qv-ecm" id="oQC-qr-HDg"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a35-BW-W5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="592" y="-2775"/>
         </scene>
         <!--Appointement Detail View Controller - Details-->
         <scene sceneID="Q8C-I9-zYy">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="exR-bP-z3x" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="zBw-aE-fND" customClass="AppointementDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LnC-ld-q1F">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -1057,22 +1056,6 @@
                                         <color key="textColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </label>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" id="oCF-bT-Ad6">
-                                        <rect key="frame" x="81" y="275" width="225" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" text="Loading..." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="10" adjustsFontSizeToFit="NO" id="0zE-Nq-HKH">
-                                                <rect key="frame" x="0.0" y="0.0" width="214" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="Helvetica-Oblique" family="Helvetica" pointSize="15"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <size key="shadowOffset" width="0.0" height="0.0"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
-                                    </scrollView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Product:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="4tI-aM-q3h">
                                         <rect key="frame" x="10" y="185" width="68" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1101,6 +1084,15 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" id="SQl-A0-lMI">
+                                        <rect key="frame" x="82" y="271" width="212" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Oblique" family="Helvetica" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </scrollView>
@@ -1120,8 +1112,7 @@
                         <outlet property="mapButton1" destination="M6v-5d-ybr" id="jsF-Zh-jg0"/>
                         <outlet property="mapButton2" destination="KMe-3Q-Efe" id="Hx5-Pc-gTy"/>
                         <outlet property="nameLabel" destination="E9t-jj-2VH" id="Q5y-36-Vvr"/>
-                        <outlet property="notesLabel" destination="0zE-Nq-HKH" id="8vu-uK-shh"/>
-                        <outlet property="notesScrollView" destination="oCF-bT-Ad6" id="QjO-jN-Nma"/>
+                        <outlet property="notesView" destination="SQl-A0-lMI" id="a9J-6b-Shv"/>
                         <outlet property="phoneButton" destination="hen-O9-uak" id="ouF-SH-g4r"/>
                         <outlet property="phoneLabel" destination="vAU-Fh-TMO" id="kew-8G-5B3"/>
                         <outlet property="productLabel" destination="9QC-up-Qwh" id="mao-KJ-Wg2"/>
@@ -1130,13 +1121,13 @@
                         <outlet property="updateApptButton" destination="fZp-yb-O50" id="we8-nV-3WL"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="exR-bP-z3x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="155" y="-2806"/>
         </scene>
         <!--Sales Details View Controller - Sales Detail-->
         <scene sceneID="s8Z-sf-T6T">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="csL-Z3-eyV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="wsW-65-j6a" customClass="SalesDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MRf-mV-pOm">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -1346,6 +1337,7 @@
                         <outlet property="saleDollarLabel" destination="2qk-ea-7zk" id="B1Y-M7-c0Q"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="csL-Z3-eyV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1112" y="-2412"/>
         </scene>
@@ -1378,8 +1370,7 @@
                 <relationship kind="outlet" name="mapButton1" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="mapButton2" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="notesLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="notesScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="notesView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="phoneButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="phoneLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="productLabel" candidateClass="UILabel"/>

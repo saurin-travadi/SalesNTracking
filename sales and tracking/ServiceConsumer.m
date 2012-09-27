@@ -145,14 +145,6 @@
     
     [self getDataForElement:@"SalesLoginMessageResult" Request:req :^(id json) {
         NSMutableArray *messages = [[NSMutableArray alloc] init];
-      
-//        AppDelegate *app =  (AppDelegate *)[UIApplication sharedApplication].delegate;
-//        int j = app.getNext;
-//        for(int x=j; x>0; x--){
-//
-//            NSMutableArray *data = [NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%d",rand()*rand()],[NSString stringWithFormat:@"%d",x*x], [[NSDate date] description] , nil];
-//            [messages addObject: data ];
-//        }
         
         NSArray *result = [json JSONValue];
         for (id obj in result) {
@@ -483,7 +475,7 @@
     [req setHTTPBody: [soapMsg dataUsingEncoding:NSUTF8StringEncoding]];
     
     [self getDataForElement:@"GetSalesJobDetailResponse" Request:req :^(id json) {
-        
+        NSLog(@"%@",[json description]);
         MySales *sale;
         NSArray *result = [json JSONValue];
         for (id obj in result) {
