@@ -81,4 +81,9 @@
     self.localSettingsPath = path;
 }
 
+static int i;
+-(int)getNext {
+    return i++;
+}
+
 @end

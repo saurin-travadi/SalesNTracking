@@ -8,6 +8,7 @@
 
 #import "ServiceConsumer.h"
 #import "Utility.h"
+#import "AppDelegate.h"
 
 @implementation ServiceConsumer {
     NSString *baseURL;
@@ -145,12 +146,21 @@
     [self getDataForElement:@"SalesLoginMessageResult" Request:req :^(id json) {
         NSMutableArray *messages = [[NSMutableArray alloc] init];
       
+        AppDelegate *app =  (AppDelegate *)[UIApplication sharedApplication].delegate;
+        int j = app.getNext;
+        for(int x=j; x>0; x--){
+
+            NSMutableArray *data = [NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%d",rand()*rand()],[NSString stringWithFormat:@"%d",x*x], [[NSDate date] description] , nil];
+            [messages addObject: data ];
+        }
+        
         NSArray *result = [json JSONValue];
         for (id obj in result) {
             
             NSMutableArray *data = [NSMutableArray arrayWithObjects:[obj valueForKey:@"Message"],[obj valueForKey:@"From"],[obj valueForKey:@"MessageDateDisplay"], nil];
             [messages addObject: data];
         }
+        
         
         _OnSearchSuccess(messages);
         

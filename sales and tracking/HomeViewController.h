@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseUIViewController.h"
 
-@interface HomeViewController : BaseUIViewController
+@interface HomeViewController : BaseUIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 -(IBAction)logout:(id)sender;

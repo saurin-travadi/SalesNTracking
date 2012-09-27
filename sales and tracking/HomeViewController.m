@@ -13,7 +13,7 @@
     NSMutableArray *messages;
 }
 
-@synthesize tableView;
+//@synthesize tableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,8 +40,7 @@
     imgView.image = [UIImage imageNamed:@"DottedLine.png"];
     [self.view addSubview:imgView];
     [self.view sendSubviewToBack:imgView];
-    
-    //[self getMessages];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -53,8 +52,9 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
-    messages = [NSMutableArray new];
-    [self.tableView reloadData];
+    //[messages removeAllObjects];
+    if([messages count]>0)
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
 
 - (void)viewDidUnload
@@ -78,18 +78,28 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"%d",[messages count]);
     return [messages count];
 }
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"%d",[messages count]);
+    
     static NSString *CellIdentifier = @"cell";
     
     UITableViewCell *cell = (UITableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+    
+    for (UIView *v in cell.subviews) {
+        [v removeFromSuperview];
+    }
+    
 
+    
+    
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, 25)];
     view.backgroundColor = [UIColor colorWithRed:0.945 green:0.945 blue:0.945 alpha:1];
     [cell addSubview:view];
@@ -101,7 +111,7 @@
     lbl.font = [UIFont fontWithName:@"Helvetica-Oblique" size:15];
     lbl.text = @"From";
     
-    UILabel *lblFrom= [[UILabel alloc] initWithFrame:CGRectMake(55, 0, 200, 25)];
+    UILabel *lblFrom= [[UILabel alloc] initWithFrame:CGRectMake(55, 0, 250, 25)];
     [view addSubview:lblFrom];
     [lblFrom setBackgroundColor:[UIColor clearColor]];
     lblFrom.textColor = [UIColor colorWithRed:0.204 green:0.318 blue:0.416 alpha:1];
@@ -121,9 +131,8 @@
     CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
     CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
 
-    UILabel *lblText = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, 250, labelSize.height)];
+    UILabel *lblText = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, 280, labelSize.height)];
     [cell addSubview:lblText];
-//    lblText.backgroundColor = [UIColor clearColor];
     lblText.textColor = [UIColor darkGrayColor];
     lblText.font = [UIFont fontWithName:@"Helvetica-Oblique" size:15];
     lblText.lineBreakMode = UILineBreakModeWordWrap;

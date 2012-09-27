@@ -18,6 +18,7 @@
 ((AppDelegate *)[UIApplication sharedApplication].delegate)
 
 - (void)populateLocalSettingsPath;
+-(int)getNext;
 
 @end
 
