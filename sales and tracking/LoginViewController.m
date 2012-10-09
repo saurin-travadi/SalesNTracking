@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "ServiceConsumer.h"
 #import "Utility.h"
+#import "PDFScrollView.h"
 
 @implementation LoginViewController {
     NSString *pwd;
@@ -311,11 +312,13 @@ NSString *localSettingsPath;
 }
 
 -(IBAction)help:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.leadperfection.com/help/index.aspx?topic=01A"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.leadperfection.com/help/index.aspx?topic=01A"]];
+
+    [self performSegueWithIdentifier:@"infoSegue" sender:nil];
 }
 
 -(IBAction)signup:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.leadperfection.com/help/index.aspx?topic=02A"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.leadperfection.com/help/index.aspx?topic=02A"]];
 }
 
 

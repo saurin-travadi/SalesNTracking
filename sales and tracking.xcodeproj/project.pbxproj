@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		700933EB1623B736000B32E6 /* PDFScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 700933E81623B736000B32E6 /* PDFScrollView.m */; };
+		700933EC1623B736000B32E6 /* TiledPDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 700933EA1623B736000B32E6 /* TiledPDFView.m */; };
+		700933EF1623B7E1000B32E6 /* Info.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 700933EE1623B7E1000B32E6 /* Info.pdf */; };
+		700933F21623C54D000B32E6 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 700933F11623C54D000B32E6 /* InfoViewController.m */; };
 		70196BA715EEFA37008B964E /* AppointmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70196BA615EEFA37008B964E /* AppointmentsViewController.m */; };
 		70196BAF15EF02E4008B964E /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 70196BAE15EEFF8E008B964E /* Appointment.m */; };
 		701DA4E215F15D1F007EE2EF /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 701DA4E015F15CE5007EE2EF /* UIViewAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -102,6 +106,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		700933E71623B736000B32E6 /* PDFScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFScrollView.h; sourceTree = "<group>"; };
+		700933E81623B736000B32E6 /* PDFScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFScrollView.m; sourceTree = "<group>"; };
+		700933E91623B736000B32E6 /* TiledPDFView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiledPDFView.h; sourceTree = "<group>"; };
+		700933EA1623B736000B32E6 /* TiledPDFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiledPDFView.m; sourceTree = "<group>"; };
+		700933EE1623B7E1000B32E6 /* Info.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Info.pdf; sourceTree = "<group>"; };
+		700933F01623C54D000B32E6 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		700933F11623C54D000B32E6 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		70196BA515EEFA37008B964E /* AppointmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentsViewController.h; sourceTree = "<group>"; };
 		70196BA615EEFA37008B964E /* AppointmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentsViewController.m; sourceTree = "<group>"; };
 		70196BAD15EEFF8E008B964E /* Appointment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Appointment.h; sourceTree = "<group>"; };
@@ -262,6 +273,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		700933E61623B736000B32E6 /* PdfViewer */ = {
+			isa = PBXGroup;
+			children = (
+				700933E71623B736000B32E6 /* PDFScrollView.h */,
+				700933E81623B736000B32E6 /* PDFScrollView.m */,
+				700933E91623B736000B32E6 /* TiledPDFView.h */,
+				700933EA1623B736000B32E6 /* TiledPDFView.m */,
+			);
+			name = PdfViewer;
+			path = pdfViewer;
+			sourceTree = "<group>";
+		};
+		700933ED1623B7AD000B32E6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				700933EE1623B7E1000B32E6 /* Info.pdf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		701DA4C915F15C8C007EE2EF /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,6 +365,8 @@
 		708433D215E9DEFC00E27068 /* sales and tracking */ = {
 			isa = PBXGroup;
 			children = (
+				700933ED1623B7AD000B32E6 /* Resources */,
+				700933E61623B736000B32E6 /* PdfViewer */,
 				701DA4C915F15C8C007EE2EF /* Calendar */,
 				708433DB15E9DEFC00E27068 /* AppDelegate.h */,
 				708433DC15E9DEFC00E27068 /* AppDelegate.m */,
@@ -364,6 +397,8 @@
 				708433D315E9DEFC00E27068 /* Supporting Files */,
 				7084341215E9E79400E27068 /* MainStoryboard.storyboard */,
 				70D33093160657470005F7A1 /* AlternateLogin.xib */,
+				700933F01623C54D000B32E6 /* InfoViewController.h */,
+				700933F11623C54D000B32E6 /* InfoViewController.m */,
 			);
 			path = "sales and tracking";
 			sourceTree = "<group>";
@@ -588,6 +623,7 @@
 				70D33094160657470005F7A1 /* AlternateLogin.xib in Resources */,
 				70D33097160658650005F7A1 /* altLogin.png in Resources */,
 				70D33098160658650005F7A1 /* altLogin@2x.png in Resources */,
+				700933EF1623B7E1000B32E6 /* Info.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,6 +677,9 @@
 				7076885015F9672E00115D99 /* Disposition.m in Sources */,
 				707536D31591728B0087C95C /* Product.m in Sources */,
 				70D33091160653520005F7A1 /* LaunchViewController.m in Sources */,
+				700933EB1623B736000B32E6 /* PDFScrollView.m in Sources */,
+				700933EC1623B736000B32E6 /* TiledPDFView.m in Sources */,
+				700933F21623C54D000B32E6 /* InfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
