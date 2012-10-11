@@ -11,7 +11,6 @@
 #import "AppDelegate.h"
 #import "ServiceConsumer.h"
 #import "Utility.h"
-#import "PDFScrollView.h"
 
 @implementation LoginViewController {
     NSString *pwd;
