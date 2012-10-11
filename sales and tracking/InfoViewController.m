@@ -26,21 +26,21 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-
-    NSURL *pdfURL = [[NSBundle mainBundle] URLForResource:@"Info" withExtension:@"pdf"];
-
-    CGPDFDocumentRef PDFDocument = CGPDFDocumentCreateWithURL((__bridge CFURLRef)pdfURL);
-
-    CGPDFPageRef PDFPage = CGPDFDocumentGetPage(PDFDocument, 1);
-    PDFScrollView *pdfView = [self.view.subviews objectAtIndex:0];
-    pdfView.minimumZoomScale = 2.5f;
-    pdfView.maximumZoomScale = 2.5f;
-
-    [pdfView setPDFPage:PDFPage];
-
-
-    CGPDFDocumentRelease(PDFDocument);
+//    [super viewDidLoad];
+//
+//    NSURL *pdfURL = [[NSBundle mainBundle] URLForResource:@"Info" withExtension:@"pdf"];
+//
+//    CGPDFDocumentRef PDFDocument = CGPDFDocumentCreateWithURL((__bridge CFURLRef)pdfURL);
+//
+//    CGPDFPageRef PDFPage = CGPDFDocumentGetPage(PDFDocument, 1);
+//    PDFScrollView *pdfView = [self.view.subviews objectAtIndex:0];
+//    pdfView.minimumZoomScale = 2.5f;
+//    pdfView.maximumZoomScale = 2.5f;
+//
+//    [pdfView setPDFPage:PDFPage];
+//
+//
+//    CGPDFDocumentRelease(PDFDocument);
 }
 
 - (void)didReceiveMemoryWarning
